@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="robots" content="index, follow">
+	<meta name="author" content="Alejandro A. Torassa">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="fav/favicon.svg">
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&amp;display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&amp;display=swap" rel="stylesheet">
+	<script async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+	<title>Classical Mechanics</title>
+	<style>
+		html {
+			border: 0;
+			margin: 0;
+			padding: 0;
+			outline: 0;
+			font-size: 16px;
+			line-height: 1.4;
+			list-style: none;
+			list-style-type:none;
+			text-decoration: none;
+			box-sizing: border-box;
+		}
+		body {
+			color: #454545;
+			text-align: justify;
+			background-color: #ffffff;
+			font-family: 'Spectral', ui-serif, Georgia, serif;
+		}
+		.container {
+			display: flex;
+			margin: auto;
+			max-width: 72%;
+		}
+		.content {
+			display: flex;
+		}
+		h1 {
+			color: #4581b4;
+		}
+		h2 {
+			color: #333333;
+		}
+		h1, h2 {
+			text-align: left;
+		}
+		.fuerte {
+			color: #151515;
+		}
+		.suave {
+			color: #666666;
+		}
+		a {
+			outline: none;
+			color: #2883f3;
+			text-decoration: none;
+			word-break: break-word;
+			overflow-wrap: break-word;
+		}
+		footer {
+			padding: 0.6em 0;
+			text-align: center;
+			border-top: 1px solid #cccccc;
+		}
+		@media (max-width: 810px) {
+			.container {
+				padding: 0 0.3em;
+				max-width: 100%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="content">
+			<section id="page">
+
+<h1 id="myTitle" style="cursor:pointer" onclick="myTheme();">Classical Mechanics</h1>
+
+<p id="mySpace" style="margin: -1.2em 0 +3.0em 0;">A logical, epistemological and ontological analysis of classical mechanics.</p>
+
+<p style="color: #c63636;"><i>28/10/2026 - What's new: Annexes and Appendices.</i></p>
+
+<p style="color: #c63636;"><i>Article under constant revision and evolution. Finishing this article will take several years.</i></p>
+
+<p style="color: #c63636;"><i>Note 1: By clicking on the article's source title the screen can be switched to dark or light mode.</i></p>
+
+<p style="color: #c63636;"><i>Note 2: By clicking on the title "Introduction" the font can be switched to sans-serif or serif mode.</i></p>
+
+<p style="color: #c63636;"><i>Note 3: Author: Alejandro A. Torassa (ORCID: <a href='https://orcid.org/0000-0002-1389-247X'>0000-0002-1389-247X</a>)</i></p>
+
+<p style="color: #c63636; margin-bottom: +3.0em;"><i>Note 4: Comments and Suggestions: <a href='https://aphysica.github.io/torassa/abs/200'>Contact</a> (Thank you!)</i></p>
+
+<h2 id="myIntro" style="cursor:pointer" onclick="myFont();">Introduction</h2>
+
+<p>Classical mechanics is divided according to its mathematical formalism into: Newtonian mechanics (also called vectorial mechanics), d'alembertian mechanics (also called relational mechanics), Lagrangian mechanics and Hamiltonian mechanics (all these models are observationally equivalent to each other). This article presents a logical, epistemological and ontological analysis of Newtonian mechanics in particular and of theoretical physics in general (mainly, this article presents a logical, epistemological and ontological analysis of Newtonian particle dynamics for inertial and non-inertial reference systems).</p>
+
+<h2>Index</h2>
+
+<p class="fuerte">PART I</p>
+
+<p><a href="#T1">1. Newton's First Law</a></p>
+
+<p><a href="#T2">2. Newton's Second Law</a></p>
+
+<p><a href="#T3">3. Newton's Third Law</a></p>
+
+<p><a href="#T4">4. Forces of Nature</a></p>
+
+<p class="fuerte">PART IV</p>
+
+<p><a href="#O0">1. General Observations</a></p>
+
+<p><a href="#N0">2. Notes and Clarifications</a></p>
+
+<p><a href="#R0">3. References and Bibliography</a></p>
+
+<p><a href="#A0">4. Annexes and Appendices</a></p>
+
+<h2 id="T1">Newton's First Law</h2>
+
+<p class="fuerte"><i>Every particle remains in its state of rest or of uniform rectilinear motion if no force acts on the particle.</i></p>
+
+<p>I always considered this law as redundant and unnecessary because I always considered that Newton's first law was deduced from Newton's second law <a href="#N1">[N1]</a>.</p>
+
+<p>However, after reading an article by the Argentine physicist Hugo Alberto Fernández <a href="#R2">[R2]</a> I reflected on his comments regarding Newton's first law and I reached the conclusion that Newton's first law was neither redundant nor unnecessary (even beyond its great historical importance).</p>
+
+<p>Newton's second law is a logical proposition of the type: "If A happens then B happens" (also called a conditional proposition) <a href="#R3">[R3]</a>. Where A is that a net force acts on a particle (whether this net force is balanced or not) and B is the acceleration of the particle. Therefore, Newton's second law only establishes what happens with the state of motion of a particle when forces act on the particle (whether these forces are balanced or not), but Newton's second law does not establish what type of motion any particle must have when no force acts on it. Therefore, following logic once again: "If A does not happen then B may happen or may not happen". That is, according to Newton's second law and logic, if no force acts on any particle then the particle can be in a state of rest, of uniform rectilinear motion or of acceleration. And best of all, whatever the state in which the particle finds itself (in the total absence of forces on it), none of these three states would refute Newton's second law <a href="#R4">[R4]</a> because Newton's second law deals only with when forces act on any particle (whether these forces are balanced or not) and not when no force acts on the particle.</p>
+
+<p>And it is precisely here that Newton's first law comes to the rescue, ceasing to be a redundant and unnecessary law, since Newton's first law does establish what happens with any particle when no force acts on it.</p>
+
+<p>However, the matter with Newton's first law is not yet over, because in our Universe there is not a single particle on which no force acts; forces (gravitational, electric, etc.) always act on a particle, however small they may be, which makes it impossible to find experimentally a particle on which no force acts. Even though many physicists, even Einstein himself <a href="#R6">[R6]</a>, use Newton's first law mainly to be able to define experimentally an inertial reference system, stating that if a particle is moved infinitely away from the other particles then no force will act on this particle and, therefore, every reference system in which this particle is at rest or in uniform rectilinear motion will be an inertial reference system. However, the truth is otherwise: according to Newton's law of universal gravitation, no matter how far a particle is moved away from the other particles, gravitational forces will act on this particle, even if it were necessary to observe them with an electron microscope (so to speak), gravitational forces will always act on the particle. But it is being clarified that the particle is moved infinitely away from the other particles; agreed, but in order to determine its state of motion the observer needs rulers and clocks, as Einstein has well clarified <a href="#R7">[R7]</a>. Therefore, those rulers and those clocks that will experimentally determine the state of motion of the test particle will also exert gravitational forces on the test particle (however small they may be) and that will also make it impossible to state that experimentally no force acts on the test particle.</p>
+
+<p>Therefore, Newton's first law as stated in this article can only be corroborated or refuted in a Universe where it is possible to find particles on which no force acts on them. Consequently, Newton's first law stated above must be reformulated so that it can be corroborated or refuted in a Universe (ours) where it is not possible to find particles on which no force acts on them. In order not to lengthen and further complicate this problem, Newton's first law will be stated below so that it can be corroborated or refuted in both types of Universe.</p>
+
+<p class="fuerte"><i>Every particle remains in its state of rest or of uniform rectilinear motion if no force acts on the particle or if the forces acting on the particle are balanced.</i></p>
+
+<p>But let us return to the initial topic of the article, because as Newton's first law is now stated then it can be stated that in our Universe Newton's first law is deduced from Newton's second law, since if the forces acting on a particle are balanced then the net force is equal to zero and, therefore, the acceleration of the particle is also equal to zero, which means that the particle is in a state of rest or of uniform rectilinear motion.</p>
+
+<p>This which seems to be a flaw of Newtonian dynamics can be something good, because now it is possible to unify Newton's first law with Newton's second law (that is, to include Newton's first law in Newton's second law). Then, so that Newton's second law can be corroborated or refuted in a type of Universe in which it is possible to find particles on which no force acts, it would only be necessary to make the following clarification: in Newton's second law, if no force acts on a particle then this must be interpreted as if a net force equal to zero acts on the particle.</p>
+
+<h2 id="T2">Newton's Second Law</h2>
+
+<p class="fuerte"><i>Every net force <span class="MathJax">\({\mathbf{F}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> of inertial mass <span class="MathJax">\(m_i\)</span> produces in the particle <span class="MathJax">\(i\)</span> an acceleration <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> according to the following equation: <span class="MathJax">\([ \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, ]\)</span></i></p>
+
+<p>In the first place, it is clarified that if no force acts on the particle <span class="MathJax">\(i\)</span> then this must be interpreted as if a net force equal to zero <span class="MathJax">\({\mathbf{F}}_i\)</span> acts on the particle <span class="MathJax">\(i\)</span> (as has been proposed in the previous section, Newton's first law thus being included from a logical point of view in Newton's second law).</p>
+
+<p>In the second place, the author clarifies that the net force of the real forces <span class="MathJax">\({\mathbf{F}}_i\)</span> is in bold and that the ordinary acceleration <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> is not in bold (but with vector arrow) because in Newtonian dynamics every real force is invariant under transformations between inertial and non-inertial reference systems, whereas every ordinary acceleration is not invariant under transformations between inertial and non-inertial reference systems (this will be explained in more detail in a forthcoming section).</p>
+
+<p>In the third place, it is deduced from the previous equation that inertial mass is a scalar magnitude, but it must be clarified that it is a positive scalar magnitude (note that there are no negative inertial masses, even though this would not refute Newton's second law, and neither are inertial masses equal to zero conceived, which would considerably complicate interpreting Newton's second law with particles with inertial mass equal to zero).</p>
+
+<p>Finally, in Newton's second law it must be clarified that inertial mass is a characteristic constant of each particle (and this is stated as a definition, not as an empirical principle) and that the value of the inertial mass of each particle must be obtained through experience (experimentally), since this value is not given by the theory.</p>
+
+<p>Now, why is inertial mass a characteristic constant of every particle by definition and not because experience shows it so? This is perhaps difficult to understand, but so that Newtonian dynamics and above all Newton's second law can be sustained as empirical principles, there is the need to establish by theory that the inertial mass of any particle is a characteristic constant of the particle (and this is so also with electric charge, gravitational mass, etc.).</p>
+
+<p>Let us now analyze Newton's second law in order to better understand what was stated in the previous paragraph. So far we have not defined the magnitude "force" (we can infer from what has been said so far that force is a vector magnitude, as is ordinary acceleration). Let us suppose, to greatly facilitate this matter, that in every particle colored arrows are experimentally observed that originate in each particle and that have a determined length and also a determined orientation in space, and that these arrows are the real forces acting on the particles, the different types of colors of the arrows representing the different types of forces there are in the Universe (gravitational, electric, etc.) and that a black arrow is also experimentally observed representing the net force (product of the real forces and as the vector sum of all the colored arrows) acting on every particle of the Universe.</p>
+
+<p>On the other hand, it must be understood that every principle postulated as an empirical principle must provide the necessary theoretical tools so that it can be refuted or corroborated by experience <a href="#R4">[R4]</a>.</p>
+
+<p>In development&nbsp;...</p>
+
+<h2 id="T3">Newton's Third Law</h2>
+
+<p class="fuerte"><i>If a particle <span class="MathJax">\(i\)</span> exerts a force <span class="MathJax">\({\mathbf{F}_{j\hspace{+0.090em}i}}\)</span> on another particle <span class="MathJax">\(j\)</span> then the particle <span class="MathJax">\(j\)</span> exerts a force <span class="MathJax">\(-{\mathbf{F}_{i\hspace{-0.030em}j}}\)</span> equal and in the opposite direction on the particle <span class="MathJax">\(i\)</span>. <span class="MathJax">\([ \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, ]\)</span></i></p>
+
+<p>In development&nbsp;...</p>
+
+<h2 id="T4">Forces of Nature</h2>
+
+<p>In development&nbsp;...</p>
+
+<h2 id="O0">General Observations</h2>
+
+<p>In development&nbsp;...</p>
+
+<h2 id="N0">Notes and Clarifications</h2>
+
+<p id="N1">[N1] Newton's first law (and above all Galileo Galilei's, of course) has an enormous historical importance since it establishes, contrary to what Aristotle's philosophy postulated, that a particle, in order to continue in its state of uniform rectilinear motion, does not need any external agent. Therefore, this law completely changed the way of conceiving the Universe. But more than 300 years have passed since Newton's publication <a href="#R0">[R1]</a> and this article is a contemporary analysis. Moreover, Newton's first law was not postulated as it is postulated in this article, since this article does not intend to be a detailed historical description of classical mechanics but rather a logical, theoretical and philosophical analysis of classical mechanics.</p>
+
+<h2 id="R0">References and Bibliography</h2>
+
+<p id="R1">[R1] I. Newton, Mathematical Principles of Natural Philosophy, (1687).</p>
+
+<p id="R2">[R2] H. Fernández, Special Relativity Course, (2016).</p>
+
+<p id="R3">[R3] I. Copi, Introduction to Logic, (2011).</p>
+
+<p id="R4">[R4] K. Popper, The Logic of Scientific Discovery, (1934).</p>
+
+<p id="R5">[R5] T. Kuhn, The Structure of Scientific Revolutions, (1962).</p>
+
+<p id="R6">[R6] A. Einstein, On the Special and General Theory of Relativity, (1916).</p>
+
+<p id="R7">[R7] A. Einstein, On the Electrodynamics of Moving Bodies, (1905).</p>
+
+<p id="B1">[B1] R. Descartes, Discourse on the Method, (1637).</p>
+
+<p id="B2">[B2] D. Hume, A Treatise of Human Nature, (1739).</p>
+
+<p id="B3">[B3] I. Kant, Critique of Pure Reason, (1781).</p>
+
+<p id="B4">[B4] G. Hegel, Phenomenology of Spirit, (1807).</p>
+
+<p id="B5">[B5] A. Carpio, Principles of Philosophy, (1974).</p>
+
+<h2 id="A0">Annexes</h2>
+
+<h3>Annex I</h3>
+
+<h3>Newtonian Mechanics</h3>
+
+<p><b>Option 0 A:</b> Integrated by [&nbsp;The 3 Laws of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span>&nbsp;] and formulated only for [&nbsp;The Inertial Systems&nbsp;]</p>
+
+<p>1st. Law of Motion: Every particle remains in its state of rest or of uniform rectilinear motion if no force acts on the particle.</p>
+
+<p>2nd. Law of Motion: Every net force <span class="MathJax">\({\mathbf{F}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> of inertial mass <span class="MathJax">\(m_i\)</span> produces in the particle <span class="MathJax">\(i\)</span> an acceleration <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> according to the following equation: <span class="MathJax">\([ \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, ]\)</span></p>
+
+<p>3rd. Law of Motion: If a particle <span class="MathJax">\(i\)</span> exerts a force <span class="MathJax">\({\mathbf{F}_{j\hspace{+0.090em}i}}\)</span> on another particle <span class="MathJax">\(j\)</span> then the particle <span class="MathJax">\(j\)</span> exerts a force <span class="MathJax">\(-{\mathbf{F}_{i\hspace{-0.030em}j}}\)</span> equal and in the opposite direction on the particle <span class="MathJax">\(i\)</span>. <span class="MathJax">\([ \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, ]\)</span></p>
+
+<p>Newtoniano <span class="MathJax">\(\doteq {\mathbf{F}}_i\)</span> (&nbsp;<span class="MathJax">\({\mathbf{F}}_i\)</span> is invariant under transformations between inertial and non-inertial systems but <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> is only invariant under transformations between inertial systems&nbsp;)</p>
+
+<p><b>Option 0 B:</b> Integrated by [&nbsp;The Equation of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span>&nbsp;] and formulated only for [&nbsp;The Inertial Systems&nbsp;]</p>
+
+<p>The Equation of Motion: Every net force <span class="MathJax">\({\mathbf{F}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> of inertial mass <span class="MathJax">\(m_i\)</span> produces in the particle <span class="MathJax">\(i\)</span> an acceleration <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> according to the following equation: <span class="MathJax">\([ \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, ]\)</span></p>
+
+<p>The Equation of Motion is the 2nd. Law of Motion, the 1st. Law of Motion is deduced from The Equation of Motion considering that if no force acts on a particle then the net force acting on the particle is equal to zero and the 3rd. Law of Motion is deduced from The Forces of Nature.</p>
+
+<p>Newtoniano <span class="MathJax">\(\doteq {\mathbf{F}}_i\)</span> (&nbsp;<span class="MathJax">\({\mathbf{F}}_i\)</span> is invariant under transformations between inertial and non-inertial systems but <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> is only invariant under transformations between inertial systems&nbsp;)</p>
+
+<p><b>Option 1 A:</b> Integrated by [&nbsp;The 3 Laws of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span> + The Fictitious Forces <span class="MathJax">\({\vec{Q}}\)</span>&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Systems&nbsp;]</p>
+
+<p>1st. Law of Motion: Every particle remains in its state of rest or of uniform rectilinear motion if no force acts on the particle.</p>
+
+<p>2nd. Law of Motion: Every net force <span class="MathJax">\({\vec{F}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> of inertial mass <span class="MathJax">\(m_i\)</span> produces in the particle <span class="MathJax">\(i\)</span> an acceleration <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> according to the following equation: <span class="MathJax">\([ \, {\vec{F}}_i \doteq {\mathbf{F}}_i + {\vec{Q}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, ]\)</span></p>
+
+<p>3rd. Law of Motion: If a particle <span class="MathJax">\(i\)</span> exerts a force <span class="MathJax">\({\mathbf{F}_{j\hspace{+0.090em}i}}\)</span> on another particle <span class="MathJax">\(j\)</span> then the particle <span class="MathJax">\(j\)</span> exerts a force <span class="MathJax">\(-{\mathbf{F}_{i\hspace{-0.030em}j}}\)</span> equal and in the opposite direction on the particle <span class="MathJax">\(i\)</span>. <span class="MathJax">\([ \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, ]\)</span></p>
+
+<p>Newtoniano <span class="MathJax">\(\doteq {\vec{F}}_i\)</span> (&nbsp;<span class="MathJax">\({\vec{F}}_i\)</span> is not invariant under transformations between inertial and non-inertial systems and <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> is not invariant under transformations between inertial and non-inertial systems either&nbsp;)</p>
+
+<p><b>Option 1 B:</b> Integrated by [&nbsp;The Equation of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span> + The Fictitious Forces <span class="MathJax">\({\vec{Q}}\)</span>&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Systems&nbsp;]</p>
+
+<p>The Equation of Motion: Every net force <span class="MathJax">\({\vec{F}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> of inertial mass <span class="MathJax">\(m_i\)</span> produces in the particle <span class="MathJax">\(i\)</span> an acceleration <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> according to the following equation: <span class="MathJax">\([ \, {\vec{F}}_i \doteq {\mathbf{F}}_i + {\vec{Q}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, ]\)</span></p>
+
+<p>The Equation of Motion is the 2nd. Law of Motion, the 1st. Law of Motion is deduced from The Equation of Motion considering that if no force acts on a particle then the net force acting on the particle is equal to zero and the 3rd. Law of Motion is deduced from The Forces of Nature.</p>
+
+<p>Newtoniano <span class="MathJax">\(\doteq {\vec{F}}_i\)</span> (&nbsp;<span class="MathJax">\({\vec{F}}_i\)</span> is not invariant under transformations between inertial and non-inertial systems and <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> is not invariant under transformations between inertial and non-inertial systems either&nbsp;)</p>
+
+<p><b>Option 2 A:</b> Integrated by [&nbsp;The 3 Laws of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span> + The Relational Magnitudes (&nbsp;<span class="MathJax">\({\mathbf{r}} , {\mathbf{v}} , {\mathbf{a}}\)</span>&nbsp;)&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Systems&nbsp;]</p>
+
+<p>1st. Law of Motion: Every particle remains in its state of relational rest or of relational uniform rectilinear motion if no force acts on the particle.</p>
+
+<p>2nd. Law of Motion: Every net force <span class="MathJax">\({\mathbf{F}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> of inertial mass <span class="MathJax">\(m_i\)</span> produces in the particle <span class="MathJax">\(i\)</span> a relational acceleration <span class="MathJax">\({\mathbf{a}}_{\hspace{+0.045em}i}\)</span> according to the following equation: <span class="MathJax">\([ \, {\mathbf{F}}_i \,=\, m_i \, {\mathbf{a}}_{\hspace{+0.045em}i} \, ]\)</span></p>
+
+<p>3rd. Law of Motion: If a particle <span class="MathJax">\(i\)</span> exerts a force <span class="MathJax">\({\mathbf{F}_{j\hspace{+0.090em}i}}\)</span> on another particle <span class="MathJax">\(j\)</span> then the particle <span class="MathJax">\(j\)</span> exerts a force <span class="MathJax">\(-{\mathbf{F}_{i\hspace{-0.030em}j}}\)</span> equal and in the opposite direction on the particle <span class="MathJax">\(i\)</span>. <span class="MathJax">\([ \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, ]\)</span></p>
+
+<p>Newtoniano <span class="MathJax">\(\doteq {\mathbf{F}}_i\)</span> (&nbsp;<span class="MathJax">\({\mathbf{F}}_i\)</span> is invariant under transformations between inertial and non-inertial systems and <span class="MathJax">\({\mathbf{a}}_{\hspace{+0.045em}i}\)</span> is also invariant under transformations between inertial and non-inertial systems&nbsp;)</p>
+
+<p><b>Option 2 B:</b> Integrated by [&nbsp;The Equation of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span> + The Relational Magnitudes (&nbsp;<span class="MathJax">\({\mathbf{r}} , {\mathbf{v}} , {\mathbf{a}}\)</span>&nbsp;)&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Systems&nbsp;]</p>
+
+<p>The Equation of Motion: Every net force <span class="MathJax">\({\mathbf{F}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> of inertial mass <span class="MathJax">\(m_i\)</span> produces in the particle <span class="MathJax">\(i\)</span> a relational acceleration <span class="MathJax">\({\mathbf{a}}_{\hspace{+0.045em}i}\)</span> according to the following equation: <span class="MathJax">\([ \, {\mathbf{F}}_i \,=\, m_i \, {\mathbf{a}}_{\hspace{+0.045em}i} \, ]\)</span></p>
+
+<p>The Equation of Motion is the 2nd. Law of Motion, the 1st. Law of Motion is deduced from The Equation of Motion considering that if no force acts on a particle then the net force acting on the particle is equal to zero and the 3rd. Law of Motion is deduced from The Forces of Nature.</p>
+
+<p>Newtoniano <span class="MathJax">\(\doteq {\mathbf{F}}_i\)</span> (&nbsp;<span class="MathJax">\({\mathbf{F}}_i\)</span> is invariant under transformations between inertial and non-inertial systems and <span class="MathJax">\({\mathbf{a}}_{\hspace{+0.045em}i}\)</span> is also invariant under transformations between inertial and non-inertial systems&nbsp;)</p>
+
+<h3>Annex II</h3>
+
+<h3>D'Alembertian Mechanics</h3>
+
+<p><b>Option 0 A:</b> Integrated by [&nbsp;The 3 Laws of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span> + The Ordinary Inertial Force (&nbsp;vis insita&nbsp;) <span class="MathJax">\({-\, m\hspace{+0.060em}{\vec{a}}}\)</span>&nbsp;] and formulated only for [&nbsp;The Inertial Systems&nbsp;]</p>
+
+<p>1st. Law of Motion: Force is a vector magnitude that represents interaction between two or more particles.</p>
+
+<p>2nd. Law of Motion: The total force <span class="MathJax">\({\vec{T}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> is always zero. <span class="MathJax">\([ \; {\vec{T}}_i \,\doteq\, {\mathbf{F}}_i \;-\; m_i \, {\vec{a}}_{\hspace{+0.045em}i} \,=\, 0 \; ]\)</span></p>
+
+<p>3rd. Law of Motion: If a particle <span class="MathJax">\(i\)</span> exerts a force <span class="MathJax">\({\mathbf{F}_{j\hspace{+0.090em}i}}\)</span> on another particle <span class="MathJax">\(j\)</span> then the particle <span class="MathJax">\(j\)</span> exerts a force <span class="MathJax">\(-{\mathbf{F}_{i\hspace{-0.030em}j}}\)</span> equal and in the opposite direction on the particle <span class="MathJax">\(i\)</span>. <span class="MathJax">\([ \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, ]\)</span></p>
+
+<p>D'Alembertiano <span class="MathJax">\(\doteq {\vec{T}}_i\)</span> (&nbsp;<span class="MathJax">\({\vec{T}}_i\)</span> and <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> are only invariant under transformations between inertial systems&nbsp;)</p>
+
+<p><b>Option 0 B:</b> Integrated by [&nbsp;The Equation of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span> + The Ordinary Inertial Force (&nbsp;vis insita&nbsp;) <span class="MathJax">\({-\, m\hspace{+0.060em}{\vec{a}}}\)</span>&nbsp;] and formulated only for [&nbsp;The Inertial Systems&nbsp;]</p>
+
+<p>The Equation of Motion: The total force <span class="MathJax">\({\vec{T}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> is always zero. <span class="MathJax">\([ \; {\vec{T}}_i \,\doteq\, {\mathbf{F}}_i \;-\; m_i \, {\vec{a}}_{\hspace{+0.045em}i} \,=\, 0 \; ]\)</span></p>
+
+<p>The Equation of Motion is the 2nd. Law of Motion, the 1st. Law of Motion is deduced from The Equation of Motion and The Forces of Nature and the 3rd. Law of Motion is deduced from The Forces of Nature.</p>
+
+<p>D'Alembertiano <span class="MathJax">\(\doteq {\vec{T}}_i\)</span> (&nbsp;<span class="MathJax">\({\vec{T}}_i\)</span> and <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> are only invariant under transformations between inertial systems&nbsp;)</p>
+
+<p><b>Option 1 A:</b> Integrated by [&nbsp;The 3 Laws of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span> + The Fictitious Forces <span class="MathJax">\({\vec{Q}}\)</span> + The Ordinary Inertial Force (&nbsp;vis insita&nbsp;) <span class="MathJax">\({-\, m\hspace{+0.060em}{\vec{a}}}\)</span>&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Systems&nbsp;]</p>
+
+<p>1st. Law of Motion: Force is a vector magnitude that represents interaction between two or more particles.</p>
+
+<p>2nd. Law of Motion: The total force <span class="MathJax">\({\mathbf{T}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> is always zero. <span class="MathJax">\([ \; {\mathbf{T}}_i \,\doteq\, {\mathbf{F}}_i + {\vec{Q}}_i \;-\; m_i \, {\vec{a}}_{\hspace{+0.045em}i} \,=\, 0 \; ]\)</span></p>
+
+<p>3rd. Law of Motion: If a particle <span class="MathJax">\(i\)</span> exerts a force <span class="MathJax">\({\mathbf{F}_{j\hspace{+0.090em}i}}\)</span> on another particle <span class="MathJax">\(j\)</span> then the particle <span class="MathJax">\(j\)</span> exerts a force <span class="MathJax">\(-{\mathbf{F}_{i\hspace{-0.030em}j}}\)</span> equal and in the opposite direction on the particle <span class="MathJax">\(i\)</span>. <span class="MathJax">\([ \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, ]\)</span></p>
+
+<p>D'Alembertiano <span class="MathJax">\(\doteq {\mathbf{T}}_i\)</span> (&nbsp;<span class="MathJax">\({\mathbf{T}}_i\)</span> is invariant under transformations between inertial and non-inertial systems but <span class="MathJax">\({\vec{Q}}_i\)</span> and <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> are not invariant under transformations between inertial and non-inertial systems&nbsp;)</p>
+
+<p><b>Option 1 B:</b> Integrated by [&nbsp;The Equation of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span> + The Fictitious Forces <span class="MathJax">\({\vec{Q}}\)</span> + The Ordinary Inertial Force (&nbsp;vis insita&nbsp;) <span class="MathJax">\({-\, m\hspace{+0.060em}{\vec{a}}}\)</span>&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Systems&nbsp;]</p>
+
+<p>The Equation of Motion: The total force <span class="MathJax">\({\mathbf{T}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> is always zero. <span class="MathJax">\([ \; {\mathbf{T}}_i \,\doteq\, {\mathbf{F}}_i + {\vec{Q}}_i \;-\; m_i \, {\vec{a}}_{\hspace{+0.045em}i} \,=\, 0 \; ]\)</span></p>
+
+<p>The Equation of Motion is the 2nd. Law of Motion, the 1st. Law of Motion is deduced from The Equation of Motion and The Forces of Nature and the 3rd. Law of Motion is deduced from The Forces of Nature.</p>
+
+<p>D'Alembertiano <span class="MathJax">\(\doteq {\mathbf{T}}_i\)</span> (&nbsp;<span class="MathJax">\({\mathbf{T}}_i\)</span> is invariant under transformations between inertial and non-inertial systems but <span class="MathJax">\({\vec{Q}}_i\)</span> and <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> are not invariant under transformations between inertial and non-inertial systems&nbsp;)</p>
+
+<p><b>Option 2 A:</b> Integrated by [&nbsp;The 3 Laws of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span> + The Relational Inertial Force (&nbsp;vis insita relationalis&nbsp;) <span class="MathJax">\({-\, m\hspace{+0.060em}{\mathbf{a}}}\)</span> + The Relational Magnitudes (&nbsp;<span class="MathJax">\({\mathbf{r}} , {\mathbf{v}} , {\mathbf{a}}\)</span>&nbsp;)&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Systems&nbsp;]</p>
+
+<p>1st. Law of Motion: Force is a vector magnitude that represents interaction between two or more particles.</p>
+
+<p>2nd. Law of Motion: The total force <span class="MathJax">\({\mathbf{T}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> is always zero. <span class="MathJax">\([ \; {\mathbf{T}}_i \,\doteq\, {\mathbf{F}}_i \;-\; m_i \, {\mathbf{a}}_{\hspace{+0.045em}i} \,=\, 0 \; ]\)</span></p>
+
+<p>3rd. Law of Motion: If a particle <span class="MathJax">\(i\)</span> exerts a force <span class="MathJax">\({\mathbf{F}_{j\hspace{+0.090em}i}}\)</span> on another particle <span class="MathJax">\(j\)</span> then the particle <span class="MathJax">\(j\)</span> exerts a force <span class="MathJax">\(-{\mathbf{F}_{i\hspace{-0.030em}j}}\)</span> equal and in the opposite direction on the particle <span class="MathJax">\(i\)</span>. <span class="MathJax">\([ \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, ]\)</span></p>
+
+<p>D'Alembertiano <span class="MathJax">\(\doteq {\mathbf{T}}_i\)</span> (&nbsp;<span class="MathJax">\({\mathbf{T}}_i\)</span> is invariant under transformations between inertial and non-inertial systems and <span class="MathJax">\({\mathbf{a}}_{\hspace{+0.045em}i}\)</span> is also invariant under transformations between inertial and non-inertial systems&nbsp;)</p>
+
+<p><b>Option 2 B:</b> Integrated by [&nbsp;The Equation of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span> + The Relational Inertial Force (&nbsp;vis insita relationalis&nbsp;) <span class="MathJax">\({-\, m\hspace{+0.060em}{\mathbf{a}}}\)</span> + The Relational Magnitudes (&nbsp;<span class="MathJax">\({\mathbf{r}} , {\mathbf{v}} , {\mathbf{a}}\)</span>&nbsp;)&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Systems&nbsp;]</p>
+
+<p>The Equation of Motion: The total force <span class="MathJax">\({\mathbf{T}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> is always zero. <span class="MathJax">\([ \; {\mathbf{T}}_i \,\doteq\, {\mathbf{F}}_i \;-\; m_i \, {\mathbf{a}}_{\hspace{+0.045em}i} \,=\, 0 \; ]\)</span></p>
+
+<p>The Equation of Motion is the 2nd. Law of Motion, the 1st. Law of Motion is deduced from The Equation of Motion and The Forces of Nature and the 3rd. Law of Motion is deduced from The Forces of Nature.</p>
+
+<p>D'Alembertiano <span class="MathJax">\(\doteq {\mathbf{T}}_i\)</span> (&nbsp;<span class="MathJax">\({\mathbf{T}}_i\)</span> is invariant under transformations between inertial and non-inertial systems and <span class="MathJax">\({\mathbf{a}}_{\hspace{+0.045em}i}\)</span> is also invariant under transformations between inertial and non-inertial systems&nbsp;)</p>
+
+<h3>Annex III</h3>
+
+<h3>Lagrangian Mechanics</h3>
+
+<p><b>Option 1 B:</b> Integrated by [&nbsp;The Equations of Motion + The Ordinary Energetic Magnitudes&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Systems&nbsp;]</p>
+
+<p>Lagrangiano <span class="MathJax">\(\doteq {\mathit{L}}_{\hspace{+0.045em}i}\)</span> (&nbsp;<span class="MathJax">\({\mathit{L}}_{\hspace{+0.045em}i}\)</span> expressed with the ordinary magnitudes (&nbsp;<span class="MathJax">\({\vec{r}_{\hspace{+0.045em}i}} \,, {\vec{v}_{\hspace{+0.045em}i}}\)</span>&nbsp;) is not invariant under transformations between inertial and non-inertial systems&nbsp;)</p>
+
+<p><b>Option 2 B:</b> Integrated by [&nbsp;The Equations of Motion + The Relational Energetic Magnitudes&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Systems&nbsp;]</p>
+
+<p>Lagrangiano <span class="MathJax">\(\doteq {\mathcal{L}}_{\hspace{+0.045em}i}\)</span> (&nbsp;<span class="MathJax">\({\mathcal{L}}_{\hspace{+0.045em}i}\)</span> expressed with the relational magnitudes (&nbsp;<span class="MathJax">\({\mathbf{r}_{\hspace{+0.045em}i}} \,, {\mathbf{v}_{\hspace{+0.045em}i}}\)</span>&nbsp;) is indeed invariant under transformations between inertial and non-inertial systems&nbsp;)</p>
+
+<p>In development&nbsp;...<br></p>
+
+<h3>Annex IV</h3>
+
+<h3>Hamiltonian Mechanics</h3>
+
+<p><b>Option 1 B:</b> Integrated by [&nbsp;The Equations of Motion + The Ordinary Energetic Magnitudes&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Systems&nbsp;]</p>
+
+<p>Hamiltoniano <span class="MathJax">\(\doteq {\mathit{H}}_{\hspace{+0.045em}i}\)</span> (&nbsp;<span class="MathJax">\({\mathit{H}}_{\hspace{+0.045em}i}\)</span> expressed with the ordinary magnitudes (&nbsp;<span class="MathJax">\({\vec{r}_{\hspace{+0.045em}i}} \,, {\vec{v}_{\hspace{+0.045em}i}}\)</span>&nbsp;) is not invariant under transformations between inertial and non-inertial systems&nbsp;)</p>
+
+<p><b>Option 2 B:</b> Integrated by [&nbsp;The Equations of Motion + The Relational Energetic Magnitudes&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Systems&nbsp;]</p>
+
+<p>Hamiltoniano <span class="MathJax">\(\doteq {\mathcal{H}}_{\hspace{+0.045em}i}\)</span> (&nbsp;<span class="MathJax">\({\mathcal{H}}_{\hspace{+0.045em}i}\)</span> expressed with the relational magnitudes (&nbsp;<span class="MathJax">\({\mathbf{r}_{\hspace{+0.045em}i}} \,, {\mathbf{v}_{\hspace{+0.045em}i}}\)</span>&nbsp;) is indeed invariant under transformations between inertial and non-inertial systems&nbsp;)</p>
+
+<p>In development&nbsp;...<br></p>
+
+<h3>General Observations</h3>
+
+<ul>
+	
+<li>Newtonian Mechanics, D'Alembertian Mechanics, Lagrangian Mechanics and Hamiltonian Mechanics are observationally equivalent to each other.</li><br>
+
+<li>The D'Alembertian Mechanics presented in Annex II is still an incomplete formulation (&nbsp;see Appendix II&nbsp;)</li><br>
+
+<li>The Options with the letter A are formulations under the format of 3 Laws of Motion.</li><br>
+
+<li>The Options with the letter B are formulations under the format of Equations of Motion.</li><br>
+
+<li>The Options with the number 0 are formulations expressed only for inertial systems.</li><br>
+
+<li>The Options with the number 1 are formulations expressed for inertial and non-inertial systems including mathematical terms (&nbsp;such as: fictitious forces, the ordinary inertial force, etc.&nbsp;) which are not in general invariant under transformations between inertial and non-inertial systems.</li><br>
+
+<li>The Options with the number 2 are formulations expressed for inertial and non-inertial systems including relational magnitudes (&nbsp;such as: <span class="MathJax">\({\mathbf{r}} , {\mathbf{v}} ,\)</span> etc.&nbsp;) which are always invariant under transformations between inertial and non-inertial systems.</li><br>
+
+<li>The vector magnitudes expressed with vector arrow (&nbsp;such as: <span class="MathJax">\({\vec{F}} , {\vec{Q}} \hspace{+0.060em}, {\vec{T}} , {\vec{r}} , {\vec{v}} , {\vec{a}} ,\)</span> etc.&nbsp;) are not invariant under transformations between inertial and non-inertial systems.</li><br>
+
+<li>The vector magnitudes expressed in bold (&nbsp;such as: <span class="MathJax">\({\mathbf{F}} , {\mathbf{T}} , {\mathbf{r}} , {\mathbf{v}} , {\mathbf{a}} ,\)</span> etc.&nbsp;) are invariant under transformations between inertial and non-inertial systems.</li>
+
+</ul>
+
+<h2 id="A1">Appendices</h2>
+
+<h3>Appendix I</h3>
+
+<h3>Kinematic Magnitudes</h3>
+
+<p><b>The Radial Magnitudes:</b> The radial magnitudes (&nbsp;<span class="MathJax">\({r} , {\dot{r}} , {\ddot{r}}\)</span>&nbsp;) are scalar magnitudes and are invariant under transformations between inertial and non-inertial systems.</p>
+
+<ul>
+
+<li><a href='https://www.ifi.unicamp.br/~assis/Relational-Mechanics-Mach-Weber.pdf'>https://www.ifi.unicamp.br/~assis/Relational-Mechanics-Mach-Weber.pdf</a> &nbsp;(&nbsp;pp. 493–498&nbsp;)</li><br>
+
+<li>In the previous work the radial magnitudes are called relational magnitudes.</li><br>
+
+<li>It was the Brazilian physicist André Koch Torres Assis who first used the term "relational". However, in this work, in order not to create confusion with other relational (vector) magnitudes we will call them radial magnitudes [&nbsp;which, in fact, are radial (relative) magnitudes&nbsp;]</li>
+
+</ul>
+
+<p><b>The Scalar Magnitudes:</b> The scalar magnitudes (&nbsp;<span class="MathJax">\({\tau} , {\dot{\tau}} , {\ddot{\tau}}\)</span>&nbsp;) are scalar magnitudes and are invariant under transformations between inertial and non-inertial systems.</p>
+
+<ul>
+
+<li><a href='https://akinetic.github.io/scalar-magnitudes/paper.pdf'>https://akinetic.github.io/scalar-magnitudes/paper.pdf</a></li><br>
+
+<li><a href='https://atorassa.github.io/physics-authors/tobla/english/pdf/02.pdf'>https://atorassa.github.io/physics-authors/tobla/english/pdf/02.pdf</a></li><br>
+
+<li>The scalar magnitudes are related to the virial theorem, to new types of energy, to the generalized Lagrangians that depend on higher derivatives such as acceleration (&nbsp;according to the formalism of Mikhail Ostrogradsky&nbsp;) etc.</li>
+
+</ul>
+
+<p><b>The Relational Magnitudes:</b> The relational magnitudes (&nbsp;<span class="MathJax">\({\mathbf{r}} , {\mathbf{v}} , {\mathbf{a}}\)</span>&nbsp;) are vector magnitudes and are invariant under transformations between inertial and non-inertial systems.</p>
+
+<ul>
+	
+<li><a href='https://akinetic.github.io/relational-magnitudes/paper.pdf'>https://akinetic.github.io/relational-magnitudes/paper.pdf</a></li><br>
+
+<li><a href='https://atorassa.github.io/physics-authors/tobla/english/pdf/02.pdf'>https://atorassa.github.io/physics-authors/tobla/english/pdf/02.pdf</a></li><br>
+
+<li>In the previous work the relational magnitudes are called universal magnitudes since the auxiliary system is the reference system fixed to the Universe (&nbsp;also considering this universal system as an inertial system&nbsp;)</li>
+
+</ul>
+
+<h3>Appendix II</h3>
+
+<h3>D'Alembertian Mechanics</h3>
+
+<p>The formulation of D'Alembertian Mechanics presented in Annex II is considered <i>incomplete</i> from an ontological perspective. This is because the fictitious forces <span class="MathJax">\({\vec{Q}}\)</span>, the ordinary inertial force <span class="MathJax">\({-\, m\hspace{+0.060em}{\vec{a}}}\)</span> and the relational inertial force <span class="MathJax">\({-\, m\hspace{+0.060em}{\mathbf{a}}}\)</span> are formally introduced as kinematic mathematical artifacts and not as the result of a real and known physical interaction of nature.</p>
+
+<p>A complete d'alembertian formulation aspires to deduce [&nbsp;the fictitious forces <span class="MathJax">\({\vec{Q}}\)</span> and the ordinary inertial force <span class="MathJax">\({-\, m\hspace{+0.060em}{\vec{a}}}\)</span>&nbsp;] and/or [&nbsp;the relational inertial force <span class="MathJax">\({-\, m\hspace{+0.060em}{\mathbf{a}}}\)</span>&nbsp;] from the properties of a real field or force.</p>
+
+<p>In contemporary scientific literature, there are several paths of development towards this objective, among them:</p>
+
+<p><b>Weber-Assis Relational Mechanics:</b> A proposal that deduces the fictitious forces and the ordinary inertial force from a Weber-type gravitational force due to the interaction of the gravitational masses of the Universe, although with deviations with respect to classical Newtonian observational equivalence.</p>
+
+<ul>
+
+<li><a href='https://www.ifi.unicamp.br/~assis/Relational-Mechanics-Mach-Weber.pdf'>https://www.ifi.unicamp.br/~assis/Relational-Mechanics-Mach-Weber.pdf</a></li>
+
+</ul>
+
+<p><b>Kinetic Force (Torassa):</b> A formulation where the term <span class="MathJax">\({-\, m\hspace{+0.060em}{\mathbf{a}}}\)</span> (&nbsp;the relational inertial force&nbsp;) emerges directly as the net force of a real constitutive interaction, restoring the dynamic and relational character to the system without losing observational equivalence.</p>
+
+<ul>
+
+<li><a href='https://atorassa.github.io/physics-authors/tobla/english/pdf/05.pdf'>https://atorassa.github.io/physics-authors/tobla/english/pdf/05.pdf</a></li><br>
+
+<li><a href='https://atorassa.github.io/physics-authors/torassa/english/pdf/01.pdf'>https://atorassa.github.io/physics-authors/torassa/english/pdf/01.pdf</a></li><br>
+
+<li><a href='https://atorassa.github.io/physics-authors/tobla/english/pdf/02.pdf'>https://atorassa.github.io/physics-authors/tobla/english/pdf/02.pdf</a> &nbsp;(&nbsp;see Work II and Appendices&nbsp;)</li><br>
+
+<li><a href='https://atorassa.github.io/physics-authors/tobla/english/pdf/03.pdf'>https://atorassa.github.io/physics-authors/tobla/english/pdf/03.pdf</a> &nbsp;(&nbsp;see Work IV and Appendices&nbsp;)</li>
+
+</ul>
+
+<p><b>Gravitational Scalar Field Mechanism (Torassa):</b> A cosmological approach where the acceleration of gravitational mass interacts with a non-zero background scalar field (&nbsp;supported by the strictly positive nature of gravitational mass in the Universe&nbsp;) This field acts in a manner analogous to a classical Higgs field, causing the acceleration to appear in the equation of motion identically to how the velocity of a charge appears in the Lorentz force.</p>
+
+<ul>
+
+<li><a href='https://aphysica.github.io/torassa/pdf/204v1en.pdf'>https://aphysica.github.io/torassa/pdf/204v1en.pdf</a></li>
+
+</ul>
+
+<br><br>
+			</section>
+		</div>
+	</div>
+	<footer>
+		<p><a href='https://github.com/aphysica'>&#160;github.com&#160;</a></p>
+	</footer>
+
+<script>
+
+let vaEA = document.querySelectorAll('a').length;
+let vaH2 = document.querySelectorAll('h2').length;
+let vaSU = document.getElementsByClassName('suave').length;
+let vaFU = document.getElementsByClassName('fuerte').length;
+let vaMJ = document.getElementsByClassName('MathJax').length;
+
+//  LIGHT - DARK MODE
+
+themeValue = 2;
+
+function myTheme() {
+	if ( themeValue == 2 ) {
+		document.body.style.color = "#efefef";
+		document.body.style.backgroundColor = "#303030";
+		document.getElementById("myTitle").style.color = "#4581b4";
+		let h = 0;
+		while ( h < vaH2 ) {
+			document.getElementsByTagName("h2")[h].style.color = "#b2caf5";
+			h = h + 1;
+		};
+		let f = 0;
+		while ( f < vaFU ) {
+			document.getElementsByClassName("fuerte")[f].style.color = "#efefef";
+			f = f + 1;
+		};
+		let a = 0;
+		while ( a < vaEA ) {
+			document.getElementsByTagName("a")[a].style.color = "#4581b4";
+			a = a + 1;
+		};
+		themeValue = 1;
+	} else {
+		document.body.style.color = "#454545";
+		document.body.style.backgroundColor = "#ffffff";
+		document.getElementById("myTitle").style.color = "#4581b4";
+		let h = 0;
+		while ( h < vaH2 ) {
+			document.getElementsByTagName("h2")[h].style.color = "#333333";
+			h = h + 1;
+		};
+		let f = 0;
+		while ( f < vaFU ) {
+			document.getElementsByClassName("fuerte")[f].style.color = "#151515";
+			f = f + 1;
+		};
+		let a = 0;
+		while ( a < vaEA ) {
+			document.getElementsByTagName("a")[a].style.color = "#2883f3";
+			a = a + 1;
+		};
+		themeValue = 2;
+	};
+};
+
+// MODO SANS-SERIF - SERIF
+
+fontValue = 2;
+
+function myFont() {
+	if ( fontValue == 2 ) {
+		document.body.style.fontFamily = "'Poppins', ui-sans-serif, Arial, sans-serif";
+		document.body.style.lineHeight = "1.5";
+		fontValue = 1;
+	} else {
+		document.body.style.fontFamily = "'Spectral', ui-serif, Georgia, serif";
+		document.body.style.lineHeight = "1.4";
+		fontValue = 2;
+	};
+	myResponsive();
+};
+
+// RESPONSIVE
+
+function myResponsive() {
+	let widthMain = window.innerWidth;
+	if ( fontValue == 2 ) {
+		// FONT-SIZE
+		let valueFS = myCalculation( widthMain, 240, 810, 125, 125 ) ;
+		document.body.style.fontSize = valueFS + "%" ;
+		// FONT-SIZE H1
+		let valueH1 = myCalculation( widthMain, 240, 810, 225, 225 ) ;
+		document.getElementById("myTitle").style.fontSize = valueH1 + "%" ;
+		// FONT-SIZE H2
+		let valueH2 = myCalculation( widthMain, 240, 810, 160, 160 ) ;
+		let i = 0;
+		while ( i < vaH2 ) {
+			document.getElementsByTagName("h2")[i].style.fontSize = valueH2 + "%" ;
+			i = i + 1;
+		};
+		// FONT-SIZE MATHJAX
+		let valueMJ = myCalculation( widthMain, 240, 810, 105, 105 ) ;
+		let m = 0;
+		while ( m < vaMJ * 2 ) {
+			document.getElementsByClassName("MathJax")[m].style.fontSize = valueMJ + "%" ;
+			m = m + 1;
+		};
+		// MY SPACE ABS
+		// let valueMS = myCalculation( widthMain, 240, 810, 1.5, 1.5 ) ;
+		// document.getElementById("mySpace").style.margin = "-" + valueMS + "em" + " " + 0 + " " + "+" + valueMS * 1.4 + "em" + " " + 0 ;
+	};
+	if ( fontValue == 1 ) {
+		// FONT-SIZE
+		let valueFS = myCalculation( widthMain, 240, 810, 108, 108 ) ;
+		document.body.style.fontSize = valueFS + "%" ;
+		// FONT-SIZE H1
+		let valueH1 = myCalculation( widthMain, 240, 810, 240, 240 ) ;
+		document.getElementById("myTitle").style.fontSize = valueH1 + "%" ;
+		// FONT-SIZE H2
+		let valueH2 = myCalculation( widthMain, 240, 810, 180, 180 ) ;
+		let i = 0;
+		while ( i < vaH2 ) {
+			document.getElementsByTagName("h2")[i].style.fontSize = valueH2 + "%" ;
+			i = i + 1;
+		};
+		// FONT-SIZE MATHJAX
+		let valueMJ = myCalculation( widthMain, 240, 810, 116.4, 116.4 ) ;
+		let m = 0;
+		while ( m < vaMJ * 2 ) {
+			document.getElementsByClassName("MathJax")[m].style.fontSize = valueMJ + "%" ;
+			m = m + 1;
+		};
+		// MY SPACE ABS
+		// let valueMS = myCalculation( widthMain, 240, 810, 1.5, 1.5 ) ;
+		// document.getElementById("mySpace").style.margin = "-" + valueMS + "em" + " " + 0 + " " + "+" + valueMS * 1.4 + "em" + " " + 0 ;
+	};
+};
+
+// RESPONSIVE CALCULATION
+
+function myCalculation ( X, Xa, Xb, Ya, Yb ) {
+	if ( Xa !== Xb ) {
+		if ( ( Xa < Xb ) && ( X <= Xa ) ) { let Y = Number ( Ya ); return Y; };
+		if ( ( Xa < Xb ) && ( X >= Xb ) ) { let Y = Number ( Yb ); return Y; };
+		if ( ( Xa > Xb ) && ( X >= Xa ) ) { let Y = Number ( Ya ); return Y; };
+		if ( ( Xa > Xb ) && ( X <= Xb ) ) { let Y = Number ( Yb ); return Y; };
+		if ( ( X > Xa && X < Xb ) || ( X > Xb && X < Xa ) ) {
+			let Y = Number ( [Yb * ( X - Xa ) + Ya * ( Xb - X )] / [( Xb - Xa )] );
+			return Y;
+		};
+	} else {
+		return false;
+	};
+};
+
+setTimeout( function() { myResponsive() }, 600 );
+window.addEventListener( "resize", myResponsive );
+
+</script>
+
+</body>
+</html>
