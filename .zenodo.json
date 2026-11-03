@@ -1,0 +1,33 @@
+{
+  "title": "Classical Mechanics",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "creators": [
+    {
+      "name": "Alejandro A. Torassa",
+      "orcid": "0000-0002-1389-247X"
+    }
+  ],
+  "description": "<p>A logical, epistemological and ontological analysis of classical mechanics.</p>\n<p>https://aphysica.github.io/classical-mechanics/</p>\n<p>Alejandro A. Torassa</p>\n<p>doi:10/rwb6</p>\n<p>&nbsp;</p>",
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "languages": [
+    {
+      "id": "eng"
+    }
+  ],
+  "subjects": [
+    {"subject": "Physics"},
+    {"subject": "Classical Mechanics"},
+    {"subject": "Relational Mechanics"}
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.23837155",
+      "relation": "isvariantformof",
+      "scheme": "doi",
+      "resource_type": "publication-preprint"
+    }
+  ]
+}
+
