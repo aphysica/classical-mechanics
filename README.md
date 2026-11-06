@@ -6,6 +6,6 @@ A logical, epistemological and ontological analysis of classical mechanics.
 
 [https://aphysica.github.io/classical-mechanics](https://aphysica.github.io/classical-mechanics/)
 
-## Address
+## License
 
-Buenos Aires, Argentina.
+[CC Attribution 4 License](https://creativecommons.org/licenses/by/4.0/)
