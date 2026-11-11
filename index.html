@@ -5,13 +5,15 @@
 	<meta name="robots" content="index, follow">
 	<meta name="author" content="Alejandro A. Torassa">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="icon" href="fav/favicon.svg">
+	<link rel="canonical" href="https://aphysica.github.io/classical-mechanics/">
+	<link rel="alternate" hreflang="es" href="https://aphysica.github.io/mecanica-clasica/">
+	<link rel="alternate" hreflang="en" href="https://aphysica.github.io/classical-mechanics/">
+	<link rel="alternate" hreflang="x-default" href="https://aphysica.github.io/classical-mechanics/">
+	<link rel="icon" href="favicon.svg">
 	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&amp;display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&amp;display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Spectral:wght@400;700&amp;display=swap" rel="stylesheet">
 	<script async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 	<title>Classical Mechanics</title>
 	<style>
@@ -23,15 +25,83 @@
 			font-size: 16px;
 			line-height: 1.4;
 			list-style: none;
-			list-style-type:none;
+			list-style-type: none;
 			text-decoration: none;
 			box-sizing: border-box;
 		}
 		body {
-			color: #454545;
+			--color-bg: #ffffff;
+			--color-text: #454545;
+			--color-title: #4581b4;
+			--color-h2: #333333;
+			--color-strong: #151515;
+			--color-part: #363636;
+			--color-link: #2883f3;
+			--font-family: 'Spectral', ui-serif, Georgia, serif;
+			--line-height: 1.4;
+			--fs-body: 125%;
+			--fs-title: 225%;
+			--fs-h2: 160%;
+			--fs-mathjax: 105%;
+			--margin-space: -1.2em 0 3em 0;
+			
+			font-family: var(--font-family);
+			line-height: var(--line-height);
+			background-color: var(--color-bg);
+			color: var(--color-text);
+			font-size: var(--fs-body);
 			text-align: justify;
-			background-color: #ffffff;
-			font-family: 'Spectral', ui-serif, Georgia, serif;
+			
+			transition: background-color 0.3s ease, color 0.3s ease, font-family 0.3s ease;
+		}
+		body.dark-mode {
+			--color-bg: #303030;
+			--color-text: #efefef;
+			--color-title: #70a6d4;
+			--color-h2: #b2caf5;
+			--color-strong: #efefef;
+			--color-part: #dfdfdf;
+			--color-link: #4581b4;
+		}
+		body.sans-serif {
+			--font-family: 'Poppins', ui-sans-serif, Arial, sans-serif;
+			--line-height: 1.5;
+			--fs-body: 108%;
+			--fs-title: 240%;
+			--fs-h2: 180%;
+			--fs-mathjax: 116.4%;
+			--margin-space: -1.5em 0 2.1em 0;
+		}
+		#myTitle {
+			color: var(--color-title);
+			font-size: var(--fs-title);
+			text-align: left;
+			transition: color 0.3s ease;
+		}
+		h2 {
+			color: var(--color-h2);
+			font-size: var(--fs-h2);
+			text-align: left;
+			transition: color 0.3s ease;
+		}
+		#mySpace {
+			margin: var(--margin-space) !important;
+		}
+		.strong {
+			color: var(--color-strong);
+		}
+		.part {
+			color: var(--color-part);
+		}
+		a {
+			outline: none;
+			color: var(--color-link);
+			text-decoration: none;
+			word-break: break-word;
+			overflow-wrap: break-word;
+		}
+		mjx-container {
+			font-size: var(--fs-mathjax) !important;
 		}
 		.container {
 			display: flex;
@@ -41,28 +111,20 @@
 		.content {
 			display: flex;
 		}
-		h1 {
-			color: #4581b4;
-		}
-		h2 {
-			color: #333333;
-		}
-		h1, h2 {
-			text-align: left;
-		}
-		.fuerte {
-			color: #151515;
-		}
-		.suave {
+		.weak {
 			color: #666666;
 		}
-		a {
-			outline: none;
-			color: #2883f3;
-			text-decoration: none;
-			word-break: break-word;
-			overflow-wrap: break-word;
+		ul {
+			margin-top: 1.2em;
+			margin-bottom: 1.2em;
+			padding-left: 1.5em;
 		}
+		.liver {
+			margin-bottom: 0.45em;
+		 }
+		.livex {
+			margin-bottom: 0.93em;
+		 }
 		footer {
 			padding: 0.6em 0;
 			text-align: center;
@@ -83,9 +145,9 @@
 
 <h1 id="myTitle" style="cursor:pointer" onclick="myTheme();">Classical Mechanics</h1>
 
-<p id="mySpace" style="margin: -1.2em 0 +3.0em 0;">A logical, epistemological and ontological analysis of classical mechanics.</p>
+<p id="mySpace" style="margin: -1.2em 0 3em 0;">A logical, epistemological and ontological analysis of classical mechanics.</p>
 
-<p style="color: #c63636;"><i>06/11/2026 (&nbsp;v1.0.2&nbsp;) - What's new: Newton's Second Law, Annexes and Appendices.</i></p>
+<p style="color: #c63636;"><i>11/11/2026 : What's new : Newton's Third Law, Newton's Second Law, Annexes and Appendices, and Newton's First Law.</i></p>
 
 <p style="color: #c63636;"><i>Article under constant revision and evolution. Finishing this article will take several years.</i></p>
 
@@ -95,7 +157,9 @@
 
 <p style="color: #c63636;"><i>Note 3: Author: Alejandro A. Torassa (ORCID: <a href='https://orcid.org/0000-0002-1389-247X'>0000-0002-1389-247X</a>)</i></p>
 
-<p style="color: #c63636; margin-bottom: +3.0em;"><i>Note 4: Comments and Suggestions: <a href='https://aphysica.github.io/torassa/abs/200'>Contact</a> (Thank you!)</i></p>
+<p style="color: #c63636;"><i>Note 4: Comments and Suggestions: <a href='https://aphysica.github.io/torassa/abs/200'>Contact</a> (Thank you!)</i></p>
+
+<p style="color: #c63636; margin-bottom: 3em;"><i>(&nbsp;v1.0.3&nbsp;) : <a href='https://doi.org/rwb6'>https://doi.org/rwb6</a></i></p>
 
 <h2 id="myIntro" style="cursor:pointer" onclick="myFont();">Introduction</h2>
 
@@ -103,7 +167,7 @@
 
 <h2>Index</h2>
 
-<p class="fuerte">PART I</p>
+<p class="strong">PART I</p>
 
 <p><a href="#T01">1. Newton's First Law</a></p>
 
@@ -113,7 +177,7 @@
 
 <p><a href="#T04">4. Forces of Nature</a></p>
 
-<p class="fuerte">PART II</p>
+<p class="strong">PART II</p>
 
 <p><a href="#T05">1. Equation of Motion</a></p>
 
@@ -123,7 +187,7 @@
 
 <p><a href="#T08">4. Theoretical Solution 2</a></p>
 
-<p class="fuerte">PART III</p>
+<p class="strong">PART III</p>
 
 <p><a href="#T09">1. Linear Momentum</a></p>
 
@@ -133,33 +197,35 @@
 
 <p><a href="#T12">4. Conservation Laws</a></p>
 
-<p class="fuerte">PART IV</p>
+<p class="strong">PART IV</p>
 
 <p><a href="#O0">1. General Observations</a></p>
 
-<p><a href="#R0">2. References and Bibliography</a></p>
+<p><a href="#B0">2. References and Bibliography</a></p>
 
 <p><a href="#N0">3. Notes and Clarifications</a></p>
 
 <p><a href="#A0">4. Annexes and Appendices</a></p>
 
+<h2 class="part">PART I</h2>
+
 <h2 id="T01">Newton's First Law</h2>
 
-<p class="fuerte"><i>Every particle remains in its state of rest or of uniform rectilinear motion if no force acts on the particle.</i></p>
+<p class="strong"><i>Every particle remains in its state of rest or of uniform rectilinear motion if no force acts on the particle.</i></p>
 
 <p>I always considered this law as redundant and unnecessary because I always considered that Newton's first law was deduced from Newton's second law.&nbsp;<a href="#N111">[N111]</a></p>
 
-<p>However, after reading an article by the Argentine physicist Hugo Alberto Fernández <a href="#R2">[R2]</a> I reflected on his comments regarding Newton's first law and I reached the conclusion that Newton's first law was neither redundant nor unnecessary (even beyond its great historical importance).</p>
+<p>However, after reading an article by the Argentine physicist Hugo Alberto Fernández <a href="#R02">[R02]</a> I reflected on his comments regarding Newton's first law and I reached the conclusion that Newton's first law was neither redundant nor unnecessary (even beyond its great historical importance).</p>
 
-<p>Newton's second law is a logical proposition of the type: "If A happens then B happens" (also called a conditional proposition) <a href="#R3">[R3]</a>. Where A is that a net force acts on a particle (whether this net force is balanced or not) and B is the acceleration of the particle. Therefore, Newton's second law only establishes what happens with the state of motion of a particle when forces act on the particle (whether these forces are balanced or not), but Newton's second law does not establish what type of motion any particle must have when no force acts on it. Therefore, following logic once again: "If A does not happen then B may happen or may not happen". That is, according to Newton's second law and logic, if no force acts on any particle then the particle can be in a state of rest, of uniform rectilinear motion or of acceleration. And best of all, whatever the state in which the particle finds itself (in the total absence of forces on it), none of these three states would refute Newton's second law <a href="#R4">[R4]</a> because Newton's second law deals only with when forces act on any particle (whether these forces are balanced or not) and not when no force acts on the particle.</p>
+<p>Newton's second law is a logical proposition of the type: "If A happens then B happens" (also called a conditional proposition) <a href="#R03">[R03]</a>. Where A is that a net force acts on a particle (whether this net force is balanced or not) and B is the acceleration of the particle. Therefore, Newton's second law only establishes what happens with the state of motion of a particle when forces act on the particle (whether these forces are balanced or not), but Newton's second law does not establish what type of motion any particle must have when no force acts on it. Therefore, following logic once again: "If A does not happen then B may happen or may not happen". That is, according to Newton's second law and logic, if no force acts on any particle then the particle can be in a state of rest, of uniform rectilinear motion or of acceleration. And best of all, whatever the state in which the particle finds itself (in the total absence of forces on it), none of these three states would refute Newton's second law <a href="#R04">[R04]</a> because Newton's second law deals only with when forces act on any particle (whether these forces are balanced or not) and not when no force acts on the particle.</p>
 
 <p>And it is precisely here that Newton's first law comes to the rescue, ceasing to be a redundant and unnecessary law, since Newton's first law does establish what happens with any particle when no force acts on it.</p>
 
-<p>However, the matter with Newton's first law is not yet over, because in our Universe there is not a single particle on which no force acts; forces (gravitational, electric, etc.) always act on a particle, however small they may be, which makes it impossible to find experimentally a particle on which no force acts. Even though many physicists, even Einstein himself <a href="#R6">[R6]</a>, use Newton's first law mainly to be able to define experimentally an inertial reference frame, stating that if a particle is moved infinitely away from the other particles then no force will act on this particle and, therefore, every reference frame in which this particle is at rest or in uniform rectilinear motion will be an inertial reference frame. However, the truth is otherwise: according to Newton's law of universal gravitation, no matter how far a particle is moved away from the other particles, gravitational forces will act on this particle, even if it were necessary to observe them with an electron microscope (so to speak), gravitational forces will always act on the particle. But it is being clarified that the particle is moved infinitely away from the other particles; agreed, but in order to determine its state of motion the observer needs rulers and clocks, as Einstein has well clarified <a href="#R7">[R7]</a>. Therefore, those rulers and those clocks that will experimentally determine the state of motion of the test particle will also exert gravitational forces on the test particle (however small they may be) and that will also make it impossible to state that experimentally no force acts on the test particle.</p>
+<p>However, the matter with Newton's first law is not yet over, because in our Universe there is not a single particle on which no force acts; forces (gravitational, electric, etc.) always act on a particle, however small they may be, which makes it impossible to find experimentally a particle on which no force acts. Even though many physicists, even Einstein himself <a href="#R06">[R06]</a>, use Newton's first law mainly to be able to define experimentally an inertial reference frame, stating that if a particle is moved infinitely away from the other particles then no force will act on this particle and, therefore, every reference frame in which this particle is at rest or in uniform rectilinear motion will be an inertial reference frame. However, the truth is otherwise: according to Newton's law of universal gravitation, no matter how far a particle is moved away from the other particles, gravitational forces will act on this particle, even if it were necessary to observe them with an electron microscope (so to speak), gravitational forces will always act on the particle. But it is being clarified that the particle is moved infinitely away from the other particles; agreed, but in order to determine its state of motion the observer needs rulers and clocks, as Einstein has well clarified <a href="#R07">[R07]</a>. Therefore, those rulers and those clocks that will experimentally determine the state of motion of the test particle will also exert gravitational forces on the test particle (however small they may be) and that will also make it impossible to state that experimentally no force acts on the test particle.</p>
 
 <p>Therefore, Newton's first law as stated in this article can only be corroborated or refuted in a Universe where it is possible to find particles on which no force acts on them. Consequently, Newton's first law stated above must be reformulated so that it can be corroborated or refuted in a Universe (ours) where it is not possible to find particles on which no force acts on them. In order not to lengthen and further complicate this problem, Newton's first law will be stated below so that it can be corroborated or refuted in both types of Universe.</p>
 
-<p class="fuerte"><i>Every particle remains in its state of rest or of uniform rectilinear motion if no force acts on the particle or if the forces acting on the particle are balanced.</i></p>
+<p class="strong"><i>Every particle remains in its state of rest or of uniform rectilinear motion if no force acts on the particle or if the forces acting on the particle are balanced.</i></p>
 
 <p>But let us return to the initial topic of the article, because as Newton's first law is now stated then it can be stated that in our Universe Newton's first law is deduced from Newton's second law, since if the forces acting on a particle are balanced then the net force is equal to zero and, therefore, the acceleration of the particle is also equal to zero, which means that the particle is in a state of rest or of uniform rectilinear motion.</p>
 
@@ -167,7 +233,7 @@
 
 <h2 id="T02">Newton's Second Law</h2>
 
-<p class="fuerte"><i>Every net force <span class="MathJax">\({\mathbf{F}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> of inertial mass <span class="MathJax">\(m_i\)</span> produces in the particle <span class="MathJax">\(i\)</span> an acceleration <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> according to the following equation: <span class="MathJax">\([ \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, ]\)</span></i></p>
+<p class="strong"><i>Every net force <span class="MathJax">\({\mathbf{F}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> of inertial mass <span class="MathJax">\(m_i\)</span> produces in the particle <span class="MathJax">\(i\)</span> an acceleration <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> according to the following equation: <span class="MathJax">\([ \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, ]\)</span></i></p>
 
 <p>In the first place, it is clarified that if no force whatsoever acts on the particle <span class="MathJax">\(i\)</span>, then this must be interpreted as if a net force equal to zero <span class="MathJax">\({\mathbf{F}}_i\)</span> were acting on the particle <span class="MathJax">\(i\)</span> (as has been proposed in the previous section, and thus, from a logical point of view, Newton's first law is included in Newton's second law).</p>
 
@@ -179,17 +245,17 @@
 
 <ul>
 
-<li>It shows that inertial mass is always strictly positive (the existence of negative masses would not logically refute the second law, but a mass equal to zero would introduce an insurmountable singularity in the operative interpretation of the equation).</li>
+<li class="liver">It shows that inertial mass is always strictly positive (the existence of negative masses would not logically refute the second law, but a mass equal to zero would introduce an insurmountable singularity in the operative interpretation of the equation).</li>
 
-<li>It confirms that the value of the inertial mass depends on each particular particle (although logically the theory would admit that all particles possess an identical value without thereby ceasing to be consistent).</li>
+<li class="liver">It confirms that the value of the inertial mass depends on each particular particle (although logically the theory would admit that all particles possess an identical value without thereby ceasing to be consistent).</li>
 
-<li>It verifies that inertial mass is an additive magnitude; that is, that the inertial mass of a system composed of several particles equals the arithmetic sum of the individual inertial masses of each of its constituent parts (it should be noted that this property of strict additivity is exclusive to classical mechanics, since in advanced theoretical frameworks such as the special theory of relativity it ceases to hold rigorously).</li>
+<li class="liver">It verifies that inertial mass is an additive magnitude; that is, that the inertial mass of a system composed of several particles equals the arithmetic sum of the individual inertial masses of each of its constituent parts (it should be noted that this property of strict additivity is exclusive to classical mechanics, since in advanced theoretical frameworks such as the special theory of relativity it ceases to hold rigorously).</li>
 
 <li>It also verifies that inertial mass is a magnitude invariant under transformations between reference frames, both inertial and non-inertial.</li>
 
 </ul>
 
-<p>If we did not fix the inertial mass as constant by theoretical definition, then in the face of any anomaly in the acceleration we could invent that "the inertial mass changed at that instant" in order to save the equation <span class="MathJax">\(( \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span>. By defining the inertial mass as a constant and intrinsic property of the particle, the equation is exposed to real empirical verification <a href="#R4">[R4]</a>.</p>
+<p>If we did not fix the inertial mass as constant by theoretical definition, then in the face of any anomaly in the acceleration we could invent that "the inertial mass changed at that instant" in order to save the equation <span class="MathJax">\(( \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span>. By defining the inertial mass as a constant and intrinsic property of the particle, the equation is exposed to real empirical verification <a href="#R04">[R04]</a>.</p>
 
 <p>In the fourth place, it is imperative to point out a recurrent logical tension in the traditional formulation of mechanics: Newton's laws permanently invoke the concept of force, but classical theory offers no formal and independent definition for the magnitude force (resorting to the dynamometer being a mere operative measuring tool and one already methodologically insufficient for a conceptual foundation).</p>
 
@@ -199,69 +265,246 @@
 
 <p>In synthesis, the epistemological foundation of Newton's second law rests on three conceptual pillars:</p>
 
-<ol>
+<ul>
 
-<li><b>The Net Force <span class="MathJax">\(( \, {\mathbf{F}}_i \, )\)</span>:</b> It is conceived <i>a priori</i> as the resultant of real interactions (which will be detailed in a later section), thereby avoiding turning Newton's second law into a mere tautological definition.</li>
+<li class="liver"><b>The Net Force <span class="MathJax">\(( \, {\mathbf{F}}_i \, )\)</span>:</b> It is conceived <i>a priori</i> as the resultant of real interactions (which will be detailed in a later section), thereby avoiding turning Newton's second law into a mere tautological definition.</li>
 
-<li><b>The Inertial Mass <span class="MathJax">\(( \, m_i \, )\)</span>:</b> It is theoretically postulated as a constant scalar magnitude intrinsic to the particle. This choice grants elegance and conceptual rigidity to the model, proving indispensable for the relation <span class="MathJax">\(( \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span> to maintain its status as a falsifiable physical principle testable against experience.</li>
+<li class="liver"><b>The Inertial Mass <span class="MathJax">\(( \, m_i \, )\)</span>:</b> It is theoretically postulated as a constant scalar magnitude intrinsic to the particle. This choice grants elegance and conceptual rigidity to the model, proving indispensable for the relation <span class="MathJax">\(( \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span> to maintain its status as a falsifiable physical principle testable against experience.</li>
 
 <li><b>The Causal Structure <span class="MathJax">\(( \, {\mathbf{F}}_i \to m_i \to {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span>:</b> The functional relation is not a mere symmetric mathematical equality, but a dynamic model where the <b>Force</b> acts as the <i>cause</i>, the <b>Inertial Mass</b> as the particle's intrinsic <i>resistance</i> to changing its state of motion, and the <b>Acceleration</b> as the resulting observable <i>effect</i>.</li>
 
-</ol>
+</ul>
 
 <h2 id="T03">Newton's Third Law</h2>
 
-<p class="fuerte"><i>If a particle <span class="MathJax">\(i\)</span> exerts a force <span class="MathJax">\({\mathbf{F}_{j\hspace{+0.090em}i}}\)</span> on another particle <span class="MathJax">\(j\)</span> then the particle <span class="MathJax">\(j\)</span> exerts a force <span class="MathJax">\(-{\mathbf{F}_{i\hspace{-0.030em}j}}\)</span> equal and in the opposite direction on the particle <span class="MathJax">\(i\)</span>. <span class="MathJax">\([ \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, ]\)</span></i></p>
+<p class="strong"><i>If a particle <span class="MathJax">\(i\)</span> exerts a force <span class="MathJax">\({\mathbf{F}_{j\hspace{+0.090em}i}}\)</span> on another particle <span class="MathJax">\(j\)</span> then the particle <span class="MathJax">\(j\)</span> exerts a force <span class="MathJax">\(-{\mathbf{F}_{i\hspace{-0.030em}j}}\)</span> equal and in the opposite direction on the particle <span class="MathJax">\(i\)</span>. <span class="MathJax">\([ \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, ]\)</span></i></p>
 
-<p>In development&nbsp;...</p>
+<p>Unlike Newton's second law, the third law is not formulated in terms of the net force acting on a particle, but in terms of <b>unitary and reciprocal interaction forces</b> between pairs of particles.</p>
+
+<p>When analyzing the formal structure of this law, four central epistemological aspects stand out:</p>
+
+<ul>
+
+<li class="liver"><b>Identity of the interaction:</b> Although the law does not state it explicitly, it is understood that the pair of action and reaction forces belongs to exactly the same type of physical interaction. For example, if particle <span class="MathJax">\(i\)</span> exerts a gravitational force on <span class="MathJax">\(j\)</span>, the reaction of <span class="MathJax">\(j\)</span> on <span class="MathJax">\(i\)</span> is also of gravitational origin and not of any other type.</li>
+
+<li class="liver"><b>Weak symmetry:</b> In its general statement (<i>weak version</i>), the law only satisfies the opposite vector equality <span class="MathJax">\(( \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, )\)</span>, which is a necessary and sufficient condition for deducing the theorem of <b>conservation of linear momentum</b> of the isolated system.</li>
+
+<li class="liver"><b>Strong symmetry:</b> However, to deduce the <b>conservation of angular momentum</b>, the law must hold in its <i>strong version</i>; that is, both forces must also act along the same straight line that geometrically joins the two particles <span class="MathJax">\(( \, \vec{r}_{j} \times {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, \vec{r}_{i} \times {\mathbf{F}_{i\hspace{-0.030em}j}} \, )\)</span>.</li>
+
+<li><b>Instantaneity of the interaction:</b> The classical formulation implicitly assumes that the effect of the force propagates instantaneously through space (action at a distance), so that the pair of reciprocal forces operates simultaneously without any time delay.</li>
+
+</ul>
+
+<p>On the other hand, it should be noted that Newton's third law does not constitute a law about the kinematics of particles, but rather establishes a <b>structural feature inherent to real interactions</b> in classical mechanics. Therefore, in the same way that the first law was logically absorbed by the second, it is to be expected that when the forces of nature are formulated rigorously (which will be addressed in the next section), the third law will cease to be an independent axiom and will be absorbed as a consequence derived from the very structure of each interaction.</p>
+
+<p>Finally, it is essential to understand that the eventual invalidity or violation of Newton's third law does not compromise the validity of the second law in any way (nor, by extension, that of the first). Despite the traditional belief that presents the three laws as a monolithic and indissoluble block, the dynamics of a particle operates in a fully consistent manner through <span class="MathJax">\(( \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span>, even when the principles of action and reaction (in their weak and strong versions) cease to hold universally.&nbsp;<a href="#N131">[N131]</a></p>
 
 <h2 id="T04">Forces of Nature</h2>
 
+<p style="color: #c63636;">PROVISIONAL TEXT</p>
+
+<p>In the usual didactic development of physics, expressions such as Newton's Law of Universal Gravitation <span class="MathJax">\(( \, {\mathbf{FG}}_{\hspace{+0.045em}ij} \,=\, \dots \, )\)</span> or Coulomb's Law <span class="MathJax">\(( \, {\mathbf{FE}}_{\hspace{+0.045em}ij} \,=\, \dots \, )\)</span> are often characterized as "empirical laws discovered experimentally". However, under a rigorous epistemological analysis, <b>such formulations do not operate as inductive empirical laws, but as constitutive definitions of the physical model</b>.</p>
+
+<p>Newton's Law of Universal Gravitation or Coulomb's Law can only be empirical principles if they are previously defined: <span class="MathJax">\(( \, {\mathbf{FG}}_{\hspace{+0.045em}ij} \,\doteq\, \dots \, )\)</span> and <span class="MathJax">\(( \, {\mathbf{FE}}_{\hspace{+0.045em}ij} \,\doteq\, \dots \, )\)</span> ...&nbsp;in development.</p>
+
+<p>...</p>
+
+<p>Therefore, the reality is that the theory must establish a <b>closed and explicit set of interaction definitions</b>, where each specific force <span class="MathJax">\(( \, {\mathbf{FN}}_{\hspace{+0.045em}ij} \,\doteq\, \dots \, )\)</span> acting on a particle <span class="MathJax">\(i\)</span> (&nbsp;exerted by another particle <span class="MathJax">\(j\)</span>&nbsp;) is defined by means of intrinsic parameters of the particles (&nbsp;such as: gravitational masses, electric charges, etc.&nbsp;) and variables of the particles (&nbsp;such as: positions, etc.&nbsp;)</p>
+
+<p>Then, the net force <span class="MathJax">\(( \, {\mathbf{F}}_{\hspace{+0.045em}i} \, )\)</span> acting on a particle <span class="MathJax">\(i\)</span> is defined as the superimposed sum of the closed set of constitutive interaction definitions: <span class="MathJax">\(( \, {\mathbf{F}}_{\hspace{+0.045em}i} \,\doteq \,\sum {\mathbf{F1}}_{\hspace{+0.045em}i} + \sum {\mathbf{F2}}_i + \dots + \sum {\mathbf{FN}}_{\hspace{+0.045em}i} \, )\)</span></p>
+
+<p>By establishing that the set of interactions <span class="MathJax">\(( \, \sum {\mathbf{F1}}_i + \sum {\mathbf{F2}}_i + \dots + \sum {\mathbf{FN}}_i \, )\)</span> is <i>closed</i>, the theory is prevented from introducing improvised "<i>ad hoc</i> forces" to justify unexpected experimental deviations, but the main purpose is so that Newton's second law can be considered an empirical principle and, therefore, can be corroborated or refuted by experience. If the observed acceleration <span class="MathJax">\(( \, {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span> differs from what Newton's second law establishes <span class="MathJax">\(( \, {\mathbf{F}}_i \,\neq\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span>, then it is the entire model that is exposed to empirical refutation.</p>
+
+<p>...</p>
+
+<p>From a purely logical and computational perspective, the formulation of classical mechanics can be understood as a progressive process of <b>code compression and refactoring</b>. Far from diminishing the merit of the Newtonian architecture, this reading highlights the brilliance of its design: the creation of abstractions capable of synthesizing an immense amount of empirical data into an elegant and executable interface.</p>
+
+<p>To understand why the particular expressions (such as gravitational attraction or the electrostatic force) are <b>model definitions</b> and not fundamental laws independent of motion, it suffices to observe the evolution of the dynamical equation at three levels of abstraction:</p>
+
+<ul>
+
+<li><b>1. The raw source code (Fully uncompressed equation)</b></li>
+<p>At the most elementary and intrinsic level, the empirical reality of a system of <span class="MathJax">\(N\)</span> particles knows nothing of abstract groupings. The real equation of motion for an individual particle <span class="MathJax">\(i\)</span> is presented in a fully "uncompressed" form, detailing each of the individual reciprocal interactions:</p>
+
+<p><span class="MathJax">\( \mathbf{F1}_{i1} + \mathbf{F1}_{i2} + \dots + \mathbf{F1}_{iN} \, + \)</span><br><span class="MathJax">\( \mathbf{F2}_{i1} + \mathbf{F2}_{i2} + \dots + \mathbf{F2}_{iN} \, + \)</span><br><span class="MathJax">\( \dots \, + \)</span><br><span class="MathJax">\( \mathbf{FT}_{i1} + \mathbf{FT}_{i2} + \dots + \mathbf{FT}_{iN} \)</span><br><span class="MathJax">\( = \, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \)</span></p>
+
+<p>This is the "plain source code": conceptually exact and purely empirical, but operationally intractable. If we tried to compute the motion of the universe at this level, we would need to invoke an explicit line of code for every existing pair of particles.</p>
+
+<li><b>2. Function creation and modularization (Definitions of the Forces of Nature)</b></li>
+<p>To avoid infinite redundancy, theoretical physics refactors the code by grouping identical behaviors into <b>reusable modules or functions</b>. This is where the so-called "forces of nature" are born. For example, the law of universal gravitation does not constitute an axiom of dynamics in itself, but rather the definition of the body of a mathematical function that encapsulates a specific type of interaction at a distance:</p>
+
+<p><span class="MathJax">\( \text{function } {\mathbf{FG}}_{\hspace{+0.045em}ij}(m_i, m_j, {{\vec{r}}}_{ij}) \,\doteq\, -G \frac{m_i m_j}{r_{ij}^2} \hat{{\vec{r}}}_{ij} \)</span></p>
+
+<p>By defining and invoking these modules (gravitational, electrostatic, etc.), the original code becomes semi-compressed, reducing the summation of individual interactions to a set of forces classified by their physical origin:</p>
+
+<p><span class="MathJax">\( \sum \mathbf{FG}_{\hspace{+0.045em}i} + \sum \mathbf{FE}_{\hspace{+0.045em}i} + \dots + \sum \mathbf{FT}_{i} \, = \, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \)</span></p>
+
+<li><b>3. Optimization and maximum abstraction (The Net Force)</b></li>
+<p>Finally, the Newtonian framework reaches its highest level of elegance by encapsulating the entire left-hand side of the equation into a single interface variable: the <b>net force</b> <span class="MathJax">\( ( \mathbf{F}_{i} \,\doteq\, \sum \mathbf{FG}_{\hspace{+0.045em}i} + \sum \mathbf{FE}_{\hspace{+0.045em}i} + \dots + \sum \mathbf{FT}_{i} ) \)</span>. The equation of motion acquires its celebrated and synthetic form:</p>
+
+<p><span class="MathJax">\( {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \)</span></p>
+
+</ul>
+
+<p>Under this epistemological lens, it becomes evident that the second law is the <b>kernel or main execution engine</b>, while the force of gravity and the rest of the interactions are <b>input definitions (inputs)</b> created by physicists to feed said engine. Confusing a force definition with a fundamental law of dynamics is equivalent to confusing the body of an auxiliary function with the compiler itself.</p>
+
+<p>...</p>
+
+<p>On the other hand, Newton's third law is formally deduced from the definitions of the forces of nature&nbsp;...</p>
+
+<p>...</p>
+
+<p>Finally, how does Newtonian mechanics —and therefore classical mechanics in general— evolve?&nbsp;...</p>
+
 <p>In development&nbsp;...</p>
+
+<h2 class="part">PART II</h2>
 
 <h2 id="T05">Equation of Motion</h2>
 
-<p class="fuerte"><i>Every net force <span class="MathJax">\({\mathbf{F}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> of inertial mass <span class="MathJax">\(m_i\)</span> produces in the particle <span class="MathJax">\(i\)</span> an acceleration <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> according to the following equation: <span class="MathJax">\([ \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, ]\)</span></i></p>
+<p class="strong"><i>Every net force <span class="MathJax">\({\mathbf{F}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> of inertial mass <span class="MathJax">\(m_i\)</span> produces in the particle <span class="MathJax">\(i\)</span> an acceleration <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> according to the following equation: <span class="MathJax">\([ \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, ]\)</span></i></p>
 
 <p>In development&nbsp;...</p>
+
+<h2 id="T06">Theoretical Issue</h2>
+
+<p>In development&nbsp;...</p>
+
+<h2 id="T07">Theoretical Solution 1</h2>
+
+<p>In development&nbsp;...</p>
+
+<h2 id="T08">Theoretical Solution 2</h2>
+
+<p>In development&nbsp;...</p>
+
+<h2 class="part">PART III</h2>
+
+<h2 id="T09">Linear Momentum</h2>
+
+<p>In development&nbsp;...</p>
+
+<h2 id="T10">Angular Momentum</h2>
+
+<p>In development&nbsp;...</p>
+
+<h2 id="T11">Work and Energy</h2>
+
+<p>In development&nbsp;...</p>
+
+<h2 id="T12">Conservation Laws</h2>
+
+<p>In development&nbsp;...</p>
+
+<h2 class="part">PART IV</h2>
 
 <h2 id="O0">General Observations</h2>
 
 <p>In development&nbsp;...</p>
 
-<h2 id="R0">References and Bibliography</h2>
+<h2 id="B0">References and Bibliography</h2>
 
-<p id="R1">[R1] I. Newton, Mathematical Principles of Natural Philosophy, (1687).</p>
+<p id="R01">[R01] I. Newton, Mathematical Principles of Natural Philosophy, (1687).</p>
 
-<p id="R2">[R2] H. Fernández, Special Relativity Course, (2016).</p>
+<p id="R02">[R02] H. Fernández, Special Relativity Course, (2016).</p>
 
-<p id="R3">[R3] I. Copi, Introduction to Logic, (2011).</p>
+<p id="R03">[R03] I. Copi, Introduction to Logic, (2011).</p>
 
-<p id="R4">[R4] K. Popper, The Logic of Scientific Discovery, (1934).</p>
+<p id="R04">[R04] K. Popper, The Logic of Scientific Discovery, (1934).</p>
 
-<p id="R5">[R5] T. Kuhn, The Structure of Scientific Revolutions, (1962).</p>
+<p id="R05">[R05] T. Kuhn, The Structure of Scientific Revolutions, (1962).</p>
 
-<p id="R6">[R6] A. Einstein, On the Special and General Theory of Relativity, (1916).</p>
+<p id="R06">[R06] A. Einstein, On the Special and General Theory of Relativity, (1916).</p>
 
-<p id="R7">[R7] A. Einstein, On the Electrodynamics of Moving Bodies, (1905).</p>
+<p id="R07">[R07] A. Einstein, On the Electrodynamics of Moving Bodies, (1905).</p>
 
-<p id="R8">[R8] E. Mach, The Science of Mechanics, (1883).</p>
+<p id="R08">[R08] E. Mach, The Science of Mechanics, (1883).</p>
 
-<p id="B1">[B1] R. Descartes, Discourse on the Method, (1637).</p>
+<p id="R09">[R09] H. Goldstein, Classical Mechanics, (1950).</p>
 
-<p id="B2">[B2] D. Hume, A Treatise of Human Nature, (1739).</p>
+<p id="R10">[R10] A. French, Newtonian Mechanics, (1971).</p>
 
-<p id="B3">[B3] I. Kant, Critique of Pure Reason, (1781).</p>
+<p id="R11">[R11] J. Taylor, Classical Mechanics, (2005).</p>
 
-<p id="B4">[B4] G. Hegel, Phenomenology of Spirit, (1807).</p>
+<p id="R12">[R12] A. Assis, Relational Mechanics (&nbsp;Mach-Weber&nbsp;), (1999).&nbsp;<a href='https://www.ifi.unicamp.br/~assis/Relational-Mechanics-Mach-Weber.pdf'>[&nbsp;PDF&nbsp;]</a>&nbsp;(&nbsp;6&nbsp;MB&nbsp;)</p>
 
-<p id="B5">[B5] A. Carpio, Principles of Philosophy, (1974).</p>
+<p id="R13">[R13] A. Tobla, Linear, Radial &amp; Scalar Magnitudes, (2015).&nbsp;<a href='https://atorassa.github.io/physics-authors/tobla/english/pdf/01.pdf'>[&nbsp;PDF&nbsp;]</a></p>
+
+<p id="R14">[R14] A. Tobla, On Relational Mechanics, (2024).&nbsp;<a href='https://atorassa.github.io/physics-authors/tobla/english/pdf/05.pdf'>[&nbsp;PDF&nbsp;]</a></p>
+
+<p id="R15">[R15] A. Tobla, A Reformulation of Classical Mechanics (&nbsp;I&nbsp;&amp;&nbsp;II&nbsp;), (2024).&nbsp;<a href='https://atorassa.github.io/physics-authors/tobla/english/pdf/02.pdf'>[&nbsp;PDF&nbsp;]</a></p>
+
+<p id="R16">[R16] A. Tobla, A Reformulation of Classical Mechanics (&nbsp;III&nbsp;&amp;&nbsp;IV&nbsp;), (2024).&nbsp;<a href='https://atorassa.github.io/physics-authors/tobla/english/pdf/03.pdf'>[&nbsp;PDF&nbsp;]</a></p>
+
+<p id="R17">[R17] A. Torassa, On Classical Mechanics, (1996).&nbsp;<a href='https://atorassa.github.io/physics-authors/torassa/english/pdf/01.pdf'>[&nbsp;PDF&nbsp;]</a></p>
+
+<p id="R18">[R18] A. Torassa, General Equation of Motion, (2013).&nbsp;<a href='https://atorassa.github.io/physics-authors/torassa/english/pdf/22.pdf'>[&nbsp;PDF&nbsp;]</a></p>
+
+<p id="R19">[R19] A. Torassa, A Reformulation of Classical Mechanics, (2014).&nbsp;<a href='https://atorassa.github.io/physics-authors/torassa/english/pdf/45.pdf'>[&nbsp;PDF&nbsp;]</a></p>
+
+<p id="R20">[R20] A. Torassa, On Fields, Gravitational Mass and Inertial Mass, (2025).&nbsp;<a href='https://aphysica.github.io/torassa/pdf/204v1es.pdf'>[&nbsp;PDF&nbsp;]</a></p>
+
+<p id="R21">[R21] A. Torassa, Classical Mechanics (&nbsp;General Definitions&nbsp;), (2011).&nbsp;<a href='https://atorassa.github.io/physics-authors/torassa/english/pdf/18.pdf'>[&nbsp;PDF&nbsp;]</a></p>
+
+<p id="R22">[R22] A. Blato, The Principle of Least Action, (2015).&nbsp;<a href='https://atorassa.github.io/physics-authors/blato/english/pdf/02.pdf'>[&nbsp;PDF&nbsp;]</a></p>
+
+<p id="R23">[R23] A. Kinetic, Scalar Magnitudes, (2025).&nbsp;<a href='https://akinetic.github.io/scalar-magnitudes/paper.pdf'>[&nbsp;PDF&nbsp;]</a></p>
+
+<p id="R24">[R24] A. Kinetic, Relational Magnitudes, (2025).&nbsp;<a href='https://akinetic.github.io/relational-magnitudes/paper.pdf'>[&nbsp;PDF&nbsp;]</a></p>
+
+<p id="B01">[B01] J. Kepler, New Astronomy, (1609).</p>
+
+<p id="B02">[B02] G. Galilei, Two New Sciences, (1638).</p>
+
+<p id="B03">[B03] J. D'Alembert, Treatise on Dynamics, (1743).</p>
+
+<p id="B04">[B04] J. Lagrange, Analytical Mechanics, (1788).</p>
+
+<p id="B05">[B05] W. Hamilton, On a General Method in Dynamics, (1834).</p>
+
+<p id="B06">[B06] M. Ostrogradsky, Ostrogradsky's Theorem, (1850).</p>
+
+<p id="B07">[B07] R. Descartes, Discourse on the Method, (1637).</p>
+
+<p id="B08">[B08] D. Hume, A Treatise of Human Nature, (1739).</p>
+
+<p id="B09">[B09] I. Kant, Critique of Pure Reason, (1781).</p>
+
+<p id="B10">[B10] G. Hegel, Phenomenology of Spirit, (1807).</p>
+
+<p id="B11">[B11] L. Wittgenstein, Tractatus Logico-Philosophicus, (1921).</p>
+
+<p id="B12">[B12] A. Carpio, Principles of Philosophy, (1974).</p>
 
 <h2 id="N0">Notes and Clarifications</h2>
 
-<p id="N111">[N111] Newton's first law (&nbsp;and above all Galileo Galilei's, of course&nbsp;) has an enormous historical importance since it establishes, contrary to what Aristotle's philosophy postulated, that a particle, in order to continue in its state of uniform rectilinear motion, does not need any external agent. Therefore, this law completely changed the way of conceiving the Universe. But more than 300 years have passed since Newton's publication <a href="#R0">[R1]</a> and this article is a contemporary analysis. Moreover, Newton's first law was not postulated as it is postulated in this article, since this article does not intend to be a detailed historical description of classical mechanics but rather a logical, theoretical and philosophical analysis of classical mechanics.</p>
+<p id="N111"><b>[N111]</b></p>
 
-<p id="N121">[N121] There exists an alternative epistemological approach (&nbsp;historically associated with Mach-type views <a href="#R8">[R8]</a>&nbsp;) in which inertial mass is not defined <i>a priori</i> by the theory, but is empirically deduced upon experimentally verifying that the quotient between the net force and the acceleration obtained on the same particle turns out to be a constant value <span class="MathJax">\(( \, {\mathbf{F}}_i \hspace{+0.060em} / {\vec{a}}_{\hspace{+0.045em}i} \,=\, k_{\hspace{+0.045em}i} \, )\)</span>, then defining that experimental constant as the inertial mass <span class="MathJax">\(( \, m_i \doteq k_{\hspace{+0.045em}i} \, )\)</span>. However, this work does not adopt that path, because the empirical route runs into an insurmountable obstacle: in states of rest or of uniform rectilinear motion (URM), the acceleration <span class="MathJax">\(( \,  {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span> is null, which renders the operational quotient inapplicable and prevents the inertial mass from being defined in those states. Even more seriously, since the acceleration <span class="MathJax">\(( \,  {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span> is not a quantity invariant under transformations between reference frames, defining the inertial mass <span class="MathJax">\(( \, m_i \, )\)</span> from <span class="MathJax">\(( \,  {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span> would turn a supposedly intrinsic property of matter into an observer-dependent magnitude, destroying its status as a scalar constant characteristic of the particle. According to this work, defining <i>a priori</i> the inertial mass as a constant scalar intrinsic to the particle (just as the electric charge and the gravitational mass are defined) is the only way to avoid this kinematic chaos and preserve the logical consistency of dynamics.</p>
+<p>Newton's first law (&nbsp;and above all Galileo Galilei's, of course&nbsp;) has an enormous historical importance since it establishes, contrary to what Aristotle's philosophy postulated, that a particle, in order to continue in its state of uniform rectilinear motion, does not need any external agent. Therefore, this law completely changed the way of conceiving the Universe. But more than 300 years have passed since Newton's publication <a href="#R01">[R01]</a> and this article is a contemporary analysis. Moreover, Newton's first law was not postulated as it is postulated in this article, since this article does not intend to be a detailed historical description of classical mechanics but rather a logical, theoretical and philosophical analysis of classical mechanics.</p>
+
+<p id="N121"><b>[N121]</b></p>
+
+<p>There exists an alternative epistemological approach (&nbsp;historically associated with Mach-type views <a href="#R08">[R08]</a>&nbsp;) in which inertial mass is not defined <i>a priori</i> by the theory, but is empirically deduced upon experimentally verifying that the quotient between the net force and the acceleration obtained on the same particle turns out to be a constant value <span class="MathJax">\(( \, {\mathbf{F}}_i \hspace{+0.060em} / {\vec{a}}_{\hspace{+0.045em}i} \,=\, k_{\hspace{+0.045em}i} \, )\)</span>, then defining that experimental constant as the inertial mass <span class="MathJax">\(( \, m_i \doteq k_{\hspace{+0.045em}i} \, )\)</span>. However, this work does not adopt that path, because the empirical route runs into an insurmountable obstacle: in states of rest or of uniform rectilinear motion (URM), the acceleration <span class="MathJax">\(( \, {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span> is null, which renders the operational quotient inapplicable and prevents the inertial mass from being defined in those states. Even more seriously, since the acceleration <span class="MathJax">\(( \, {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span> is not a quantity invariant under transformations between reference frames, defining the inertial mass <span class="MathJax">\(( \, m_i \, )\)</span> from <span class="MathJax">\(( \, {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span> would turn a supposedly intrinsic property of matter into an observer-dependent magnitude, destroying its status as a scalar constant characteristic of the particle. According to this work, defining <i>a priori</i> the inertial mass as a constant scalar intrinsic to the particle (just as the electric charge and the gravitational mass are defined) is the only way to avoid this kinematic chaos and preserve the logical consistency of dynamics.</p>
+
+<p id="N131"><b>[N131]</b></p>
+
+<p>There is a common tendency in classical physics textbooks to present Newton's three laws as a monolithic and indissoluble block, implicitly suggesting that modifying or falsifying the third law would bring about the instantaneous collapse of the entire dynamical edifice. However, a rigorous axiomatic analysis demonstrates that this is epistemologically false.</p>
+
+<p>Drawing a parallel with the history of geometry, the situation of the third law bears a striking resemblance to <b>Euclid's fifth postulate</b> (the parallel postulate). For centuries, geometers attempted to prove that the parallel postulate was an inevitable theorem derived from the first four postulates, believing that denying it was logically impossible. Only when mathematics dared to dispense with it and modify it did non-Euclidean geometries emerge (such as those of Riemann or Lobachevski), revealing that space possessed a geometric structure far richer and more general than was believed.</p>
+
+<p>An identical situation occurs in classical dynamics:</p>
+
+<ul>
+
+<li class="liver"><b>The second law does not require the third for its validity:</b> The fundamental equation of motion <span class="MathJax">\(( \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span> and the definition of inertial mass operate at the level of the individual particle in its relation to the net force. It is perfectly conceivable, from a logical and formal standpoint, to develop a consistent dynamics in which particles strictly satisfy the proportionality between net force and acceleration, <b>even when the principle of action and reaction <span class="MathJax">\(( \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, )\)</span> does not hold universally</b>.</li>
+
+<li class="liver"><b>What breaks is not the dynamics, but the balance of internal forces:</b> If in a system of particles the third law ceases to hold (&nbsp;that is, if <span class="MathJax">\({\mathbf{F}_{j\hspace{+0.090em}i}} \neq - \, {\mathbf{F}_{i\hspace{-0.030em}j}}\)</span>&nbsp;), the immediate consequence is not the invalidity of the second law, but rather that the internal forces no longer cancel each other out. This alters the <b>purely mechanical conservation of linear momentum</b>, causing the system to change its global motion even when it is isolated from visible external influences.</li>
+
+<li><b>Opening toward alternative dynamics and field theory:</b> Recognizing this axiomatic independence makes it possible to conceive and formalize <i>alternative dynamics</i> in which the interaction symmetry is broken without compromising the deterministic character of motion <a href="#R16">[R16]</a>. This is precisely what happens when studying more complex interactions —such as pre-relativistic electromagnetism or systems where forces depend on velocities and time delays—, where the third law in its strict action-at-a-distance formulation ceases to hold. The "remainder" of momentum that appears not to be conserved among the particles does not invalidate Newtonian mechanics; rather, it evidences that the system is interacting with an underlying physical structure: the field.</li>
+
+</ul>
+
+<p>Therefore, Newton's third law is not a foundational dogma of dynamics nor a logical requirement for the validity of the second law, but a <b>particular symmetry condition</b> —typical of static central forces— that acts as a bridge and historical hinge toward field physics. Understanding this formal freedom liberates classical mechanics from its dogmatic rigidity and restores it to its true category: a representative and deductive model of nature, flexible and open to generalizations.</p>
 
 <h2 id="A0">Annexes</h2>
 
@@ -413,21 +656,21 @@
 
 <ul>
 	
-<li>Newtonian Mechanics, D'Alembertian Mechanics, Lagrangian Mechanics and Hamiltonian Mechanics are observationally equivalent to each other.</li><br>
+<li class="livex">Newtonian Mechanics, D'Alembertian Mechanics, Lagrangian Mechanics and Hamiltonian Mechanics are observationally equivalent to each other.</li>
 
-<li>The D'Alembertian Mechanics presented in Annex II is still an incomplete formulation (&nbsp;see Appendix II&nbsp;)</li><br>
+<li class="livex">The D'Alembertian Mechanics presented in Annex II is still an incomplete formulation (&nbsp;see Appendix II&nbsp;)</li>
 
-<li>The Options with the letter A are formulations under the format of 3 Laws of Motion.</li><br>
+<li class="livex">The Options with the letter A are formulations under the format of 3 Laws of Motion.</li>
 
-<li>The Options with the letter B are formulations under the format of Equations of Motion.</li><br>
+<li class="livex">The Options with the letter B are formulations under the format of Equations of Motion.</li>
 
-<li>The Options with the number 0 are formulations expressed only for inertial frames.</li><br>
+<li class="livex">The Options with the number 0 are formulations expressed only for inertial frames.</li>
 
-<li>The Options with the number 1 are formulations expressed for inertial and non-inertial frames including mathematical terms (&nbsp;such as: fictitious forces, the ordinary inertial force, etc.&nbsp;) which are not in general invariant under transformations between inertial and non-inertial frames.</li><br>
+<li class="livex">The Options with the number 1 are formulations expressed for inertial and non-inertial frames including mathematical terms (&nbsp;such as: fictitious forces, the ordinary inertial force, etc.&nbsp;) which are not in general invariant under transformations between inertial and non-inertial frames.</li>
 
-<li>The Options with the number 2 are formulations expressed for inertial and non-inertial frames including relational magnitudes (&nbsp;such as: <span class="MathJax">\({\mathbf{r}} , {\mathbf{v}} ,\)</span> etc.&nbsp;) which are always invariant under transformations between inertial and non-inertial frames.</li><br>
+<li class="livex">The Options with the number 2 are formulations expressed for inertial and non-inertial frames including relational magnitudes (&nbsp;such as: <span class="MathJax">\({\mathbf{r}} , {\mathbf{v}} ,\)</span> etc.&nbsp;) which are always invariant under transformations between inertial and non-inertial frames.</li>
 
-<li>The vector magnitudes expressed with vector arrow (&nbsp;such as: <span class="MathJax">\({\vec{F}} , {\vec{Q}} \hspace{+0.060em}, {\vec{T}} , {\vec{r}} , {\vec{v}} , {\vec{a}} ,\)</span> etc.&nbsp;) are not invariant under transformations between inertial and non-inertial frames.</li><br>
+<li class="livex">The vector magnitudes expressed with vector arrow (&nbsp;such as: <span class="MathJax">\({\vec{F}} , {\vec{Q}} \hspace{+0.060em}, {\vec{T}} , {\vec{r}} , {\vec{v}} , {\vec{a}} ,\)</span> etc.&nbsp;) are not invariant under transformations between inertial and non-inertial frames.</li>
 
 <li>The vector magnitudes expressed in bold (&nbsp;such as: <span class="MathJax">\({\mathbf{F}} , {\mathbf{T}} , {\mathbf{r}} , {\mathbf{v}} , {\mathbf{a}} ,\)</span> etc.&nbsp;) are invariant under transformations between inertial and non-inertial frames.</li>
 
@@ -443,9 +686,9 @@
 
 <ul>
 
-<li><a href='https://www.ifi.unicamp.br/~assis/Relational-Mechanics-Mach-Weber.pdf'>https://www.ifi.unicamp.br/~assis/Relational-Mechanics-Mach-Weber.pdf</a> &nbsp;(&nbsp;pp. 493–498&nbsp;)</li><br>
+<li class="livex">A. Assis &nbsp;<a href="#R12">[R12]</a> &nbsp;(&nbsp;pp. 493–498&nbsp;)</li>
 
-<li>In the previous book the radial magnitudes are called relational magnitudes.</li><br>
+<li class="livex">In the previous book the radial magnitudes are called relational magnitudes.</li>
 
 <li>It was the Brazilian physicist André Koch Torres Assis who first used the term "relational". However, in this paper, in order not to create confusion with other relational (vector) magnitudes we will call them radial magnitudes [&nbsp;which, in fact, are radial (relative) magnitudes&nbsp;]</li>
 
@@ -455,9 +698,9 @@
 
 <ul>
 
-<li><a href='https://akinetic.github.io/scalar-magnitudes/paper.pdf'>https://akinetic.github.io/scalar-magnitudes/paper.pdf</a></li><br>
+<li class="livex">A. Kinetic &nbsp;<a href="#R23">[R23]</a></li>
 
-<li><a href='https://atorassa.github.io/physics-authors/tobla/english/pdf/02.pdf'>https://atorassa.github.io/physics-authors/tobla/english/pdf/02.pdf</a></li><br>
+<li class="livex">A. Tobla &nbsp;<a href="#R15">[R15]</a></li>
 
 <li>The scalar magnitudes are related to the virial theorem, to new types of energy, to the generalized Lagrangians that depend on higher derivatives such as acceleration (&nbsp;according to the formalism of Mikhail Ostrogradsky&nbsp;) etc.</li>
 
@@ -467,9 +710,9 @@
 
 <ul>
 	
-<li><a href='https://akinetic.github.io/relational-magnitudes/paper.pdf'>https://akinetic.github.io/relational-magnitudes/paper.pdf</a></li><br>
+<li class="livex">A. Kinetic &nbsp;<a href="#R24">[R24]</a></li>
 
-<li><a href='https://atorassa.github.io/physics-authors/tobla/english/pdf/02.pdf'>https://atorassa.github.io/physics-authors/tobla/english/pdf/02.pdf</a></li><br>
+<li class="livex">A. Tobla &nbsp;<a href="#R15">[R15]</a></li>
 
 <li>In the previous paper the relational magnitudes are called universal magnitudes since the auxiliary frame is the reference frame fixed to the Universe (&nbsp;also considering this universal frame as an inertial frame&nbsp;)</li>
 
@@ -489,7 +732,7 @@
 
 <ul>
 
-<li><a href='https://www.ifi.unicamp.br/~assis/Relational-Mechanics-Mach-Weber.pdf'>https://www.ifi.unicamp.br/~assis/Relational-Mechanics-Mach-Weber.pdf</a></li>
+<li>A. Assis &nbsp;<a href="#R12">[R12]</a></li>
 
 </ul>
 
@@ -497,13 +740,13 @@
 
 <ul>
 
-<li><a href='https://atorassa.github.io/physics-authors/tobla/english/pdf/05.pdf'>https://atorassa.github.io/physics-authors/tobla/english/pdf/05.pdf</a></li><br>
+<li class="livex">A. Tobla &nbsp;<a href="#R14">[R14]</a></li>
 
-<li><a href='https://atorassa.github.io/physics-authors/torassa/english/pdf/01.pdf'>https://atorassa.github.io/physics-authors/torassa/english/pdf/01.pdf</a></li><br>
+<li class="livex">A. Tobla &nbsp;<a href="#R15">[R15]</a> &nbsp;(&nbsp;see Paper II and Appendices&nbsp;)</li>
 
-<li><a href='https://atorassa.github.io/physics-authors/tobla/english/pdf/02.pdf'>https://atorassa.github.io/physics-authors/tobla/english/pdf/02.pdf</a> &nbsp;(&nbsp;see Paper II and Appendices&nbsp;)</li><br>
+<li class="livex">A. Tobla &nbsp;<a href="#R16">[R16]</a> &nbsp;(&nbsp;see Paper IV and Appendices&nbsp;)</li>
 
-<li><a href='https://atorassa.github.io/physics-authors/tobla/english/pdf/03.pdf'>https://atorassa.github.io/physics-authors/tobla/english/pdf/03.pdf</a> &nbsp;(&nbsp;see Paper IV and Appendices&nbsp;)</li>
+<li>A. Torassa &nbsp;<a href="#R17">[R17]</a> &nbsp;(&nbsp;see Original Paper 1996&nbsp;)</li>
 
 </ul>
 
@@ -511,7 +754,7 @@
 
 <ul>
 
-<li><a href='https://aphysica.github.io/torassa/pdf/204v1en.pdf'>https://aphysica.github.io/torassa/pdf/204v1en.pdf</a></li>
+<li>A. Torassa &nbsp;<a href="#R20">[R20]</a></li>
 
 </ul>
 
@@ -523,9 +766,9 @@
 
 <ul>
 
-<li><a href='https://atorassa.github.io/physics-authors/blato/english/pdf/02.pdf'>https://atorassa.github.io/physics-authors/blato/english/pdf/02.pdf</a></li><br>
+<li class="livex">A. Blato &nbsp;<a href="#R22">[R22]</a></li>
 
-<li><a href='https://atorassa.github.io/physics-authors/torassa/english/pdf/18.pdf'>https://atorassa.github.io/physics-authors/torassa/english/pdf/18.pdf</a></li>
+<li>A. Torassa &nbsp;<a href="#R21">[R21]</a></li>
 
 </ul>
 
@@ -547,154 +790,13 @@
 	</footer>
 
 <script>
+	function myTheme() {
+		document.body.classList.toggle("dark-mode");
+	}
 
-let vaEA = document.querySelectorAll('a').length;
-let vaH2 = document.querySelectorAll('h2').length;
-let vaSU = document.getElementsByClassName('suave').length;
-let vaFU = document.getElementsByClassName('fuerte').length;
-let vaMJ = document.getElementsByClassName('MathJax').length;
-
-//  LIGHT - DARK MODE
-
-themeValue = 2;
-
-function myTheme() {
-	if ( themeValue == 2 ) {
-		document.body.style.color = "#efefef";
-		document.body.style.backgroundColor = "#303030";
-		document.getElementById("myTitle").style.color = "#4581b4";
-		let h = 0;
-		while ( h < vaH2 ) {
-			document.getElementsByTagName("h2")[h].style.color = "#b2caf5";
-			h = h + 1;
-		};
-		let f = 0;
-		while ( f < vaFU ) {
-			document.getElementsByClassName("fuerte")[f].style.color = "#efefef";
-			f = f + 1;
-		};
-		let a = 0;
-		while ( a < vaEA ) {
-			document.getElementsByTagName("a")[a].style.color = "#4581b4";
-			a = a + 1;
-		};
-		themeValue = 1;
-	} else {
-		document.body.style.color = "#454545";
-		document.body.style.backgroundColor = "#ffffff";
-		document.getElementById("myTitle").style.color = "#4581b4";
-		let h = 0;
-		while ( h < vaH2 ) {
-			document.getElementsByTagName("h2")[h].style.color = "#333333";
-			h = h + 1;
-		};
-		let f = 0;
-		while ( f < vaFU ) {
-			document.getElementsByClassName("fuerte")[f].style.color = "#151515";
-			f = f + 1;
-		};
-		let a = 0;
-		while ( a < vaEA ) {
-			document.getElementsByTagName("a")[a].style.color = "#2883f3";
-			a = a + 1;
-		};
-		themeValue = 2;
-	};
-};
-
-// MODO SANS-SERIF - SERIF
-
-fontValue = 2;
-
-function myFont() {
-	if ( fontValue == 2 ) {
-		document.body.style.fontFamily = "'Poppins', ui-sans-serif, Arial, sans-serif";
-		document.body.style.lineHeight = "1.5";
-		fontValue = 1;
-	} else {
-		document.body.style.fontFamily = "'Spectral', ui-serif, Georgia, serif";
-		document.body.style.lineHeight = "1.4";
-		fontValue = 2;
-	};
-	myResponsive();
-};
-
-// RESPONSIVE
-
-function myResponsive() {
-	let widthMain = window.innerWidth;
-	if ( fontValue == 2 ) {
-		// FONT-SIZE
-		let valueFS = myCalculation( widthMain, 240, 810, 125, 125 ) ;
-		document.body.style.fontSize = valueFS + "%" ;
-		// FONT-SIZE H1
-		let valueH1 = myCalculation( widthMain, 240, 810, 225, 225 ) ;
-		document.getElementById("myTitle").style.fontSize = valueH1 + "%" ;
-		// FONT-SIZE H2
-		let valueH2 = myCalculation( widthMain, 240, 810, 160, 160 ) ;
-		let i = 0;
-		while ( i < vaH2 ) {
-			document.getElementsByTagName("h2")[i].style.fontSize = valueH2 + "%" ;
-			i = i + 1;
-		};
-		// FONT-SIZE MATHJAX
-		let valueMJ = myCalculation( widthMain, 240, 810, 105, 105 ) ;
-		let m = 0;
-		while ( m < vaMJ * 2 ) {
-			document.getElementsByClassName("MathJax")[m].style.fontSize = valueMJ + "%" ;
-			m = m + 1;
-		};
-		// MY SPACE ABS
-		// let valueMS = myCalculation( widthMain, 240, 810, 1.5, 1.5 ) ;
-		// document.getElementById("mySpace").style.margin = "-" + valueMS + "em" + " " + 0 + " " + "+" + valueMS * 1.4 + "em" + " " + 0 ;
-	};
-	if ( fontValue == 1 ) {
-		// FONT-SIZE
-		let valueFS = myCalculation( widthMain, 240, 810, 108, 108 ) ;
-		document.body.style.fontSize = valueFS + "%" ;
-		// FONT-SIZE H1
-		let valueH1 = myCalculation( widthMain, 240, 810, 240, 240 ) ;
-		document.getElementById("myTitle").style.fontSize = valueH1 + "%" ;
-		// FONT-SIZE H2
-		let valueH2 = myCalculation( widthMain, 240, 810, 180, 180 ) ;
-		let i = 0;
-		while ( i < vaH2 ) {
-			document.getElementsByTagName("h2")[i].style.fontSize = valueH2 + "%" ;
-			i = i + 1;
-		};
-		// FONT-SIZE MATHJAX
-		let valueMJ = myCalculation( widthMain, 240, 810, 116.4, 116.4 ) ;
-		let m = 0;
-		while ( m < vaMJ * 2 ) {
-			document.getElementsByClassName("MathJax")[m].style.fontSize = valueMJ + "%" ;
-			m = m + 1;
-		};
-		// MY SPACE ABS
-		// let valueMS = myCalculation( widthMain, 240, 810, 1.5, 1.5 ) ;
-		// document.getElementById("mySpace").style.margin = "-" + valueMS + "em" + " " + 0 + " " + "+" + valueMS * 1.4 + "em" + " " + 0 ;
-	};
-};
-
-// RESPONSIVE CALCULATION
-
-function myCalculation ( X, Xa, Xb, Ya, Yb ) {
-	if ( Xa !== Xb ) {
-		if ( ( Xa < Xb ) && ( X <= Xa ) ) { let Y = Number ( Ya ); return Y; };
-		if ( ( Xa < Xb ) && ( X >= Xb ) ) { let Y = Number ( Yb ); return Y; };
-		if ( ( Xa > Xb ) && ( X >= Xa ) ) { let Y = Number ( Ya ); return Y; };
-		if ( ( Xa > Xb ) && ( X <= Xb ) ) { let Y = Number ( Yb ); return Y; };
-		if ( ( X > Xa && X < Xb ) || ( X > Xb && X < Xa ) ) {
-			let Y = Number ( [Yb * ( X - Xa ) + Ya * ( Xb - X )] / [( Xb - Xa )] );
-			return Y;
-		};
-	} else {
-		return false;
-	};
-};
-
-setTimeout( function() { myResponsive() }, 600 );
-window.addEventListener( "resize", myResponsive );
-
+	function myFont() {
+		document.body.classList.toggle("sans-serif");
+	}
 </script>
 
 </body>
