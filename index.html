@@ -135,6 +135,9 @@
 				padding: 0 0.3em;
 				max-width: 100%;
 			}
+			ul {
+			padding-left: 1em;
+			}
 		}
 	</style>
 </head>
@@ -303,9 +306,9 @@
 
 <p style="color: #c63636;">PROVISIONAL TEXT</p>
 
-<p>In the usual didactic development of physics, expressions such as Newton's Law of Universal Gravitation <span class="MathJax">\(( \, {\mathbf{FG}}_{\hspace{+0.045em}ij} \,=\, \dots \, )\)</span> or Coulomb's Law <span class="MathJax">\(( \, {\mathbf{FE}}_{\hspace{+0.045em}ij} \,=\, \dots \, )\)</span> are often characterized as "empirical laws discovered experimentally". However, under a rigorous epistemological analysis, <b>such formulations do not operate as inductive empirical laws, but as constitutive definitions of the physical model</b>.</p>
+<p>In the usual didactic development of physics, expressions such as Newton's law of universal gravitation <span class="MathJax">\(( \, {\mathbf{FG}}_{\hspace{+0.045em}ij} \,=\, \dots \, )\)</span> or Coulomb's law <span class="MathJax">\(( \, {\mathbf{FE}}_{\hspace{+0.045em}ij} \,=\, \dots \, )\)</span> are often characterized as "empirical laws discovered experimentally". However, under a rigorous epistemological analysis, <b>such formulations do not operate as inductive empirical laws, but as constitutive definitions of the physical model</b>.</p>
 
-<p>Newton's Law of Universal Gravitation or Coulomb's Law can only be empirical principles if they are previously defined: <span class="MathJax">\(( \, {\mathbf{FG}}_{\hspace{+0.045em}ij} \,\doteq\, \dots \, )\)</span> and <span class="MathJax">\(( \, {\mathbf{FE}}_{\hspace{+0.045em}ij} \,\doteq\, \dots \, )\)</span> ...&nbsp;in development.</p>
+<p>Newton's law of universal gravitation or Coulomb's law can only be empirical principles if they are previously defined: <span class="MathJax">\(( \, {\mathbf{FG}}_{\hspace{+0.045em}ij} \,\doteq\, \dots \, )\)</span> and <span class="MathJax">\(( \, {\mathbf{FE}}_{\hspace{+0.045em}ij} \,\doteq\, \dots \, )\)</span> ...&nbsp;in development.</p>
 
 <p>...</p>
 
@@ -321,30 +324,26 @@
 
 <p>To understand why the particular expressions (such as gravitational attraction or the electrostatic force) are <b>model definitions</b> and not fundamental laws independent of motion, it suffices to observe the evolution of the dynamical equation at three levels of abstraction:</p>
 
-<ul>
-
-<li><b>1. The raw source code (Fully uncompressed equation)</b></li>
+<b>1. The raw source code (Fully uncompressed equation)</b>
 <p>At the most elementary and intrinsic level, the empirical reality of a system of <span class="MathJax">\(N\)</span> particles knows nothing of abstract groupings. The real equation of motion for an individual particle <span class="MathJax">\(i\)</span> is presented in a fully "uncompressed" form, detailing each of the individual reciprocal interactions:</p>
 
 <p><span class="MathJax">\( \mathbf{F1}_{i1} + \mathbf{F1}_{i2} + \dots + \mathbf{F1}_{iN} \, + \)</span><br><span class="MathJax">\( \mathbf{F2}_{i1} + \mathbf{F2}_{i2} + \dots + \mathbf{F2}_{iN} \, + \)</span><br><span class="MathJax">\( \dots \, + \)</span><br><span class="MathJax">\( \mathbf{FT}_{i1} + \mathbf{FT}_{i2} + \dots + \mathbf{FT}_{iN} \)</span><br><span class="MathJax">\( = \, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \)</span></p>
 
 <p>This is the "plain source code": conceptually exact and purely empirical, but operationally intractable. If we tried to compute the motion of the universe at this level, we would need to invoke an explicit line of code for every existing pair of particles.</p>
 
-<li><b>2. Function creation and modularization (Definitions of the Forces of Nature)</b></li>
+<b>2. Function creation and modularization (Definitions of the Forces of Nature)</b>
 <p>To avoid infinite redundancy, theoretical physics refactors the code by grouping identical behaviors into <b>reusable modules or functions</b>. This is where the so-called "forces of nature" are born. For example, the law of universal gravitation does not constitute an axiom of dynamics in itself, but rather the definition of the body of a mathematical function that encapsulates a specific type of interaction at a distance:</p>
 
-<p><span class="MathJax">\( \text{function } {\mathbf{FG}}_{\hspace{+0.045em}ij}(m_i, m_j, {{\vec{r}}}_{ij}) \,\doteq\, -G \frac{m_i m_j}{r_{ij}^2} \hat{{\vec{r}}}_{ij} \)</span></p>
+<p><span class="MathJax">\( \text{function } {\mathbf{FG}}_{\hspace{+0.045em}ij}(m_i, m_j, {{\vec{r}}}_{ij}) \,\doteq\, -G \frac{m_i m_j}{r_{ij}^2} \hat{{{r}}}_{ij} \)</span></p>
 
 <p>By defining and invoking these modules (gravitational, electrostatic, etc.), the original code becomes semi-compressed, reducing the summation of individual interactions to a set of forces classified by their physical origin:</p>
 
 <p><span class="MathJax">\( \sum \mathbf{FG}_{\hspace{+0.045em}i} + \sum \mathbf{FE}_{\hspace{+0.045em}i} + \dots + \sum \mathbf{FT}_{i} \, = \, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \)</span></p>
 
-<li><b>3. Optimization and maximum abstraction (The Net Force)</b></li>
+<b>3. Optimization and maximum abstraction (The Net Force)</b>
 <p>Finally, the Newtonian framework reaches its highest level of elegance by encapsulating the entire left-hand side of the equation into a single interface variable: the <b>net force</b> <span class="MathJax">\( ( \mathbf{F}_{i} \,\doteq\, \sum \mathbf{FG}_{\hspace{+0.045em}i} + \sum \mathbf{FE}_{\hspace{+0.045em}i} + \dots + \sum \mathbf{FT}_{i} ) \)</span>. The equation of motion acquires its celebrated and synthetic form:</p>
 
 <p><span class="MathJax">\( {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \)</span></p>
-
-</ul>
 
 <p>Under this epistemological lens, it becomes evident that the second law is the <b>kernel or main execution engine</b>, while the force of gravity and the rest of the interactions are <b>input definitions (inputs)</b> created by physicists to feed said engine. Confusing a force definition with a fundamental law of dynamics is equivalent to confusing the body of an auxiliary function with the compiler itself.</p>
 
