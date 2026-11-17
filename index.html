@@ -4,6 +4,8 @@
 	<meta charset="utf-8">
 	<meta name="robots" content="index, follow">
 	<meta name="author" content="Alejandro A. Torassa">
+	<meta name="keywords" content="physics, classical mechanics, relational mechanics">
+	<meta name="description" content="A logical, epistemological and ontological analysis of classical mechanics.">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="canonical" href="https://aphysica.github.io/classical-mechanics/">
 	<link rel="alternate" hreflang="es" href="https://aphysica.github.io/mecanica-clasica/">
@@ -14,9 +16,19 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Spectral:wght@400;700&amp;display=swap" rel="stylesheet">
+	<script>
+		MathJax = {
+			tex: {
+				inlineMath: [['$', '$'], ['\\(', '\\)']]
+			}
+		};
+	</script>
 	<script async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 	<title>Classical Mechanics</title>
 	<style>
+		*, *::before, *::after {
+			box-sizing: border-box;
+		}
 		html {
 			border: 0;
 			margin: 0;
@@ -27,7 +39,6 @@
 			list-style: none;
 			list-style-type: none;
 			text-decoration: none;
-			box-sizing: border-box;
 		}
 		body {
 			--color-bg: #ffffff;
@@ -100,24 +111,36 @@
 			word-break: break-word;
 			overflow-wrap: break-word;
 		}
-		mjx-container {
-			font-size: var(--fs-mathjax) !important;
-		}
 		.container {
-			display: flex;
+			display: block;
+			max-width: 74%;
 			margin: auto;
-			max-width: 72%;
+			width: 100%;
 		}
 		.content {
-			display: flex;
+			display: block;
+			width: 100%;
 		}
 		.weak {
 			color: #666666;
 		}
 		ul {
-			margin-top: 1.2em;
-			margin-bottom: 1.2em;
-			padding-left: 1.5em;
+			list-style: none;
+			margin: 1.2em 0;
+			padding-left: 0;
+		}
+		ul li {
+			position: relative;
+			padding-left: 0.9em;
+		}
+		ul li::before {
+			content: "•";
+			position: absolute;
+			left: 0;
+			top: 0;
+			font-size: 1.25em;
+			line-height: 1.1;
+			font-family: Arial, sans-serif;
 		}
 		.liver {
 			margin-bottom: 0.45em;
@@ -125,6 +148,15 @@
 		.livex {
 			margin-bottom: 0.93em;
 		 }
+		mjx-container {
+			font-size: var(--fs-mathjax) !important;
+		}
+		.math-block {
+			display: block;
+			text-align: left;
+			overflow-x: auto;
+			overflow-y: hidden;
+		}
 		footer {
 			padding: 0.6em 0;
 			text-align: center;
@@ -132,11 +164,9 @@
 		}
 		@media (max-width: 810px) {
 			.container {
+				box-sizing: border-box;
 				padding: 0 0.3em;
 				max-width: 100%;
-			}
-			ul {
-			padding-left: 1em;
 			}
 		}
 	</style>
@@ -150,7 +180,7 @@
 
 <p id="mySpace" style="margin: -1.2em 0 3em 0;">A logical, epistemological and ontological analysis of classical mechanics.</p>
 
-<p style="color: #c63636;"><i>11/11/2026 : What's new : Newton's Third Law, Newton's Second Law, Annexes and Appendices, and Newton's First Law.</i></p>
+<p style="color: #c63636;"><i>17/11/2026 : What's new : Forces of Nature, Newton's Third Law, Newton's Second Law, Annexes and Appendices, and Newton's First Law.</i></p>
 
 <p style="color: #c63636;"><i>Article under constant revision and evolution. Finishing this article will take several years.</i></p>
 
@@ -162,7 +192,7 @@
 
 <p style="color: #c63636;"><i>Note 4: Comments and Suggestions: <a href='https://aphysica.github.io/torassa/abs/200'>Contact</a> (Thank you!)</i></p>
 
-<p style="color: #c63636; margin-bottom: 3em;"><i>(&nbsp;v1.0.3&nbsp;) : <a href='https://doi.org/rwb6'>https://doi.org/rwb6</a></i></p>
+<p style="color: #c63636; margin-bottom: 3em;"><i>(&nbsp;v1.0.4&nbsp;) : <a href='https://doi.org/rwb6'>https://doi.org/rwb6</a></i></p>
 
 <h2 id="myIntro" style="cursor:pointer" onclick="myFont();">Introduction</h2>
 
@@ -208,7 +238,7 @@
 
 <p><a href="#N0">3. Notes and Clarifications</a></p>
 
-<p><a href="#A0">4. Annexes and Appendices</a></p>
+<p><a href="#AN">4. Annexes and</a>&nbsp;<a href="#AP">Appendices</a></p>
 
 <h2 class="part">PART I</h2>
 
@@ -236,11 +266,11 @@
 
 <h2 id="T02">Newton's Second Law</h2>
 
-<p class="strong"><i>Every net force <span class="MathJax">\({\mathbf{F}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> of inertial mass <span class="MathJax">\(m_i\)</span> produces in the particle <span class="MathJax">\(i\)</span> an acceleration <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> according to the following equation: <span class="MathJax">\([ \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, ]\)</span></i></p>
+<p class="strong"><i>Every net force ${\mathbf{F}}_i$ acting on a particle $i$ of inertial mass $m_i$ produces in the particle $i$ an acceleration ${\vec{a}}_{\hspace{+0.045em}i}$ according to the following equation: $[ \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, ]$</i></p>
 
-<p>In the first place, it is clarified that if no force whatsoever acts on the particle <span class="MathJax">\(i\)</span>, then this must be interpreted as if a net force equal to zero <span class="MathJax">\({\mathbf{F}}_i\)</span> were acting on the particle <span class="MathJax">\(i\)</span> (as has been proposed in the previous section, and thus, from a logical point of view, Newton's first law is included in Newton's second law).</p>
+<p>In the first place, it is clarified that if no force whatsoever acts on the particle $i$, then this must be interpreted as if a net force equal to zero ${\mathbf{F}}_i$ were acting on the particle $i$ (as has been proposed in the previous section, and thus, from a logical point of view, Newton's first law is included in Newton's second law).</p>
 
-<p>In the second place, it is also clarified that the net force of the real forces <span class="MathJax">\({\mathbf{F}}_i\)</span> is in bold and that the ordinary acceleration <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> is not in bold (but with vector arrow), because in Newtonian dynamics every real force is invariant under transformations between inertial and non-inertial reference frames, whereas every ordinary acceleration is not invariant under transformations between inertial and non-inertial reference frames (this will be explained in more detail in a forthcoming section).</p>
+<p>In the second place, it is also clarified that the net force of the real forces ${\mathbf{F}}_i$ is in bold and that the ordinary acceleration ${\vec{a}}_{\hspace{+0.045em}i}$ is not in bold (but with vector arrow), because in Newtonian dynamics every real force is invariant under transformations between inertial and non-inertial reference frames, whereas every ordinary acceleration is not invariant under transformations between inertial and non-inertial reference frames (this will be explained in more detail in a forthcoming section).</p>
 
 <p>In the third place, the theory establishes by definition that the inertial mass of a particle is a scalar that acts as a characteristic constant of the particle itself. It is essential to clarify that this constancy is postulated as a structural definition of the model and not as a principle derived from experience; the theory itself neither predicts nor calculates what numerical value this mass must have, so its quantification remains entirely in the hands of experimental research.&nbsp;<a href="#N121">[N121]</a></p>
 
@@ -258,7 +288,7 @@
 
 </ul>
 
-<p>If we did not fix the inertial mass as constant by theoretical definition, then in the face of any anomaly in the acceleration we could invent that "the inertial mass changed at that instant" in order to save the equation <span class="MathJax">\(( \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span>. By defining the inertial mass as a constant and intrinsic property of the particle, the equation is exposed to real empirical verification <a href="#R04">[R04]</a>.</p>
+<p>If we did not fix the inertial mass as constant by theoretical definition, then in the face of any anomaly in the acceleration we could invent that "the inertial mass changed at that instant" in order to save the equation $( \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, )$. By defining the inertial mass as a constant and intrinsic property of the particle, the equation is exposed to real empirical verification <a href="#R04">[R04]</a>.</p>
 
 <p>In the fourth place, it is imperative to point out a recurrent logical tension in the traditional formulation of mechanics: Newton's laws permanently invoke the concept of force, but classical theory offers no formal and independent definition for the magnitude force (resorting to the dynamometer being a mere operative measuring tool and one already methodologically insufficient for a conceptual foundation).</p>
 
@@ -270,29 +300,29 @@
 
 <ul>
 
-<li class="liver"><b>The Net Force <span class="MathJax">\(( \, {\mathbf{F}}_i \, )\)</span>:</b> It is conceived <i>a priori</i> as the resultant of real interactions (which will be detailed in a later section), thereby avoiding turning Newton's second law into a mere tautological definition.</li>
+<li class="liver"><b>The Net Force $( \, {\mathbf{F}}_i \, )$:</b> It is conceived <i>a priori</i> as the resultant of real interactions (which will be detailed in a later section), thereby avoiding turning Newton's second law into a mere tautological definition.</li>
 
-<li class="liver"><b>The Inertial Mass <span class="MathJax">\(( \, m_i \, )\)</span>:</b> It is theoretically postulated as a constant scalar magnitude intrinsic to the particle. This choice grants elegance and conceptual rigidity to the model, proving indispensable for the relation <span class="MathJax">\(( \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span> to maintain its status as a falsifiable physical principle testable against experience.</li>
+<li class="liver"><b>The Inertial Mass $( \, m_i \, )$:</b> It is theoretically postulated as a constant scalar magnitude intrinsic to the particle. This choice grants elegance and conceptual rigidity to the model, proving indispensable for the relation $( \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, )$ to maintain its status as a falsifiable physical principle testable against experience.</li>
 
-<li><b>The Causal Structure <span class="MathJax">\(( \, {\mathbf{F}}_i \to m_i \to {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span>:</b> The functional relation is not a mere symmetric mathematical equality, but a dynamic model where the <b>Force</b> acts as the <i>cause</i>, the <b>Inertial Mass</b> as the particle's intrinsic <i>resistance</i> to changing its state of motion, and the <b>Acceleration</b> as the resulting observable <i>effect</i>.</li>
+<li><b>The Causal Structure $( \, {\mathbf{F}}_i \to m_i \to {\vec{a}}_{\hspace{+0.045em}i} \, )$:</b> The functional relation is not a mere symmetric mathematical equality, but a dynamic model where the <b>Force</b> acts as the <i>cause</i>, the <b>Inertial Mass</b> as the particle's intrinsic <i>resistance</i> to changing its state of motion, and the <b>Acceleration</b> as the resulting observable <i>effect</i>.</li>
 
 </ul>
 
 <h2 id="T03">Newton's Third Law</h2>
 
-<p class="strong"><i>If a particle <span class="MathJax">\(i\)</span> exerts a force <span class="MathJax">\({\mathbf{F}_{j\hspace{+0.090em}i}}\)</span> on another particle <span class="MathJax">\(j\)</span> then the particle <span class="MathJax">\(j\)</span> exerts a force <span class="MathJax">\(-{\mathbf{F}_{i\hspace{-0.030em}j}}\)</span> equal and in the opposite direction on the particle <span class="MathJax">\(i\)</span>. <span class="MathJax">\([ \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, ]\)</span></i></p>
+<p class="strong"><i>If a particle $i$ exerts a force ${\mathbf{F}_{j\hspace{+0.090em}i}}$ on another particle $j$ then the particle $j$ exerts a force $-{\mathbf{F}_{i\hspace{-0.030em}j}}$ equal and in the opposite direction on the particle $i$. $[ \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, ]$</i></p>
 
-<p>Unlike Newton's second law, the third law is not formulated in terms of the net force acting on a particle, but in terms of <b>unitary and reciprocal interaction forces</b> between pairs of particles.</p>
+<p>Unlike Newton's second law, the third law is not formulated in terms of the net force acting on a particle, but in terms of <b>individual and reciprocal interaction forces</b> between pairs of particles.</p>
 
 <p>When analyzing the formal structure of this law, four central epistemological aspects stand out:</p>
 
 <ul>
 
-<li class="liver"><b>Identity of the interaction:</b> Although the law does not state it explicitly, it is understood that the pair of action and reaction forces belongs to exactly the same type of physical interaction. For example, if particle <span class="MathJax">\(i\)</span> exerts a gravitational force on <span class="MathJax">\(j\)</span>, the reaction of <span class="MathJax">\(j\)</span> on <span class="MathJax">\(i\)</span> is also of gravitational origin and not of any other type.</li>
+<li class="liver"><b>Identity of the interaction:</b> Although the law does not state it explicitly, it is understood that the pair of action and reaction forces belongs to exactly the same type of physical interaction. For example, if particle $i$ exerts a gravitational force on $j$, the reaction of $j$ on $i$ is also of gravitational origin and not of any other type.</li>
 
-<li class="liver"><b>Weak symmetry:</b> In its general statement (<i>weak version</i>), the law only satisfies the opposite vector equality <span class="MathJax">\(( \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, )\)</span>, which is a necessary and sufficient condition for deducing the theorem of <b>conservation of linear momentum</b> of the isolated system.</li>
+<li class="liver"><b>Weak symmetry:</b> In its general statement (<i>weak version</i>), the law only satisfies the opposite vector equality $( \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, )$, which is a necessary and sufficient condition for deducing the theorem of <b>conservation of linear momentum</b> of the isolated system.</li>
 
-<li class="liver"><b>Strong symmetry:</b> However, to deduce the <b>conservation of angular momentum</b>, the law must hold in its <i>strong version</i>; that is, both forces must also act along the same straight line that geometrically joins the two particles <span class="MathJax">\(( \, \vec{r}_{j} \times {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, \vec{r}_{i} \times {\mathbf{F}_{i\hspace{-0.030em}j}} \, )\)</span>.</li>
+<li class="liver"><b>Strong symmetry:</b> However, to deduce the <b>conservation of angular momentum</b>, the law must hold in its <i>strong version</i>; that is, both forces must also act along the same straight line that geometrically joins the two particles $( \, \vec{r}_{j} \times {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, \vec{r}_{i} \times {\mathbf{F}_{i\hspace{-0.030em}j}} \, )$.</li>
 
 <li><b>Instantaneity of the interaction:</b> The classical formulation implicitly assumes that the effect of the force propagates instantaneously through space (action at a distance), so that the pair of reciprocal forces operates simultaneously without any time delay.</li>
 
@@ -300,68 +330,33 @@
 
 <p>On the other hand, it should be noted that Newton's third law does not constitute a law about the kinematics of particles, but rather establishes a <b>structural feature inherent to real interactions</b> in classical mechanics. Therefore, in the same way that the first law was logically absorbed by the second, it is to be expected that when the forces of nature are formulated rigorously (which will be addressed in the next section), the third law will cease to be an independent axiom and will be absorbed as a consequence derived from the very structure of each interaction.</p>
 
-<p>Finally, it is essential to understand that the eventual invalidity or violation of Newton's third law does not compromise the validity of the second law in any way (nor, by extension, that of the first). Despite the traditional belief that presents the three laws as a monolithic and indissoluble block, the dynamics of a particle operates in a fully consistent manner through <span class="MathJax">\(( \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span>, even when the principles of action and reaction (in their weak and strong versions) cease to hold universally.&nbsp;<a href="#N131">[N131]</a></p>
+<p>Finally, it is essential to understand that the eventual invalidity or violation of Newton's third law does not compromise the validity of the second law in any way (nor, by extension, that of the first). Despite the traditional belief that presents the three laws as a monolithic and indissoluble block, the dynamics of a particle operates in a fully consistent manner through $( \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, )$, even when the principles of action and reaction (in their weak and strong versions) cease to hold universally.&nbsp;<a href="#N131">[N131]</a></p>
 
 <h2 id="T04">Forces of Nature</h2>
 
-<p style="color: #c63636;">PROVISIONAL TEXT</p>
+<p>In the usual didactic development of physics, expressions such as Newton's universal law of gravitation or Coulomb's law are typically qualified as "empirical laws discovered experimentally". However, under rigorous epistemological analysis, <b>such formulations do not operate as inductive empirical laws, but as constitutive definitions of the physical model</b>.</p>
 
-<p>In the usual didactic development of physics, expressions such as Newton's law of universal gravitation <span class="MathJax">\(( \, {\mathbf{FG}}_{\hspace{+0.045em}ij} \,=\, \dots \, )\)</span> or Coulomb's law <span class="MathJax">\(( \, {\mathbf{FE}}_{\hspace{+0.045em}ij} \,=\, \dots \, )\)</span> are often characterized as "empirical laws discovered experimentally". However, under a rigorous epistemological analysis, <b>such formulations do not operate as inductive empirical laws, but as constitutive definitions of the physical model</b>.</p>
+<p>Indeed, for an expression such as $( \, {\mathbf{F}{\scriptstyle{\mathrm{G}}}}_{\hspace{+0.045em}ij} = -\,G \, \frac{m_i \, m_j}{r_{ij}^2} \, \hat{\mathbf{r}}_{ij} \, )$ to be experimentally corroborated as an independent empirical law, it would be necessary to measure both sides of the equality autonomously: on the one hand, the parameters and variables of the right-hand side (&nbsp;gravitational masses, positions, and the gravitational constant&nbsp;) and, on the other, the value of the individual interaction force $( \, {\mathbf{F}{\scriptstyle{\mathrm{G}}}}_{\hspace{+0.045em}ij} \, )$ on the left-hand side. However, individual interaction forces —and even the net force itself— are not directly observable or measurable apart from dynamics; consequently, that expression does not constitute an empirically testable statement on its own, but rather the <b>constitutive definition</b> of the gravitational force term $( \, {\mathbf{F}{\scriptstyle{\mathrm{G}}}}_{\hspace{+0.045em}ij} \,\doteq\, -\,G \, \frac{m_i \, m_j}{r_{ij}^2} \, \hat{\mathbf{r}}_{ij} \, )$.</p>
 
-<p>Newton's law of universal gravitation or Coulomb's law can only be empirical principles if they are previously defined: <span class="MathJax">\(( \, {\mathbf{FG}}_{\hspace{+0.045em}ij} \,\doteq\, \dots \, )\)</span> and <span class="MathJax">\(( \, {\mathbf{FE}}_{\hspace{+0.045em}ij} \,\doteq\, \dots \, )\)</span> ...&nbsp;in development.</p>
+<p>Consequently, in order to contrast dynamics with reality, the theory requires establishing a <b>closed and explicit set of interaction definitions</b>, where each specific force $( \, {\mathbf{F}{\scriptstyle{\mathrm{N}}}}_{\hspace{+0.045em}ij} \,\doteq\, \dots \, )$ acting on a particle $i$ (&nbsp;exerted by another particle $j$&nbsp;) is defined in terms of intrinsic parameters of the particles (&nbsp;such as gravitational masses or electric charges&nbsp;) and kinematic variables (&nbsp;such as relative positions&nbsp;).&nbsp;<a href="#N141">[N141]</a></p>
 
-<p>...</p>
+<p>From this set of interactions, the <b>net force</b> $( \, {\mathbf{F}}_{\hspace{+0.045em}i} \, )$ acting on a particle $i$ is formally defined as the vector sum of those interactions:</p>
 
-<p>Therefore, the reality is that the theory must establish a <b>closed and explicit set of interaction definitions</b>, where each specific force <span class="MathJax">\(( \, {\mathbf{FN}}_{\hspace{+0.045em}ij} \,\doteq\, \dots \, )\)</span> acting on a particle <span class="MathJax">\(i\)</span> (&nbsp;exerted by another particle <span class="MathJax">\(j\)</span>&nbsp;) is defined by means of intrinsic parameters of the particles (&nbsp;such as: gravitational masses, electric charges, etc.&nbsp;) and variables of the particles (&nbsp;such as: positions, etc.&nbsp;)</p>
+<p class="math-block">${\mathbf{F}}_{\hspace{+0.045em}i} \,\doteq\, \sum_{j \neq i} {\mathbf{F}{\scriptstyle{\mathrm{G}}}}_{\hspace{+0.045em}ij} + \sum_{j \neq i} {\mathbf{F}{\scriptstyle{\mathrm{E}}}}_{\hspace{+0.045em}ij} + \dots + \sum_{j \neq i} {\mathbf{F}{\scriptstyle{\mathrm{N}}}}_{\hspace{+0.045em}ij}$</p>
 
-<p>Then, the net force <span class="MathJax">\(( \, {\mathbf{F}}_{\hspace{+0.045em}i} \, )\)</span> acting on a particle <span class="MathJax">\(i\)</span> is defined as the superimposed sum of the closed set of constitutive interaction definitions: <span class="MathJax">\(( \, {\mathbf{F}}_{\hspace{+0.045em}i} \,\doteq \,\sum {\mathbf{F1}}_{\hspace{+0.045em}i} + \sum {\mathbf{F2}}_i + \dots + \sum {\mathbf{FN}}_{\hspace{+0.045em}i} \, )\)</span></p>
+<p>The <i>closed</i> character of this definition performs a vital epistemological function: it prevents the theory from introducing improvised "<i>ad hoc</i> forces" to justify unexpected experimental deviations, thereby ensuring that Newton's second law $( \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, )$ operates as a genuinely falsifiable empirical principle. If the observed acceleration $( \, {\vec{a}}_{\hspace{+0.045em}i} \, )$ differs from that predicted by the closed set of interactions, it is the entire model that is exposed to experimental refutation.</p>
 
-<p>By establishing that the set of interactions <span class="MathJax">\(( \, \sum {\mathbf{F1}}_i + \sum {\mathbf{F2}}_i + \dots + \sum {\mathbf{FN}}_i \, )\)</span> is <i>closed</i>, the theory is prevented from introducing improvised "<i>ad hoc</i> forces" to justify unexpected experimental deviations, but the main purpose is so that Newton's second law can be considered an empirical principle and, therefore, can be corroborated or refuted by experience. If the observed acceleration <span class="MathJax">\(( \, {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span> differs from what Newton's second law establishes <span class="MathJax">\(( \, {\mathbf{F}}_i \,\neq\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span>, then it is the entire model that is exposed to empirical refutation.</p>
+<p>In summary, these definitions operate essentially as a <b>conceptual bridge</b>: they connect the metric and geometric parameters of the interactions with the product $( \, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, )$. In this way, what experience truly tests globally is Newton's second law in its developed and approximated version (&nbsp;discarding the billions of terms whose interactions are practically zero&nbsp;).&nbsp;<a href="#N142">[N142]</a></p>
 
-<p>...</p>
+<p>Likewise, with regard to mutual interaction, this structure reveals why <b>Newton's third law is not an independent axiom, but a consequence deducible from each interaction definition</b>. By explicitly formulating each pairwise force function $( \, {\mathbf{F}{\scriptstyle{\mathrm{N}}}}_{\hspace{+0.045em}ij} \, )$, it is the very mathematical structure of that definition that determines whether the interaction satisfies the action–reaction principle in its weak version $( \, {\mathbf{F}{\scriptstyle{\mathrm{N}}}}_{j\hspace{+0.090em}i} \,=\, -\,{\mathbf{F}{\scriptstyle{\mathrm{N}}}}_{i\hspace{-0.030em}j} \, )$, in its strong version (&nbsp;if it also points along the line joining the two particles&nbsp;), or not at all.</p>
 
-<p>From a purely logical and computational perspective, the formulation of classical mechanics can be understood as a progressive process of <b>code compression and refactoring</b>. Far from diminishing the merit of the Newtonian architecture, this reading highlights the brilliance of its design: the creation of abstractions capable of synthesizing an immense amount of empirical data into an elegant and executable interface.</p>
-
-<p>To understand why the particular expressions (such as gravitational attraction or the electrostatic force) are <b>model definitions</b> and not fundamental laws independent of motion, it suffices to observe the evolution of the dynamical equation at three levels of abstraction:</p>
-
-<b>1. The raw source code (Fully uncompressed equation)</b>
-<p>At the most elementary and intrinsic level, the empirical reality of a system of <span class="MathJax">\(N\)</span> particles knows nothing of abstract groupings. The real equation of motion for an individual particle <span class="MathJax">\(i\)</span> is presented in a fully "uncompressed" form, detailing each of the individual reciprocal interactions:</p>
-
-<p><span class="MathJax">\( \mathbf{F1}_{i1} + \mathbf{F1}_{i2} + \dots + \mathbf{F1}_{iN} \, + \)</span><br><span class="MathJax">\( \mathbf{F2}_{i1} + \mathbf{F2}_{i2} + \dots + \mathbf{F2}_{iN} \, + \)</span><br><span class="MathJax">\( \dots \, + \)</span><br><span class="MathJax">\( \mathbf{FT}_{i1} + \mathbf{FT}_{i2} + \dots + \mathbf{FT}_{iN} \)</span><br><span class="MathJax">\( = \, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \)</span></p>
-
-<p>This is the "plain source code": conceptually exact and purely empirical, but operationally intractable. If we tried to compute the motion of the universe at this level, we would need to invoke an explicit line of code for every existing pair of particles.</p>
-
-<b>2. Function creation and modularization (Definitions of the Forces of Nature)</b>
-<p>To avoid infinite redundancy, theoretical physics refactors the code by grouping identical behaviors into <b>reusable modules or functions</b>. This is where the so-called "forces of nature" are born. For example, the law of universal gravitation does not constitute an axiom of dynamics in itself, but rather the definition of the body of a mathematical function that encapsulates a specific type of interaction at a distance:</p>
-
-<p><span class="MathJax">\( \text{function } {\mathbf{FG}}_{\hspace{+0.045em}ij}(m_i, m_j, {{\vec{r}}}_{ij}) \,\doteq\, -G \frac{m_i m_j}{r_{ij}^2} \hat{{{r}}}_{ij} \)</span></p>
-
-<p>By defining and invoking these modules (gravitational, electrostatic, etc.), the original code becomes semi-compressed, reducing the summation of individual interactions to a set of forces classified by their physical origin:</p>
-
-<p><span class="MathJax">\( \sum \mathbf{FG}_{\hspace{+0.045em}i} + \sum \mathbf{FE}_{\hspace{+0.045em}i} + \dots + \sum \mathbf{FT}_{i} \, = \, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \)</span></p>
-
-<b>3. Optimization and maximum abstraction (The Net Force)</b>
-<p>Finally, the Newtonian framework reaches its highest level of elegance by encapsulating the entire left-hand side of the equation into a single interface variable: the <b>net force</b> <span class="MathJax">\( ( \mathbf{F}_{i} \,\doteq\, \sum \mathbf{FG}_{\hspace{+0.045em}i} + \sum \mathbf{FE}_{\hspace{+0.045em}i} + \dots + \sum \mathbf{FT}_{i} ) \)</span>. The equation of motion acquires its celebrated and synthetic form:</p>
-
-<p><span class="MathJax">\( {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \)</span></p>
-
-<p>Under this epistemological lens, it becomes evident that the second law is the <b>kernel or main execution engine</b>, while the force of gravity and the rest of the interactions are <b>input definitions (inputs)</b> created by physicists to feed said engine. Confusing a force definition with a fundamental law of dynamics is equivalent to confusing the body of an auxiliary function with the compiler itself.</p>
-
-<p>...</p>
-
-<p>On the other hand, Newton's third law is formally deduced from the definitions of the forces of nature&nbsp;...</p>
-
-<p>...</p>
-
-<p>Finally, how does Newtonian mechanics —and therefore classical mechanics in general— evolve?&nbsp;...</p>
-
-<p>In development&nbsp;...</p>
+<p>Finally, this epistemological conception clarifies how the theory behaves in the face of empirical refutation. By upholding a closed set of interaction definitions, any systematic discrepancy between the predicted and the observed acceleration forces a strict bifurcation: either the set is formally extended by incorporating a new properly coupled constitutive interaction, or it is acknowledged that the structural limits of validity of the paradigm itself have been reached, giving way to deeper theoretical frameworks.</p>
 
 <h2 class="part">PART II</h2>
 
 <h2 id="T05">Equation of Motion</h2>
 
-<p class="strong"><i>Every net force <span class="MathJax">\({\mathbf{F}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> of inertial mass <span class="MathJax">\(m_i\)</span> produces in the particle <span class="MathJax">\(i\)</span> an acceleration <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> according to the following equation: <span class="MathJax">\([ \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, ]\)</span></i></p>
+<p class="strong"><i>Every net force ${\mathbf{F}}_i$ acting on a particle $i$ of inertial mass $m_i$ produces in the particle $i$ an acceleration ${\vec{a}}_{\hspace{+0.045em}i}$ according to the following equation: $[ \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, ]$</i></p>
 
 <p>In development&nbsp;...</p>
 
@@ -479,13 +474,19 @@
 
 <p id="N111"><b>[N111]</b></p>
 
-<p>Newton's first law (&nbsp;and above all Galileo Galilei's, of course&nbsp;) has an enormous historical importance since it establishes, contrary to what Aristotle's philosophy postulated, that a particle, in order to continue in its state of uniform rectilinear motion, does not need any external agent. Therefore, this law completely changed the way of conceiving the Universe. But more than 300 years have passed since Newton's publication <a href="#R01">[R01]</a> and this article is a contemporary analysis. Moreover, Newton's first law was not postulated as it is postulated in this article, since this article does not intend to be a detailed historical description of classical mechanics but rather a logical, theoretical and philosophical analysis of classical mechanics.</p>
+<p><b>Newton's First Law</b></p>
+
+<p>Newton's first law (&nbsp;and above all Galileo Galilei's, of course&nbsp;) has an enormous historical importance since it establishes, contrary to what Aristotle's philosophy postulated, that a particle, in order to continue in its state of uniform rectilinear motion, does not need any external agent. Therefore, this law completely changed the way of conceiving the Universe. But more than 300 years have passed since Newton's publication <a href="#R01">[R01]</a> and this article is a contemporary analysis. Moreover, Newton's first law was not postulated as it is postulated in this article, since this article does not intend to be a detailed historical description of classical mechanics but rather a theoretical-philosophical analysis of classical mechanics.</p>
 
 <p id="N121"><b>[N121]</b></p>
 
-<p>There exists an alternative epistemological approach (&nbsp;historically associated with Mach-type views <a href="#R08">[R08]</a>&nbsp;) in which inertial mass is not defined <i>a priori</i> by the theory, but is empirically deduced upon experimentally verifying that the quotient between the net force and the acceleration obtained on the same particle turns out to be a constant value <span class="MathJax">\(( \, {\mathbf{F}}_i \hspace{+0.060em} / {\vec{a}}_{\hspace{+0.045em}i} \,=\, k_{\hspace{+0.045em}i} \, )\)</span>, then defining that experimental constant as the inertial mass <span class="MathJax">\(( \, m_i \doteq k_{\hspace{+0.045em}i} \, )\)</span>. However, this work does not adopt that path, because the empirical route runs into an insurmountable obstacle: in states of rest or of uniform rectilinear motion (URM), the acceleration <span class="MathJax">\(( \, {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span> is null, which renders the operational quotient inapplicable and prevents the inertial mass from being defined in those states. Even more seriously, since the acceleration <span class="MathJax">\(( \, {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span> is not a quantity invariant under transformations between reference frames, defining the inertial mass <span class="MathJax">\(( \, m_i \, )\)</span> from <span class="MathJax">\(( \, {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span> would turn a supposedly intrinsic property of matter into an observer-dependent magnitude, destroying its status as a scalar constant characteristic of the particle. According to this work, defining <i>a priori</i> the inertial mass as a constant scalar intrinsic to the particle (just as the electric charge and the gravitational mass are defined) is the only way to avoid this kinematic chaos and preserve the logical consistency of dynamics.</p>
+<p><b>Newton's Second Law</b></p>
+
+<p>There exists an alternative epistemological approach (&nbsp;historically associated with Mach-type views <a href="#R08">[R08]</a>&nbsp;) in which inertial mass is not defined <i>a priori</i> by the theory, but is empirically deduced upon experimentally verifying that the quotient between the net force and the acceleration obtained on the same particle turns out to be a constant value $( \, \|{{\mathbf{F}}_i}\| \hspace{+0.060em} / \|{\vec{a}}_{\hspace{+0.045em}i}\| \,=\, k_{\hspace{+0.045em}i} \, )$, then defining that experimental constant as the inertial mass $( \, m_i \doteq k_{\hspace{+0.045em}i} \, )$. However, this work does not adopt that path, because the empirical route runs into an insurmountable obstacle: in states of rest or of uniform rectilinear motion (URM), the acceleration $( \, {\vec{a}}_{\hspace{+0.045em}i} \, )$ is null, which renders the operational quotient inapplicable and prevents the inertial mass from being defined in those states. Even more seriously, since the acceleration $( \, {\vec{a}}_{\hspace{+0.045em}i} \, )$ is not a quantity invariant under transformations between reference frames, defining the inertial mass $( \, m_i \, )$ from $( \, {\vec{a}}_{\hspace{+0.045em}i} \, )$ would turn a supposedly intrinsic property of matter into an observer-dependent magnitude, destroying its status as a scalar constant characteristic of the particle. According to this work, defining <i>a priori</i> the inertial mass as a constant scalar intrinsic to the particle (just as the electric charge and the gravitational mass are defined) is the only way to avoid this kinematic chaos and preserve the logical consistency of dynamics.</p>
 
 <p id="N131"><b>[N131]</b></p>
+
+<p><b>Newton's Third Law</b></p>
 
 <p>There is a common tendency in classical physics textbooks to present Newton's three laws as a monolithic and indissoluble block, implicitly suggesting that modifying or falsifying the third law would bring about the instantaneous collapse of the entire dynamical edifice. However, a rigorous axiomatic analysis demonstrates that this is epistemologically false.</p>
 
@@ -495,9 +496,9 @@
 
 <ul>
 
-<li class="liver"><b>The second law does not require the third for its validity:</b> The fundamental equation of motion <span class="MathJax">\(( \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, )\)</span> and the definition of inertial mass operate at the level of the individual particle in its relation to the net force. It is perfectly conceivable, from a logical and formal standpoint, to develop a consistent dynamics in which particles strictly satisfy the proportionality between net force and acceleration, <b>even when the principle of action and reaction <span class="MathJax">\(( \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, )\)</span> does not hold universally</b>.</li>
+<li class="liver"><b>The second law does not require the third for its validity:</b> The fundamental equation of motion $( \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, )$ and the definition of inertial mass operate at the level of the individual particle in its relation to the net force. It is perfectly conceivable, from a logical and formal standpoint, to develop a consistent dynamics in which particles strictly satisfy the proportionality between net force and acceleration, <b>even when the principle of action and reaction $( \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, )$ does not hold universally</b>.</li>
 
-<li class="liver"><b>What breaks is not the dynamics, but the balance of internal forces:</b> If in a system of particles the third law ceases to hold (&nbsp;that is, if <span class="MathJax">\({\mathbf{F}_{j\hspace{+0.090em}i}} \neq - \, {\mathbf{F}_{i\hspace{-0.030em}j}}\)</span>&nbsp;), the immediate consequence is not the invalidity of the second law, but rather that the internal forces no longer cancel each other out. This alters the <b>purely mechanical conservation of linear momentum</b>, causing the system to change its global motion even when it is isolated from visible external influences.</li>
+<li class="liver"><b>What breaks is not the dynamics, but the balance of internal forces:</b> If in a system of particles the third law ceases to hold (&nbsp;that is, if ${\mathbf{F}_{j\hspace{+0.090em}i}} \neq - \, {\mathbf{F}_{i\hspace{-0.030em}j}}$&nbsp;), the immediate consequence is not the invalidity of the second law, but rather that the internal forces no longer cancel each other out. This alters the <b>purely mechanical conservation of linear momentum</b>, causing the system to change its global motion even when it is isolated from visible external influences.</li>
 
 <li><b>Opening toward alternative dynamics and field theory:</b> Recognizing this axiomatic independence makes it possible to conceive and formalize <i>alternative dynamics</i> in which the interaction symmetry is broken without compromising the deterministic character of motion <a href="#R16">[R16]</a>. This is precisely what happens when studying more complex interactions —such as pre-relativistic electromagnetism or systems where forces depend on velocities and time delays—, where the third law in its strict action-at-a-distance formulation ceases to hold. The "remainder" of momentum that appears not to be conserved among the particles does not invalidate Newtonian mechanics; rather, it evidences that the system is interacting with an underlying physical structure: the field.</li>
 
@@ -505,123 +506,208 @@
 
 <p>Therefore, Newton's third law is not a foundational dogma of dynamics nor a logical requirement for the validity of the second law, but a <b>particular symmetry condition</b> —typical of static central forces— that acts as a bridge and historical hinge toward field physics. Understanding this formal freedom liberates classical mechanics from its dogmatic rigidity and restores it to its true category: a representative and deductive model of nature, flexible and open to generalizations.</p>
 
-<h2 id="A0">Annexes</h2>
+<p id="N141"><b>[N141]</b></p>
+
+<p><b>Forces of Nature</b></p>
+
+<p>As a methodological roadmap, consider a classical universe governed exclusively by two fundamental interactions: gravitation and electrostatics.</p>
+
+<p><b>Exemplary model of a closed set: Gravitation and Electrostatics.</b></p>
+
+<p><b>1. Gravitational interaction:</b> The gravitational force $( \, {\mathbf{F}{\scriptstyle{\mathrm{G}}}}_{\hspace{+0.045em}ij} \, )$ exerted on a particle $i$ by another particle $j$ is established through the following constitutive definition:</p>
+
+<p class="math-block">${\mathbf{F}{\scriptstyle{\mathrm{G}}}}_{\hspace{+0.045em}ij} \,\doteq\, -\,G \, \dfrac{m_i \, m_j}{\|\vec{r}_i - \vec{r}_j\|^3} \, (\vec{r}_i - \vec{r}_j)$</p>
+
+<p>where $G$ is defined <i>a priori</i> as a positive scalar constant intrinsic to the interaction (&nbsp;historically called the <i>universal gravitational constant</i>&nbsp;) whose numerical value must be obtained experimentally (&nbsp;$G \approx 6.674 \times 10^{-11}\,\text{N}\cdot\text{m}^2/\text{kg}^2$&nbsp;); $m_i$ and $m_j$ represent the <b>gravitational masses</b> of the particles, defined <i>a priori</i> as intrinsic scalar parameters proper to each particle whose numerical value must also be obtained experimentally; and $\vec{r}_i$, $\vec{r}_j$ are their instantaneous position vectors with respect to the origin of the reference frame $( \, \vec{r}_i \neq \vec{r}_j \, )$.</p>
+
+<p>Empirical evidence shows that gravitational mass is always strictly positive $(m \gt 0)$ —giving rise only to attractions—, that it is an additive quantity (the gravitational mass of a composite system equals the arithmetic sum of the individual gravitational masses of its constituent particles), and that it is universally proportional to inertial mass (&nbsp;weak equivalence principle, which allows both scales to be equated through an appropriate choice of $G$&nbsp;).</p>
+
+<p>Likewise, since it depends exclusively on invariant scalars and given that in classical kinematics the relative positions $(\vec{r}_i - \vec{r}_j)$ are invariant under any change of reference frame, it follows immediately that the vector ${\mathbf{F}{\scriptstyle{\mathrm{G}}}}_{\hspace{+0.045em}ij}$ retains its full invariance in every reference frame.</p>
+
+<p>On the other hand, upon interchanging the indices $i \leftrightarrow j$, the algebraic structure of the definition directly yields ${\mathbf{F}{\scriptstyle{\mathrm{G}}}}_{j\hspace{+0.090em}i} = - \, {\mathbf{F}{\scriptstyle{\mathrm{G}}}}_{i\hspace{-0.030em}j}$ along the line joining the two particles, thereby satisfying Newton's third law in its <b>strong version</b> (&nbsp;and, a fortiori, in its weak version&nbsp;).</p>
+
+<p>Finally, the net gravitational force $( \, {\mathbf{F}{\scriptstyle{\mathrm{G}}}}_{\hspace{+0.045em}i} \, )$ acting on particle $i$ is defined by:</p>
+
+<p class="math-block">${\mathbf{F}{\scriptstyle{\mathrm{G}}}}_{\hspace{+0.045em}i} \,\doteq\, \sum_{j \neq i} {\mathbf{F}{\scriptstyle{\mathrm{G}}}}_{\hspace{+0.045em}ij} \,=\, -\,G \, \sum_{j \neq i} \dfrac{m_i \, m_j}{\|\vec{r}_i - \vec{r}_j\|^3} \, (\vec{r}_i - \vec{r}_j)$</p>
+
+<p>where ${\mathbf{F}{\scriptstyle{\mathrm{G}}}}_{\hspace{+0.045em}i}$ results from summing the contributions of all other particles $j$ of the system on particle $i$.</p>
+
+<p><b>2. Electrostatic interaction:</b> The electrostatic force $( \, {\mathbf{F}{\scriptstyle{\mathrm{E}}}}_{\hspace{+0.045em}ij} \, )$ exerted on a particle $i$ by another particle $j$ is established through the following constitutive definition:</p>
+
+<p class="math-block">${\mathbf{F}{\scriptstyle{\mathrm{E}}}}_{\hspace{+0.045em}ij} \,\doteq\, k_e \, \dfrac{q_i \, q_j}{\|\vec{r}_i - \vec{r}_j\|^3} \, (\vec{r}_i - \vec{r}_j)$</p>
+
+<p>where $k_e$ is defined <i>a priori</i> as a positive scalar constant intrinsic to the interaction (&nbsp;historically called the <i>Coulomb constant</i>&nbsp;) whose numerical value must be obtained experimentally (&nbsp;$k_e \approx 8.987 \times 10^{9}\,\text{N}\cdot\text{m}^2/\text{C}^2$&nbsp;); $q_i$ and $q_j$ represent the <b>electric charges</b> of the particles, defined <i>a priori</i> as intrinsic scalar parameters proper to each particle whose numerical value must also be obtained experimentally; and $\vec{r}_i$, $\vec{r}_j$ are their instantaneous position vectors with respect to the origin of the reference frame $( \, \vec{r}_i \neq \vec{r}_j \, )$.</p>
+
+<p>Empirical evidence indicates that electric charge can be positive, negative, or zero ($q \in \mathbb{R}$), giving rise both to repulsions and to attractions (or to the absence of electrostatic interaction when either charge is neutral), and that it is an additive quantity (the electric charge of a composite system equals the algebraic sum of the individual charges of its constituent particles).</p>
+
+<p>Likewise, since it depends exclusively on invariant scalars and given that in classical kinematics the relative positions $(\vec{r}_i - \vec{r}_j)$ are invariant under any change of reference frame, it follows immediately that the vector ${\mathbf{F}{\scriptstyle{\mathrm{E}}}}_{\hspace{+0.045em}ij}$ retains its full invariance in every reference frame.</p>
+
+<p>On the other hand, upon interchanging the indices $i \leftrightarrow j$, the algebraic structure of the definition directly yields ${\mathbf{F}{\scriptstyle{\mathrm{E}}}}_{j\hspace{+0.090em}i} = - \, {\mathbf{F}{\scriptstyle{\mathrm{E}}}}_{i\hspace{-0.030em}j}$ along the line joining the two particles, thereby satisfying Newton's third law in its <b>strong version</b> (&nbsp;and, a fortiori, in its weak version&nbsp;).</p>
+
+<p>Finally, the net electrostatic force $( \, {\mathbf{F}{\scriptstyle{\mathrm{E}}}}_{\hspace{+0.045em}i} \, )$ acting on particle $i$ is defined by:</p>
+
+<p class="math-block">${\mathbf{F}{\scriptstyle{\mathrm{E}}}}_{\hspace{+0.045em}i} \,\doteq\, \sum_{j \neq i} {\mathbf{F}{\scriptstyle{\mathrm{E}}}}_{\hspace{+0.045em}ij} \,=\, k_e \, \sum_{j \neq i} \dfrac{q_i \, q_j}{\|\vec{r}_i - \vec{r}_j\|^3} \, (\vec{r}_i - \vec{r}_j)$</p>
+
+<p>where ${\mathbf{F}{\scriptstyle{\mathrm{E}}}}_{\hspace{+0.045em}i}$ results from summing the contributions of all other particles $j$ of the system on particle $i$.</p>
+
+<p><b>3. Closure of the set and total net force:</b> Under this closed and explicit set of two constitutive definitions, the net force $( \, {\mathbf{F}}_{\hspace{+0.045em}i} \, )$ acting on any particle $i$ of the model is uniquely determined by:</p>
+
+<p>${\mathbf{F}}_{\hspace{+0.045em}i} \,\doteq\, {\mathbf{F}{\scriptstyle{\mathrm{G}}}}_{\hspace{+0.045em}i} + {\mathbf{F}{\scriptstyle{\mathrm{E}}}}_{\hspace{+0.045em}i}$</p>
+
+<p>In this way, the dynamical equation $( \, {\mathbf{F}}_{\hspace{+0.045em}i} = m_i \, \vec{a}_{\hspace{+0.045em}i} \, )$ acquires full empirical and falsifiable content, with no room for improvised terms.</p>
+
+<p id="N142"><b>[N142]</b></p>
+
+<p><b>Forces of Nature</b></p>
+
+<p>From a purely logical and computational perspective, the formulation of classical mechanics can be understood as a progressive process of <b>code compression and refactoring</b>. Far from diminishing the merit of the Newtonian architecture, this reading highlights the brilliance of its design: the creation of abstractions capable of synthesizing an immense amount of empirical data into an elegant and executable interface.</p>
+
+<p>To understand why the particular expressions (such as gravitational attraction or the electrostatic force) are <b>model definitions</b> and not fundamental laws independent of motion, it suffices to observe the evolution of the dynamical equation at three levels of abstraction:</p>
+
+<b>1. The raw source code (Fully uncompressed equation)</b>
+<p>At the most elementary and intrinsic level, the empirical reality of a system of $n$ particles knows nothing of abstract groupings. The real equation of motion for an individual particle $i$ is presented in a fully "uncompressed" form, detailing each of the individual reciprocal interactions:</p>
+
+<p>${\mathbf{F}{\scriptstyle{\mathrm{G}}}}_{i1} + {\mathbf{F}{\scriptstyle{\mathrm{G}}}}_{i2} + \dots + {\mathbf{F}{\scriptstyle{\mathrm{G}}}}_{in} \, +$<br><br>${\mathbf{F}{\scriptstyle{\mathrm{E}}}}_{i1} + {\mathbf{F}{\scriptstyle{\mathrm{E}}}}_{i2} + \dots + {\mathbf{F}{\scriptstyle{\mathrm{E}}}}_{in} \, + \, \dots \, +$<br><br>${\mathbf{F}{\scriptstyle{\mathrm{N}}}}_{i1} + {\mathbf{F}{\scriptstyle{\mathrm{N}}}}_{i2} + \dots + {\mathbf{F}{\scriptstyle{\mathrm{N}}}}_{in} \, = \, m_i \, {\vec{a}}_{\hspace{+0.045em}i}$</p>
+
+<p>This is the "plain source code": conceptually exact and purely empirical, but operationally intractable. If we tried to compute the motion of the universe at this level, we would need to invoke an explicit line of code for every existing pair of particles.</p>
+
+<b>2. Function creation and modularization (Definitions of the Forces of Nature)</b>
+<p>To avoid massive redundancy, theoretical physics refactors the code by grouping identical behaviors into <b>reusable modules or functions</b>. This is where the so-called "forces of nature" are born. For example, the law of universal gravitation does not constitute an axiom of dynamics in itself, but rather the definition of the body of a mathematical function that encapsulates a specific type of interaction at a distance:</p>
+
+<p class="math-block">$\mathrm{function} \:\: {\mathbf{F}{\scriptstyle{\mathrm{G}}}}_{\hspace{+0.045em}ij}\,(m_i, m_j, {\mathbf{r}}_{ij}) \,\doteq\, -\,G \, \dfrac{m_i \, m_j}{r_{ij}^2} \, \hat{\mathbf{r}}_{ij}$</p>
+
+<p>By defining and invoking these modules (gravitational, electrostatic, etc.), the original code becomes semi-compressed, reducing the summation of individual interactions to a set of forces classified by their physical origin:</p>
+
+<p class="math-block">$\sum_{j \neq i} {\mathbf{F}{\scriptstyle{\mathrm{G}}}}_{\hspace{+0.045em}ij} + \sum_{j \neq i} {\mathbf{F}{\scriptstyle{\mathrm{E}}}}_{\hspace{+0.045em}ij} + \dots + \sum_{j \neq i} {\mathbf{F}{\scriptstyle{\mathrm{N}}}}_{\hspace{+0.045em}ij} \, = \, m_i \, {\vec{a}}_{\hspace{+0.045em}i}$</p>
+
+<b>3. Optimization and maximum abstraction (The Net Force)</b>
+<p>Finally, the Newtonian framework reaches its highest level of elegance by encapsulating the entire left-hand side of the equation into a single interface variable: the <b>net force</b> $( \, \mathbf{F}_{i} \, )$.</p>
+
+<p class="math-block">$\mathbf{F}_{i} \,\doteq\, \sum_{j \neq i} {\mathbf{F}{\scriptstyle{\mathrm{G}}}}_{\hspace{+0.045em}ij} + \sum_{j \neq i} {\mathbf{F}{\scriptstyle{\mathrm{E}}}}_{\hspace{+0.045em}ij} + \dots + \sum_{j \neq i} {\mathbf{F}{\scriptstyle{\mathrm{N}}}}_{\hspace{+0.045em}ij}$</p>
+
+<p>Consequently, the equation of motion acquires its celebrated and synthetic form:</p>
+
+<p>${\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i}$</p>
+
+<p>Under this epistemological lens, it becomes evident that Newton's second law is the <b>kernel or main execution engine</b>, while the force of gravity and the rest of the interactions are <b>input definitions (inputs)</b> created by physicists to feed said engine. Confusing a force definition with a fundamental law of dynamics is equivalent to confusing the body of an auxiliary function with the compiler itself.</p>
+
+<h2 id="AN">Annexes</h2>
 
 <h3>Annex I</h3>
 
 <h3>Newtonian Mechanics</h3>
 
-<p><b>Option 0 A:</b> Integrated by [&nbsp;The 3 Laws of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span>&nbsp;] and formulated only for [&nbsp;The Inertial Frames&nbsp;]</p>
+<p><b>Option 0 A:</b> Integrated by [&nbsp;The 3 Laws of Motion + The Forces of Nature ${\mathbf{F}}$&nbsp;] and formulated only for [&nbsp;The Inertial Frames&nbsp;]</p>
 
 <p>1st. Law of Motion: Every particle remains in its state of rest or of uniform rectilinear motion if no force acts on the particle.</p>
 
-<p>2nd. Law of Motion: Every net force <span class="MathJax">\({\mathbf{F}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> of inertial mass <span class="MathJax">\(m_i\)</span> produces in the particle <span class="MathJax">\(i\)</span> an acceleration <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> according to the following equation: <span class="MathJax">\([ \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, ]\)</span></p>
+<p>2nd. Law of Motion: Every net force ${\mathbf{F}}_i$ acting on a particle $i$ of inertial mass $m_i$ produces in the particle $i$ an acceleration ${\vec{a}}_{\hspace{+0.045em}i}$ according to the following equation: $[ \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, ]$</p>
 
-<p>3rd. Law of Motion: If a particle <span class="MathJax">\(i\)</span> exerts a force <span class="MathJax">\({\mathbf{F}_{j\hspace{+0.090em}i}}\)</span> on another particle <span class="MathJax">\(j\)</span> then the particle <span class="MathJax">\(j\)</span> exerts a force <span class="MathJax">\(-{\mathbf{F}_{i\hspace{-0.030em}j}}\)</span> equal and in the opposite direction on the particle <span class="MathJax">\(i\)</span>. <span class="MathJax">\([ \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, ]\)</span></p>
+<p>3rd. Law of Motion: If a particle $i$ exerts a force ${\mathbf{F}_{j\hspace{+0.090em}i}}$ on another particle $j$ then the particle $j$ exerts a force $-{\mathbf{F}_{i\hspace{-0.030em}j}}$ equal and in the opposite direction on the particle $i$. $[ \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, ]$</p>
 
-<p>Newtonian <span class="MathJax">\(\doteq {\mathbf{F}}_i\)</span> (&nbsp;<span class="MathJax">\({\mathbf{F}}_i\)</span> is invariant under transformations between inertial and non-inertial frames but <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> is only invariant under transformations between inertial frames&nbsp;)</p>
+<p>Newtonian $\doteq {\mathbf{F}}_i$ (&nbsp;${\mathbf{F}}_i$ is invariant under transformations between inertial and non-inertial frames but ${\vec{a}}_{\hspace{+0.045em}i}$ is only invariant under transformations between inertial frames&nbsp;)</p>
 
-<p><b>Option 0 B:</b> Integrated by [&nbsp;The Equation of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span>&nbsp;] and formulated only for [&nbsp;The Inertial Frames&nbsp;]</p>
+<p><b>Option 0 B:</b> Integrated by [&nbsp;The Equation of Motion + The Forces of Nature ${\mathbf{F}}$&nbsp;] and formulated only for [&nbsp;The Inertial Frames&nbsp;]</p>
 
-<p>The Equation of Motion: Every net force <span class="MathJax">\({\mathbf{F}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> of inertial mass <span class="MathJax">\(m_i\)</span> produces in the particle <span class="MathJax">\(i\)</span> an acceleration <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> according to the following equation: <span class="MathJax">\([ \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, ]\)</span></p>
+<p>The Equation of Motion: Every net force ${\mathbf{F}}_i$ acting on a particle $i$ of inertial mass $m_i$ produces in the particle $i$ an acceleration ${\vec{a}}_{\hspace{+0.045em}i}$ according to the following equation: $[ \, {\mathbf{F}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, ]$</p>
 
 <p>The Equation of Motion is the 2nd. Law of Motion, the 1st. Law of Motion is deduced from The Equation of Motion considering that if no force acts on a particle then the net force acting on the particle is equal to zero and the 3rd. Law of Motion is deduced from The Forces of Nature.</p>
 
-<p>Newtonian <span class="MathJax">\(\doteq {\mathbf{F}}_i\)</span> (&nbsp;<span class="MathJax">\({\mathbf{F}}_i\)</span> is invariant under transformations between inertial and non-inertial frames but <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> is only invariant under transformations between inertial frames&nbsp;)</p>
+<p>Newtonian $\doteq {\mathbf{F}}_i$ (&nbsp;${\mathbf{F}}_i$ is invariant under transformations between inertial and non-inertial frames but ${\vec{a}}_{\hspace{+0.045em}i}$ is only invariant under transformations between inertial frames&nbsp;)</p>
 
-<p><b>Option 1 A:</b> Integrated by [&nbsp;The 3 Laws of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span> + The Fictitious Forces <span class="MathJax">\({\vec{Q}}\)</span>&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Frames&nbsp;]</p>
+<p><b>Option 1 A:</b> Integrated by [&nbsp;The 3 Laws of Motion + The Forces of Nature ${\mathbf{F}}$ + The Fictitious Forces ${\vec{Q}}$&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Frames&nbsp;]</p>
 
 <p>1st. Law of Motion: Every particle remains in its state of rest or of uniform rectilinear motion if no force acts on the particle.</p>
 
-<p>2nd. Law of Motion: Every net force <span class="MathJax">\({\vec{F}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> of inertial mass <span class="MathJax">\(m_i\)</span> produces in the particle <span class="MathJax">\(i\)</span> an acceleration <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> according to the following equation: <span class="MathJax">\([ \, {\vec{F}}_i \doteq {\mathbf{F}}_i + {\vec{Q}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, ]\)</span></p>
+<p>2nd. Law of Motion: Every net force ${\vec{F}}_i$ acting on a particle $i$ of inertial mass $m_i$ produces in the particle $i$ an acceleration ${\vec{a}}_{\hspace{+0.045em}i}$ according to the following equation: $[ \, {\vec{F}}_i \doteq {\mathbf{F}}_i + {\vec{Q}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, ]$</p>
 
-<p>3rd. Law of Motion: If a particle <span class="MathJax">\(i\)</span> exerts a force <span class="MathJax">\({\mathbf{F}_{j\hspace{+0.090em}i}}\)</span> on another particle <span class="MathJax">\(j\)</span> then the particle <span class="MathJax">\(j\)</span> exerts a force <span class="MathJax">\(-{\mathbf{F}_{i\hspace{-0.030em}j}}\)</span> equal and in the opposite direction on the particle <span class="MathJax">\(i\)</span>. <span class="MathJax">\([ \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, ]\)</span></p>
+<p>3rd. Law of Motion: If a particle $i$ exerts a force ${\mathbf{F}_{j\hspace{+0.090em}i}}$ on another particle $j$ then the particle $j$ exerts a force $-{\mathbf{F}_{i\hspace{-0.030em}j}}$ equal and in the opposite direction on the particle $i$. $[ \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, ]$</p>
 
-<p>Newtonian <span class="MathJax">\(\doteq {\vec{F}}_i\)</span> (&nbsp;<span class="MathJax">\({\vec{F}}_i\)</span> is not invariant under transformations between inertial and non-inertial frames and <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> is not invariant under transformations between inertial and non-inertial frames either&nbsp;)</p>
+<p>Newtonian $\doteq {\vec{F}}_i$ (&nbsp;${\vec{F}}_i$ is not invariant under transformations between inertial and non-inertial frames and ${\vec{a}}_{\hspace{+0.045em}i}$ is not invariant under transformations between inertial and non-inertial frames either&nbsp;)</p>
 
-<p><b>Option 1 B:</b> Integrated by [&nbsp;The Equation of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span> + The Fictitious Forces <span class="MathJax">\({\vec{Q}}\)</span>&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Frames&nbsp;]</p>
+<p><b>Option 1 B:</b> Integrated by [&nbsp;The Equation of Motion + The Forces of Nature ${\mathbf{F}}$ + The Fictitious Forces ${\vec{Q}}$&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Frames&nbsp;]</p>
 
-<p>The Equation of Motion: Every net force <span class="MathJax">\({\vec{F}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> of inertial mass <span class="MathJax">\(m_i\)</span> produces in the particle <span class="MathJax">\(i\)</span> an acceleration <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> according to the following equation: <span class="MathJax">\([ \, {\vec{F}}_i \doteq {\mathbf{F}}_i + {\vec{Q}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, ]\)</span></p>
+<p>The Equation of Motion: Every net force ${\vec{F}}_i$ acting on a particle $i$ of inertial mass $m_i$ produces in the particle $i$ an acceleration ${\vec{a}}_{\hspace{+0.045em}i}$ according to the following equation: $[ \, {\vec{F}}_i \doteq {\mathbf{F}}_i + {\vec{Q}}_i \,=\, m_i \, {\vec{a}}_{\hspace{+0.045em}i} \, ]$</p>
 
 <p>The Equation of Motion is the 2nd. Law of Motion, the 1st. Law of Motion is deduced from The Equation of Motion considering that if no force acts on a particle then the net force acting on the particle is equal to zero and the 3rd. Law of Motion is deduced from The Forces of Nature.</p>
 
-<p>Newtonian <span class="MathJax">\(\doteq {\vec{F}}_i\)</span> (&nbsp;<span class="MathJax">\({\vec{F}}_i\)</span> is not invariant under transformations between inertial and non-inertial frames and <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> is not invariant under transformations between inertial and non-inertial frames either&nbsp;)</p>
+<p>Newtonian $\doteq {\vec{F}}_i$ (&nbsp;${\vec{F}}_i$ is not invariant under transformations between inertial and non-inertial frames and ${\vec{a}}_{\hspace{+0.045em}i}$ is not invariant under transformations between inertial and non-inertial frames either&nbsp;)</p>
 
-<p><b>Option 2 A:</b> Integrated by [&nbsp;The 3 Laws of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span> + The Relational Magnitudes (&nbsp;<span class="MathJax">\({\mathbf{r}} , {\mathbf{v}} , {\mathbf{a}}\)</span>&nbsp;)&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Frames&nbsp;]</p>
+<p><b>Option 2 A:</b> Integrated by [&nbsp;The 3 Laws of Motion + The Forces of Nature ${\mathbf{F}}$ + The Relational Magnitudes (&nbsp;${\mathbf{r}} , {\mathbf{v}} , {\mathbf{a}}$&nbsp;)&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Frames&nbsp;]</p>
 
 <p>1st. Law of Motion: Every particle remains in its state of relational rest or of relational uniform rectilinear motion if no force acts on the particle.</p>
 
-<p>2nd. Law of Motion: Every net force <span class="MathJax">\({\mathbf{F}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> of inertial mass <span class="MathJax">\(m_i\)</span> produces in the particle <span class="MathJax">\(i\)</span> a relational acceleration <span class="MathJax">\({\mathbf{a}}_{\hspace{+0.045em}i}\)</span> according to the following equation: <span class="MathJax">\([ \, {\mathbf{F}}_i \,=\, m_i \, {\mathbf{a}}_{\hspace{+0.045em}i} \, ]\)</span></p>
+<p>2nd. Law of Motion: Every net force ${\mathbf{F}}_i$ acting on a particle $i$ of inertial mass $m_i$ produces in the particle $i$ a relational acceleration ${\mathbf{a}}_{\hspace{+0.045em}i}$ according to the following equation: $[ \, {\mathbf{F}}_i \,=\, m_i \, {\mathbf{a}}_{\hspace{+0.045em}i} \, ]$</p>
 
-<p>3rd. Law of Motion: If a particle <span class="MathJax">\(i\)</span> exerts a force <span class="MathJax">\({\mathbf{F}_{j\hspace{+0.090em}i}}\)</span> on another particle <span class="MathJax">\(j\)</span> then the particle <span class="MathJax">\(j\)</span> exerts a force <span class="MathJax">\(-{\mathbf{F}_{i\hspace{-0.030em}j}}\)</span> equal and in the opposite direction on the particle <span class="MathJax">\(i\)</span>. <span class="MathJax">\([ \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, ]\)</span></p>
+<p>3rd. Law of Motion: If a particle $i$ exerts a force ${\mathbf{F}_{j\hspace{+0.090em}i}}$ on another particle $j$ then the particle $j$ exerts a force $-{\mathbf{F}_{i\hspace{-0.030em}j}}$ equal and in the opposite direction on the particle $i$. $[ \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, ]$</p>
 
-<p>Newtonian <span class="MathJax">\(\doteq {\mathbf{F}}_i\)</span> (&nbsp;<span class="MathJax">\({\mathbf{F}}_i\)</span> is invariant under transformations between inertial and non-inertial frames and <span class="MathJax">\({\mathbf{a}}_{\hspace{+0.045em}i}\)</span> is also invariant under transformations between inertial and non-inertial frames&nbsp;)</p>
+<p>Newtonian $\doteq {\mathbf{F}}_i$ (&nbsp;${\mathbf{F}}_i$ is invariant under transformations between inertial and non-inertial frames and ${\mathbf{a}}_{\hspace{+0.045em}i}$ is also invariant under transformations between inertial and non-inertial frames&nbsp;)</p>
 
-<p><b>Option 2 B:</b> Integrated by [&nbsp;The Equation of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span> + The Relational Magnitudes (&nbsp;<span class="MathJax">\({\mathbf{r}} , {\mathbf{v}} , {\mathbf{a}}\)</span>&nbsp;)&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Frames&nbsp;]</p>
+<p><b>Option 2 B:</b> Integrated by [&nbsp;The Equation of Motion + The Forces of Nature ${\mathbf{F}}$ + The Relational Magnitudes (&nbsp;${\mathbf{r}} , {\mathbf{v}} , {\mathbf{a}}$&nbsp;)&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Frames&nbsp;]</p>
 
-<p>The Equation of Motion: Every net force <span class="MathJax">\({\mathbf{F}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> of inertial mass <span class="MathJax">\(m_i\)</span> produces in the particle <span class="MathJax">\(i\)</span> a relational acceleration <span class="MathJax">\({\mathbf{a}}_{\hspace{+0.045em}i}\)</span> according to the following equation: <span class="MathJax">\([ \, {\mathbf{F}}_i \,=\, m_i \, {\mathbf{a}}_{\hspace{+0.045em}i} \, ]\)</span></p>
+<p>The Equation of Motion: Every net force ${\mathbf{F}}_i$ acting on a particle $i$ of inertial mass $m_i$ produces in the particle $i$ a relational acceleration ${\mathbf{a}}_{\hspace{+0.045em}i}$ according to the following equation: $[ \, {\mathbf{F}}_i \,=\, m_i \, {\mathbf{a}}_{\hspace{+0.045em}i} \, ]$</p>
 
 <p>The Equation of Motion is the 2nd. Law of Motion, the 1st. Law of Motion is deduced from The Equation of Motion considering that if no force acts on a particle then the net force acting on the particle is equal to zero and the 3rd. Law of Motion is deduced from The Forces of Nature.</p>
 
-<p>Newtonian <span class="MathJax">\(\doteq {\mathbf{F}}_i\)</span> (&nbsp;<span class="MathJax">\({\mathbf{F}}_i\)</span> is invariant under transformations between inertial and non-inertial frames and <span class="MathJax">\({\mathbf{a}}_{\hspace{+0.045em}i}\)</span> is also invariant under transformations between inertial and non-inertial frames&nbsp;)</p>
+<p>Newtonian $\doteq {\mathbf{F}}_i$ (&nbsp;${\mathbf{F}}_i$ is invariant under transformations between inertial and non-inertial frames and ${\mathbf{a}}_{\hspace{+0.045em}i}$ is also invariant under transformations between inertial and non-inertial frames&nbsp;)</p>
 
 <h3>Annex II</h3>
 
 <h3>D'Alembertian Mechanics</h3>
 
-<p><b>Option 0 A:</b> Integrated by [&nbsp;The 3 Laws of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span> + The Ordinary Inertial Force (&nbsp;vis insita&nbsp;) <span class="MathJax">\({-\, m\hspace{+0.060em}{\vec{a}}}\)</span>&nbsp;] and formulated only for [&nbsp;The Inertial Frames&nbsp;]</p>
+<p><b>Option 0 A:</b> Integrated by [&nbsp;The 3 Laws of Motion + The Forces of Nature ${\mathbf{F}}$ + The Ordinary Inertial Force (&nbsp;vis insita&nbsp;) ${-\, m\hspace{+0.060em}{\vec{a}}}$&nbsp;] and formulated only for [&nbsp;The Inertial Frames&nbsp;]</p>
 
 <p>1st. Law of Motion: Force is a vector magnitude that represents interaction between two or more particles.</p>
 
-<p>2nd. Law of Motion: The total force <span class="MathJax">\({\vec{T}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> is always zero. <span class="MathJax">\([ \; {\vec{T}}_i \,\doteq\, {\mathbf{F}}_i \;-\; m_i \, {\vec{a}}_{\hspace{+0.045em}i} \,=\, 0 \; ]\)</span></p>
+<p>2nd. Law of Motion: The total force ${\vec{T}}_i$ acting on a particle $i$ is always zero. $[ \; {\vec{T}}_i \,\doteq\, {\mathbf{F}}_i \;-\; m_i \, {\vec{a}}_{\hspace{+0.045em}i} \,=\, 0 \; ]$</p>
 
-<p>3rd. Law of Motion: If a particle <span class="MathJax">\(i\)</span> exerts a force <span class="MathJax">\({\mathbf{F}_{j\hspace{+0.090em}i}}\)</span> on another particle <span class="MathJax">\(j\)</span> then the particle <span class="MathJax">\(j\)</span> exerts a force <span class="MathJax">\(-{\mathbf{F}_{i\hspace{-0.030em}j}}\)</span> equal and in the opposite direction on the particle <span class="MathJax">\(i\)</span>. <span class="MathJax">\([ \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, ]\)</span></p>
+<p>3rd. Law of Motion: If a particle $i$ exerts a force ${\mathbf{F}_{j\hspace{+0.090em}i}}$ on another particle $j$ then the particle $j$ exerts a force $-{\mathbf{F}_{i\hspace{-0.030em}j}}$ equal and in the opposite direction on the particle $i$. $[ \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, ]$</p>
 
-<p>D'Alembertian <span class="MathJax">\(\doteq {\vec{T}}_i\)</span> (&nbsp;<span class="MathJax">\({\vec{T}}_i\)</span> and <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> are only invariant under transformations between inertial frames&nbsp;)</p>
+<p>D'Alembertian $\doteq {\vec{T}}_i$ (&nbsp;${\vec{T}}_i$ and ${\vec{a}}_{\hspace{+0.045em}i}$ are only invariant under transformations between inertial frames&nbsp;)</p>
 
-<p><b>Option 0 B:</b> Integrated by [&nbsp;The Equation of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span> + The Ordinary Inertial Force (&nbsp;vis insita&nbsp;) <span class="MathJax">\({-\, m\hspace{+0.060em}{\vec{a}}}\)</span>&nbsp;] and formulated only for [&nbsp;The Inertial Frames&nbsp;]</p>
+<p><b>Option 0 B:</b> Integrated by [&nbsp;The Equation of Motion + The Forces of Nature ${\mathbf{F}}$ + The Ordinary Inertial Force (&nbsp;vis insita&nbsp;) ${-\, m\hspace{+0.060em}{\vec{a}}}$&nbsp;] and formulated only for [&nbsp;The Inertial Frames&nbsp;]</p>
 
-<p>The Equation of Motion: The total force <span class="MathJax">\({\vec{T}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> is always zero. <span class="MathJax">\([ \; {\vec{T}}_i \,\doteq\, {\mathbf{F}}_i \;-\; m_i \, {\vec{a}}_{\hspace{+0.045em}i} \,=\, 0 \; ]\)</span></p>
+<p>The Equation of Motion: The total force ${\vec{T}}_i$ acting on a particle $i$ is always zero. $[ \; {\vec{T}}_i \,\doteq\, {\mathbf{F}}_i \;-\; m_i \, {\vec{a}}_{\hspace{+0.045em}i} \,=\, 0 \; ]$</p>
 
 <p>The Equation of Motion is the 2nd. Law of Motion, the 1st. Law of Motion is deduced from The Equation of Motion and The Forces of Nature and the 3rd. Law of Motion is deduced from The Forces of Nature.</p>
 
-<p>D'Alembertian <span class="MathJax">\(\doteq {\vec{T}}_i\)</span> (&nbsp;<span class="MathJax">\({\vec{T}}_i\)</span> and <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> are only invariant under transformations between inertial frames&nbsp;)</p>
+<p>D'Alembertian $\doteq {\vec{T}}_i$ (&nbsp;${\vec{T}}_i$ and ${\vec{a}}_{\hspace{+0.045em}i}$ are only invariant under transformations between inertial frames&nbsp;)</p>
 
-<p><b>Option 1 A:</b> Integrated by [&nbsp;The 3 Laws of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span> + The Fictitious Forces <span class="MathJax">\({\vec{Q}}\)</span> + The Ordinary Inertial Force (&nbsp;vis insita&nbsp;) <span class="MathJax">\({-\, m\hspace{+0.060em}{\vec{a}}}\)</span>&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Frames&nbsp;]</p>
+<p><b>Option 1 A:</b> Integrated by [&nbsp;The 3 Laws of Motion + The Forces of Nature ${\mathbf{F}}$ + The Fictitious Forces ${\vec{Q}}$ + The Ordinary Inertial Force (&nbsp;vis insita&nbsp;) ${-\, m\hspace{+0.060em}{\vec{a}}}$&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Frames&nbsp;]</p>
 
 <p>1st. Law of Motion: Force is a vector magnitude that represents interaction between two or more particles.</p>
 
-<p>2nd. Law of Motion: The total force <span class="MathJax">\({\mathbf{T}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> is always zero. <span class="MathJax">\([ \; {\mathbf{T}}_i \,\doteq\, {\mathbf{F}}_i + {\vec{Q}}_i \;-\; m_i \, {\vec{a}}_{\hspace{+0.045em}i} \,=\, 0 \; ]\)</span></p>
+<p>2nd. Law of Motion: The total force ${\mathbf{T}}_i$ acting on a particle $i$ is always zero. $[ \; {\mathbf{T}}_i \,\doteq\, {\mathbf{F}}_i + {\vec{Q}}_i \;-\; m_i \, {\vec{a}}_{\hspace{+0.045em}i} \,=\, 0 \; ]$</p>
 
-<p>3rd. Law of Motion: If a particle <span class="MathJax">\(i\)</span> exerts a force <span class="MathJax">\({\mathbf{F}_{j\hspace{+0.090em}i}}\)</span> on another particle <span class="MathJax">\(j\)</span> then the particle <span class="MathJax">\(j\)</span> exerts a force <span class="MathJax">\(-{\mathbf{F}_{i\hspace{-0.030em}j}}\)</span> equal and in the opposite direction on the particle <span class="MathJax">\(i\)</span>. <span class="MathJax">\([ \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, ]\)</span></p>
+<p>3rd. Law of Motion: If a particle $i$ exerts a force ${\mathbf{F}_{j\hspace{+0.090em}i}}$ on another particle $j$ then the particle $j$ exerts a force $-{\mathbf{F}_{i\hspace{-0.030em}j}}$ equal and in the opposite direction on the particle $i$. $[ \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, ]$</p>
 
-<p>D'Alembertian <span class="MathJax">\(\doteq {\mathbf{T}}_i\)</span> (&nbsp;<span class="MathJax">\({\mathbf{T}}_i\)</span> is invariant under transformations between inertial and non-inertial frames but <span class="MathJax">\({\vec{Q}}_i\)</span> and <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> are not invariant under transformations between inertial and non-inertial frames&nbsp;)</p>
+<p>D'Alembertian $\doteq {\mathbf{T}}_i$ (&nbsp;${\mathbf{T}}_i$ is invariant under transformations between inertial and non-inertial frames but ${\vec{Q}}_i$ and ${\vec{a}}_{\hspace{+0.045em}i}$ are not invariant under transformations between inertial and non-inertial frames&nbsp;)</p>
 
-<p><b>Option 1 B:</b> Integrated by [&nbsp;The Equation of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span> + The Fictitious Forces <span class="MathJax">\({\vec{Q}}\)</span> + The Ordinary Inertial Force (&nbsp;vis insita&nbsp;) <span class="MathJax">\({-\, m\hspace{+0.060em}{\vec{a}}}\)</span>&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Frames&nbsp;]</p>
+<p><b>Option 1 B:</b> Integrated by [&nbsp;The Equation of Motion + The Forces of Nature ${\mathbf{F}}$ + The Fictitious Forces ${\vec{Q}}$ + The Ordinary Inertial Force (&nbsp;vis insita&nbsp;) ${-\, m\hspace{+0.060em}{\vec{a}}}$&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Frames&nbsp;]</p>
 
-<p>The Equation of Motion: The total force <span class="MathJax">\({\mathbf{T}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> is always zero. <span class="MathJax">\([ \; {\mathbf{T}}_i \,\doteq\, {\mathbf{F}}_i + {\vec{Q}}_i \;-\; m_i \, {\vec{a}}_{\hspace{+0.045em}i} \,=\, 0 \; ]\)</span></p>
+<p>The Equation of Motion: The total force ${\mathbf{T}}_i$ acting on a particle $i$ is always zero. $[ \; {\mathbf{T}}_i \,\doteq\, {\mathbf{F}}_i + {\vec{Q}}_i \;-\; m_i \, {\vec{a}}_{\hspace{+0.045em}i} \,=\, 0 \; ]$</p>
 
 <p>The Equation of Motion is the 2nd. Law of Motion, the 1st. Law of Motion is deduced from The Equation of Motion and The Forces of Nature and the 3rd. Law of Motion is deduced from The Forces of Nature.</p>
 
-<p>D'Alembertian <span class="MathJax">\(\doteq {\mathbf{T}}_i\)</span> (&nbsp;<span class="MathJax">\({\mathbf{T}}_i\)</span> is invariant under transformations between inertial and non-inertial frames but <span class="MathJax">\({\vec{Q}}_i\)</span> and <span class="MathJax">\({\vec{a}}_{\hspace{+0.045em}i}\)</span> are not invariant under transformations between inertial and non-inertial frames&nbsp;)</p>
+<p>D'Alembertian $\doteq {\mathbf{T}}_i$ (&nbsp;${\mathbf{T}}_i$ is invariant under transformations between inertial and non-inertial frames but ${\vec{Q}}_i$ and ${\vec{a}}_{\hspace{+0.045em}i}$ are not invariant under transformations between inertial and non-inertial frames&nbsp;)</p>
 
-<p><b>Option 2 A:</b> Integrated by [&nbsp;The 3 Laws of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span> + The Relational Inertial Force (&nbsp;vis insita relationalis&nbsp;) <span class="MathJax">\({-\, m\hspace{+0.060em}{\mathbf{a}}}\)</span> + The Relational Magnitudes (&nbsp;<span class="MathJax">\({\mathbf{r}} , {\mathbf{v}} , {\mathbf{a}}\)</span>&nbsp;)&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Frames&nbsp;]</p>
+<p><b>Option 2 A:</b> Integrated by [&nbsp;The 3 Laws of Motion + The Forces of Nature ${\mathbf{F}}$ + The Relational Inertial Force (&nbsp;vis insita relationalis&nbsp;) ${-\, m\hspace{+0.060em}{\mathbf{a}}}$ + The Relational Magnitudes (&nbsp;${\mathbf{r}} , {\mathbf{v}} , {\mathbf{a}}$&nbsp;)&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Frames&nbsp;]</p>
 
 <p>1st. Law of Motion: Force is a vector magnitude that represents interaction between two or more particles.</p>
 
-<p>2nd. Law of Motion: The total force <span class="MathJax">\({\mathbf{T}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> is always zero. <span class="MathJax">\([ \; {\mathbf{T}}_i \,\doteq\, {\mathbf{F}}_i \;-\; m_i \, {\mathbf{a}}_{\hspace{+0.045em}i} \,=\, 0 \; ]\)</span></p>
+<p>2nd. Law of Motion: The total force ${\mathbf{T}}_i$ acting on a particle $i$ is always zero. $[ \; {\mathbf{T}}_i \,\doteq\, {\mathbf{F}}_i \;-\; m_i \, {\mathbf{a}}_{\hspace{+0.045em}i} \,=\, 0 \; ]$</p>
 
-<p>3rd. Law of Motion: If a particle <span class="MathJax">\(i\)</span> exerts a force <span class="MathJax">\({\mathbf{F}_{j\hspace{+0.090em}i}}\)</span> on another particle <span class="MathJax">\(j\)</span> then the particle <span class="MathJax">\(j\)</span> exerts a force <span class="MathJax">\(-{\mathbf{F}_{i\hspace{-0.030em}j}}\)</span> equal and in the opposite direction on the particle <span class="MathJax">\(i\)</span>. <span class="MathJax">\([ \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, ]\)</span></p>
+<p>3rd. Law of Motion: If a particle $i$ exerts a force ${\mathbf{F}_{j\hspace{+0.090em}i}}$ on another particle $j$ then the particle $j$ exerts a force $-{\mathbf{F}_{i\hspace{-0.030em}j}}$ equal and in the opposite direction on the particle $i$. $[ \, {\mathbf{F}_{j\hspace{+0.090em}i}} = - \, {\mathbf{F}_{i\hspace{-0.030em}j}} \, ]$</p>
 
-<p>D'Alembertian <span class="MathJax">\(\doteq {\mathbf{T}}_i\)</span> (&nbsp;<span class="MathJax">\({\mathbf{T}}_i\)</span> is invariant under transformations between inertial and non-inertial frames and <span class="MathJax">\({\mathbf{a}}_{\hspace{+0.045em}i}\)</span> is also invariant under transformations between inertial and non-inertial frames&nbsp;)</p>
+<p>D'Alembertian $\doteq {\mathbf{T}}_i$ (&nbsp;${\mathbf{T}}_i$ is invariant under transformations between inertial and non-inertial frames and ${\mathbf{a}}_{\hspace{+0.045em}i}$ is also invariant under transformations between inertial and non-inertial frames&nbsp;)</p>
 
-<p><b>Option 2 B:</b> Integrated by [&nbsp;The Equation of Motion + The Forces of Nature <span class="MathJax">\({\mathbf{F}}\)</span> + The Relational Inertial Force (&nbsp;vis insita relationalis&nbsp;) <span class="MathJax">\({-\, m\hspace{+0.060em}{\mathbf{a}}}\)</span> + The Relational Magnitudes (&nbsp;<span class="MathJax">\({\mathbf{r}} , {\mathbf{v}} , {\mathbf{a}}\)</span>&nbsp;)&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Frames&nbsp;]</p>
+<p><b>Option 2 B:</b> Integrated by [&nbsp;The Equation of Motion + The Forces of Nature ${\mathbf{F}}$ + The Relational Inertial Force (&nbsp;vis insita relationalis&nbsp;) ${-\, m\hspace{+0.060em}{\mathbf{a}}}$ + The Relational Magnitudes (&nbsp;${\mathbf{r}} , {\mathbf{v}} , {\mathbf{a}}$&nbsp;)&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Frames&nbsp;]</p>
 
-<p>The Equation of Motion: The total force <span class="MathJax">\({\mathbf{T}}_i\)</span> acting on a particle <span class="MathJax">\(i\)</span> is always zero. <span class="MathJax">\([ \; {\mathbf{T}}_i \,\doteq\, {\mathbf{F}}_i \;-\; m_i \, {\mathbf{a}}_{\hspace{+0.045em}i} \,=\, 0 \; ]\)</span></p>
+<p>The Equation of Motion: The total force ${\mathbf{T}}_i$ acting on a particle $i$ is always zero. $[ \; {\mathbf{T}}_i \,\doteq\, {\mathbf{F}}_i \;-\; m_i \, {\mathbf{a}}_{\hspace{+0.045em}i} \,=\, 0 \; ]$</p>
 
 <p>The Equation of Motion is the 2nd. Law of Motion, the 1st. Law of Motion is deduced from The Equation of Motion and The Forces of Nature and the 3rd. Law of Motion is deduced from The Forces of Nature.</p>
 
-<p>D'Alembertian <span class="MathJax">\(\doteq {\mathbf{T}}_i\)</span> (&nbsp;<span class="MathJax">\({\mathbf{T}}_i\)</span> is invariant under transformations between inertial and non-inertial frames and <span class="MathJax">\({\mathbf{a}}_{\hspace{+0.045em}i}\)</span> is also invariant under transformations between inertial and non-inertial frames&nbsp;)</p>
+<p>D'Alembertian $\doteq {\mathbf{T}}_i$ (&nbsp;${\mathbf{T}}_i$ is invariant under transformations between inertial and non-inertial frames and ${\mathbf{a}}_{\hspace{+0.045em}i}$ is also invariant under transformations between inertial and non-inertial frames&nbsp;)</p>
 
 <h3>Annex III</h3>
 
@@ -629,11 +715,11 @@
 
 <p><b>Option 1 B:</b> Integrated by [&nbsp;The Equations of Motion + The Ordinary Energetic Magnitudes&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Frames&nbsp;]</p>
 
-<p>Lagrangian <span class="MathJax">\(\doteq {\mathit{L}}_{\hspace{+0.045em}i}\)</span> (&nbsp;<span class="MathJax">\({\mathit{L}}_{\hspace{+0.045em}i}\)</span> expressed with the ordinary magnitudes (&nbsp;<span class="MathJax">\({\vec{r}_{\hspace{+0.045em}i}} \,, {\vec{v}_{\hspace{+0.045em}i}}\)</span>&nbsp;) is not invariant under transformations between inertial and non-inertial frames&nbsp;)</p>
+<p>Lagrangian $\doteq {\mathit{L}}_{\hspace{+0.045em}i}$ (&nbsp;${\mathit{L}}_{\hspace{+0.045em}i}$ expressed with the ordinary magnitudes (&nbsp;${\vec{r}_{\hspace{+0.045em}i}} \,, {\vec{v}_{\hspace{+0.045em}i}}$&nbsp;) is not invariant under transformations between inertial and non-inertial frames&nbsp;)</p>
 
 <p><b>Option 2 B:</b> Integrated by [&nbsp;The Equations of Motion + The Relational Energetic Magnitudes&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Frames&nbsp;]</p>
 
-<p>Lagrangian <span class="MathJax">\(\doteq {\mathcal{L}}_{\hspace{+0.045em}i}\)</span> (&nbsp;<span class="MathJax">\({\mathcal{L}}_{\hspace{+0.045em}i}\)</span> expressed with the relational magnitudes (&nbsp;<span class="MathJax">\({\mathbf{r}_{\hspace{+0.045em}i}} \,, {\mathbf{v}_{\hspace{+0.045em}i}}\)</span>&nbsp;) is indeed invariant under transformations between inertial and non-inertial frames&nbsp;)</p>
+<p>Lagrangian $\doteq {\mathcal{L}}_{\hspace{+0.045em}i}$ (&nbsp;${\mathcal{L}}_{\hspace{+0.045em}i}$ expressed with the relational magnitudes (&nbsp;${\mathbf{r}_{\hspace{+0.045em}i}} \,, {\mathbf{v}_{\hspace{+0.045em}i}}$&nbsp;) is indeed invariant under transformations between inertial and non-inertial frames&nbsp;)</p>
 
 <p>In development&nbsp;...<br></p>
 
@@ -643,11 +729,11 @@
 
 <p><b>Option 1 B:</b> Integrated by [&nbsp;The Equations of Motion + The Ordinary Energetic Magnitudes&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Frames&nbsp;]</p>
 
-<p>Hamiltonian <span class="MathJax">\(\doteq {\mathit{H}}_{\hspace{+0.045em}i}\)</span> (&nbsp;<span class="MathJax">\({\mathit{H}}_{\hspace{+0.045em}i}\)</span> expressed with the ordinary magnitudes (&nbsp;<span class="MathJax">\({\vec{r}_{\hspace{+0.045em}i}} \,, {\vec{v}_{\hspace{+0.045em}i}}\)</span>&nbsp;) is not invariant under transformations between inertial and non-inertial frames&nbsp;)</p>
+<p>Hamiltonian $\doteq {\mathit{H}}_{\hspace{+0.045em}i}$ (&nbsp;${\mathit{H}}_{\hspace{+0.045em}i}$ expressed with the ordinary magnitudes (&nbsp;${\vec{r}_{\hspace{+0.045em}i}} \,, {\vec{v}_{\hspace{+0.045em}i}}$&nbsp;) is not invariant under transformations between inertial and non-inertial frames&nbsp;)</p>
 
 <p><b>Option 2 B:</b> Integrated by [&nbsp;The Equations of Motion + The Relational Energetic Magnitudes&nbsp;] and formulated for [&nbsp;The Inertial and Non-Inertial Frames&nbsp;]</p>
 
-<p>Hamiltonian <span class="MathJax">\(\doteq {\mathcal{H}}_{\hspace{+0.045em}i}\)</span> (&nbsp;<span class="MathJax">\({\mathcal{H}}_{\hspace{+0.045em}i}\)</span> expressed with the relational magnitudes (&nbsp;<span class="MathJax">\({\mathbf{r}_{\hspace{+0.045em}i}} \,, {\mathbf{v}_{\hspace{+0.045em}i}}\)</span>&nbsp;) is indeed invariant under transformations between inertial and non-inertial frames&nbsp;)</p>
+<p>Hamiltonian $\doteq {\mathcal{H}}_{\hspace{+0.045em}i}$ (&nbsp;${\mathcal{H}}_{\hspace{+0.045em}i}$ expressed with the relational magnitudes (&nbsp;${\mathbf{r}_{\hspace{+0.045em}i}} \,, {\mathbf{v}_{\hspace{+0.045em}i}}$&nbsp;) is indeed invariant under transformations between inertial and non-inertial frames&nbsp;)</p>
 
 <p>In development&nbsp;...<br></p>
 
@@ -657,7 +743,7 @@
 	
 <li class="livex">Newtonian Mechanics, D'Alembertian Mechanics, Lagrangian Mechanics and Hamiltonian Mechanics are observationally equivalent to each other.</li>
 
-<li class="livex">The D'Alembertian Mechanics presented in Annex II is still an incomplete formulation (&nbsp;see Appendix II&nbsp;)</li>
+<li class="livex">The D'Alembertian Mechanics presented in Annex II is still an incomplete formulation (&nbsp;see Appendix II&nbsp;) <a href="#AP02">[&nbsp;AP02&nbsp;]</a>&nbsp;.</li>
 
 <li class="livex">The Options with the letter A are formulations under the format of 3 Laws of Motion.</li>
 
@@ -667,21 +753,21 @@
 
 <li class="livex">The Options with the number 1 are formulations expressed for inertial and non-inertial frames including mathematical terms (&nbsp;such as: fictitious forces, the ordinary inertial force, etc.&nbsp;) which are not in general invariant under transformations between inertial and non-inertial frames.</li>
 
-<li class="livex">The Options with the number 2 are formulations expressed for inertial and non-inertial frames including relational magnitudes (&nbsp;such as: <span class="MathJax">\({\mathbf{r}} , {\mathbf{v}} ,\)</span> etc.&nbsp;) which are always invariant under transformations between inertial and non-inertial frames.</li>
+<li class="livex">The Options with the number 2 are formulations expressed for inertial and non-inertial frames including relational magnitudes (&nbsp;such as: ${\mathbf{r}} , {\mathbf{v}} ,$ etc.&nbsp;) which are always invariant under transformations between inertial and non-inertial frames.</li>
 
-<li class="livex">The vector magnitudes expressed with vector arrow (&nbsp;such as: <span class="MathJax">\({\vec{F}} , {\vec{Q}} \hspace{+0.060em}, {\vec{T}} , {\vec{r}} , {\vec{v}} , {\vec{a}} ,\)</span> etc.&nbsp;) are not invariant under transformations between inertial and non-inertial frames.</li>
+<li class="livex">The vector magnitudes expressed with vector arrow (&nbsp;such as: ${\vec{F}} , {\vec{Q}} \hspace{+0.060em}, {\vec{T}} , {\vec{r}} , {\vec{v}} , {\vec{a}} ,$ etc.&nbsp;) are not invariant under transformations between inertial and non-inertial frames.</li>
 
-<li>The vector magnitudes expressed in bold (&nbsp;such as: <span class="MathJax">\({\mathbf{F}} , {\mathbf{T}} , {\mathbf{r}} , {\mathbf{v}} , {\mathbf{a}} ,\)</span> etc.&nbsp;) are invariant under transformations between inertial and non-inertial frames.</li>
+<li>The vector magnitudes expressed in bold (&nbsp;such as: ${\mathbf{F}} , {\mathbf{T}} , {\mathbf{r}} , {\mathbf{v}} , {\mathbf{a}} ,$ etc.&nbsp;) are invariant under transformations between inertial and non-inertial frames.</li>
 
 </ul>
 
-<h2 id="A1">Appendices</h2>
+<h2 id="AP">Appendices</h2>
 
 <h3>Appendix I</h3>
 
 <h3>Kinematic Magnitudes</h3>
 
-<p><b>The Radial Magnitudes:</b> The radial magnitudes (&nbsp;<span class="MathJax">\({r} , {\dot{r}} , {\ddot{r}}\)</span>&nbsp;) are scalar magnitudes and are invariant under transformations between inertial and non-inertial frames.</p>
+<p><b>The Radial Magnitudes:</b> The radial magnitudes (&nbsp;${r} , {\dot{r}} , {\ddot{r}}$&nbsp;) are scalar magnitudes and are invariant under transformations between inertial and non-inertial frames.</p>
 
 <ul>
 
@@ -693,7 +779,7 @@
 
 </ul>
 
-<p><b>The Scalar Magnitudes:</b> The scalar magnitudes (&nbsp;<span class="MathJax">\({\tau} , {\dot{\tau}} , {\ddot{\tau}}\)</span>&nbsp;) are scalar magnitudes and are invariant under transformations between inertial and non-inertial frames.</p>
+<p><b>The Scalar Magnitudes:</b> The scalar magnitudes (&nbsp;${\tau} , {\dot{\tau}} , {\ddot{\tau}}$&nbsp;) are scalar magnitudes and are invariant under transformations between inertial and non-inertial frames.</p>
 
 <ul>
 
@@ -705,7 +791,7 @@
 
 </ul>
 
-<p><b>The Relational Magnitudes:</b> The relational magnitudes (&nbsp;<span class="MathJax">\({\mathbf{r}} , {\mathbf{v}} , {\mathbf{a}}\)</span>&nbsp;) are vector magnitudes and are invariant under transformations between inertial and non-inertial frames.</p>
+<p><b>The Relational Magnitudes:</b> The relational magnitudes (&nbsp;${\mathbf{r}} , {\mathbf{v}} , {\mathbf{a}}$&nbsp;) are vector magnitudes and are invariant under transformations between inertial and non-inertial frames.</p>
 
 <ul>
 	
@@ -717,13 +803,13 @@
 
 </ul>
 
-<h3>Appendix II</h3>
+<h3 id="AP02">Appendix II</h3>
 
 <h3>D'Alembertian Mechanics</h3>
 
-<p>The formulation of D'Alembertian Mechanics presented in Annex II is considered <i>incomplete</i> from an ontological perspective. This is because the fictitious forces <span class="MathJax">\({\vec{Q}}\)</span>, the ordinary inertial force <span class="MathJax">\({-\, m\hspace{+0.060em}{\vec{a}}}\)</span> and the relational inertial force <span class="MathJax">\({-\, m\hspace{+0.060em}{\mathbf{a}}}\)</span> are formally introduced as kinematic mathematical artifacts and not as the result of a real and known physical interaction of nature.</p>
+<p>The formulation of D'Alembertian Mechanics presented in Annex II is considered <i>incomplete</i> from an ontological perspective. This is because the fictitious forces ${\vec{Q}}$, the ordinary inertial force ${-\, m\hspace{+0.060em}{\vec{a}}}$ and the relational inertial force ${-\, m\hspace{+0.060em}{\mathbf{a}}}$ are formally introduced as kinematic mathematical artifacts and not as the result of a real and known physical interaction of nature.</p>
 
-<p>A complete d'alembertian formulation aspires to deduce [&nbsp;the fictitious forces <span class="MathJax">\({\vec{Q}}\)</span> and the ordinary inertial force <span class="MathJax">\({-\, m\hspace{+0.060em}{\vec{a}}}\)</span>&nbsp;] and/or [&nbsp;the relational inertial force <span class="MathJax">\({-\, m\hspace{+0.060em}{\mathbf{a}}}\)</span>&nbsp;] from the properties of a real field or force.</p>
+<p>A complete d'alembertian formulation aspires to deduce [&nbsp;the fictitious forces ${\vec{Q}}$ and the ordinary inertial force ${-\, m\hspace{+0.060em}{\vec{a}}}$&nbsp;] and/or [&nbsp;the relational inertial force ${-\, m\hspace{+0.060em}{\mathbf{a}}}$&nbsp;] from the properties of a real field or force.</p>
 
 <p>In contemporary scientific literature, there are several paths of development towards this objective, among them:</p>
 
@@ -735,7 +821,7 @@
 
 </ul>
 
-<p><b>Kinetic Force (Torassa):</b> A formulation where the term <span class="MathJax">\({-\, m\hspace{+0.060em}{\mathbf{a}}}\)</span> (&nbsp;the relational inertial force&nbsp;) emerges directly as the net force of a real constitutive interaction, restoring the dynamic and relational character to the system without losing observational equivalence.</p>
+<p><b>Kinetic Force (Torassa):</b> A formulation where the term ${-\, m\hspace{+0.060em}{\mathbf{a}}}$ (&nbsp;the relational inertial force&nbsp;) emerges directly as the net force of a real constitutive interaction, restoring the dynamic and relational character to the system without losing observational equivalence.</p>
 
 <ul>
 
@@ -749,7 +835,7 @@
 
 </ul>
 
-<p><b>Gravitational Scalar Field Mechanism (Torassa):</b> A cosmological approach where the acceleration of gravitational mass interacts with a non-zero background scalar field (&nbsp;supported by the strictly positive nature of gravitational mass in the Universe&nbsp;) This field acts in a manner analogous to a classical Higgs field, causing the acceleration to appear in the equation of motion identically to how the velocity of a charge appears in the Lorentz force.</p>
+<p><b>Gravitational Scalar Field Mechanism (Torassa):</b> A cosmological approach where the acceleration of gravitational mass interacts with a non-zero background scalar field (&nbsp;supported by the strictly positive nature of gravitational mass in the Universe&nbsp;). This field acts in a manner analogous to a classical Higgs field, causing the acceleration to appear in the equation of motion identically to how the velocity of a charge appears in the Lorentz force.</p>
 
 <ul>
 
